@@ -1,0 +1,177 @@
+这个模块的第二篇文章中，我们来看一下 HTML 表格更高级的功能，比如像 表格的标题/摘要，以及将你表格中的各行分组成头部、正文、页脚部分，提高视力受损用户的可访问性。
+
+| 学习本章节的前提条件: | HTML 的基础知识 (see [Introduction to HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML)). |
+| :-------------------- | ------------------------------------------------------------ |
+| 目的:                 | 学习 HTML 表格进一步的功能，以及表格的无障碍访问性。         |
+
+## 使用 <caption> 为你的表格增加一个标题
+
+你可以为你的表格增加一个标题，通过<caption> 元素，再把<caption>元素放入<table>元素中. 你应该把它放在<table>标签的下面。
+
+```html
+<table>
+  <caption>Dinosaurs in the Jurassic period</caption>
+
+  ...
+</table>
+```
+
+从上面简单的例子可以推断，标题意味着包含对于表格内容的描述，这对那些希望可以快速浏览网页中的表格对他们是否有帮助的读者们来说，是非常好的功能。特别是盲人用户，不需要让屏幕阅读设备读出很多单元格的内容，来让用户了解这张表格讲的是什么，而是可以依靠标题的内容，来决定是否需要了解更详细的内容。
+
+标题就放在<table>标签的下面。
+
+**注意**: 这个 `summary` 属性也可以在<table>元素中使用，用来提供一段描述，同样可以被屏幕阅读设备阅读。我们推荐使用<caption>元素来代替使用，因为 `summary` 被 HTML5 规范， deprecated (废除了)，也不能被视力正常的用户阅读。 (它不会出现在页面上)
+
+## 添加 <thead>, <tfoot>, 和 <tbody> 结构
+
+由于你的表格在结构上有点复杂，如果把它们定义得更加结构化，那会帮助我们更能了解结构。一个明确的方法是使用<thead>,<tfoot> <tbody>,和 , 这些元素允许你把表格中的部分标记为表头、页脚、正文部分。
+
+这些元素不会使表格更易于屏幕阅读器用户访问，也不会造成任何视觉上的改变。然而，它们在应用样式和布局上会起到作用，可以更好地让 CSS 应用到表格上。给你一些有趣的例子，在长表格的情况下，你可以在每个打印页面上使表格页眉和页脚重复，你也可以让表格的正文部分显示在一个单独的页面上，并通过上下滚动来获得内容。
+
+试着使用它们:
+
+-  <thead>需要嵌套在 table 元素中，放置在头部的位置，因为它通常代表第一行，第一行中往往都是每列的标题，但是不是每种情况都是这样的。如果你使用了<col> /<colgroup> 元素，那么<thead>元素就需要放在它们的下面。
+-  <tfoot>需要嵌套在 table 元素中，放置在底部 (页脚)的位置，一般是最后一行，往往是对前面所有行的总结，比如，你可以按照预想的方式将<tfoot>放在表格的底部，或者就放在<thead>的下面。(浏览器仍将它呈现在表格的底部)
+-  <tbody>需要嵌套在 table 元素中，放置在 <thead>的下面或者是<tfoot>的下面，这取决于你如何设计你的结构。(<tfoot>放在<thead>下面也可以生效.)
+
+**注意**: 总是包含在每个表中，如果你没有在代码中指定它，那就是隐式的。可以来验证一下，打开一个你之前没有包含 的例子，然后在你的 [browser developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools) 中观察你的代码，你会看到浏览器为你添加了这个标签。你也许会想问，为什么你应该在所有表中都需要这个元素，因为它可以让你更好地控制表格结构和样式。
+
+## 嵌套表格
+
+在一个表格中嵌套另外一个表格是可能的，只要你包含完整的结构，包括 <table> 元素。这样通常是不建议的，因为这种做法会使标记看上去很难理解，对使用屏幕阅读的用户来说，可访问性也降低了。以及在很多情况下，也许你只需要插入额外的 单元格/行/列 到已有的表格中。然而有时候是必要的，比如你想要从其他资源中更简单地导入内容。
+
+下面的代码演示了一个简单的嵌套表格:
+
+```html
+<table id="table1">
+  <tr>
+    <th>title1</th>
+    <th>title2</th>
+    <th>title3</th>
+  </tr>
+  <tr>
+    <td id="nested">
+      <table id="table2">
+        <tr>
+          <td>cell1</td>
+          <td>cell2</td>
+          <td>cell3</td>
+        </tr>
+      </table>
+    </td>
+    <td>cell2</td>
+    <td>cell3</td>
+  </tr>
+  <tr>
+    <td>cell4</td>
+    <td>cell5</td>
+    <td>cell6</td>
+  </tr>
+</table>
+```
+
+输出看起来是这样的：
+
+| title1          | title2 | title3 |
+| :-------------- | :----- | :----- |
+| cell1cell2cell3 | cell2  | cell3  |
+| cell4           | cell5  | cell6  |
+
+## 对于视力受损的用户的表格
+
+让我们简要回顾一下如何使用数据表。一个表格可以是一个便利的工具，或者让我们快速访问数据，并允许我们查找不同的值。比如，你只需要稍微看一眼下列的表格，你就能得知 2016 年 8 月份在 Gent 出售了多少个 Rings (戒指)。为了理解信息，我们让数据与列标题或行标题之间建立视觉联系。
+
+|                 |           | Clothes  | Accessories |         |           |       |
+| :-------------- | :-------- | :------- | :---------- | :------ | --------- | ----- |
+|                 |           | Trousers | Skirts      | Dresses | Bracelets | Rings |
+| Belgium         | Antwerp   | 56       | 22          | 43      | 72        | 23    |
+| Gent            | 46        | 18       | 50          | 61      | 15        |       |
+| Brussels        | 51        | 27       | 38          | 69      | 28        |       |
+| The Netherlands | Amsterdam | 89       | 34          | 69      | 85        | 38    |
+| Utrecht         | 80        | 12       | 43          | 36      | 19        |       |
+
+但假设你无法通过视觉关联这些数据呢? 那么你应该如何阅读上述的表格? 视力受损的用户经常使用一个屏幕阅读设备来为他们读出网页上的信息。对于盲人来说，阅读简单的文字没有什么问题，但是要理解一张表格的内容，这就有一些难度了。虽然，使用正确的标记，我们可以用程序化来代替视觉关联。
+
+**注意**: 根据[世界卫生组织 2017 年的数据](http://www.who.int/zh/news-room/fact-sheets/detail/blindness-and-visual-impairment)，大约有 2.53 亿人患有视觉障碍。
+
+本篇文章提供了更一步的技术来使表格的可访问性尽可能地提高。
+
+### 使用列和行的标题
+
+
+
+屏幕阅读设备会识别所有的标题，然后在它们和它们所关联的单元格之间产生编程关联。列和行标题的组合将标识和解释每个单元格中的数据，以便屏幕阅读器用户可以类似于视力正常的用户的操作来理解表格。
+
+我们之前的文章就提到过这一点，可见 elements](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics#Adding_headers_with__elements).
+
+### scope 属性
+
+本篇文章的一个新话题是 `scope` 属性，可以添加在<th>元素中，用来帮助屏幕阅读设备更好地理解那些标题单元格，这个标题单元格到底是列标题呢，还是行标题。比如： 回顾我们之前的支出记录示例，你可以明确地将列标题这样定义：
+
+```html
+<thead>
+  <tr>
+    <th scope="col">Purchase</th>
+    <th scope="col">Location</th>
+    <th scope="col">Date</th>
+    <th scope="col">Evaluation</th>
+    <th scope="col">Cost (€)</th>
+  </tr>
+</thead>
+```
+
+以及每一行都可以这样定义一个行标题 (如果我们已经使用了 th 和 td 元素):
+
+```html
+<tr>
+  <th scope="row">Haircut</th>
+  <td>Hairdresser</td>
+  <td>12/09</td>
+  <td>Great idea</td>
+  <td>30</td>
+</tr>
+```
+
+屏幕阅读设备会识别这种结构化的标记，并一次读出整列或整行，比如：
+
+`scope` 还有两个可选的值 ： `colgroup` 和 `rowgroup`。这些用于位于多个列或行的顶部的标题。 如果你回顾这部分文章开始部分的 "Items Sold August 2016" 表格。你会看到 "Clothes" 单元格在"Trousers", "Skirts", 和 "Dresses" 单元格的上面。这几个单元格都应该被标记为 (<th>)，但是 "Clothes" 是一个位于顶部且定义了其他三个子标题的标题。 因此 "Clothes" 应该有一个 `scope="colgroup"`属性，而另外三个子标题应该有 `scope="col"`属性。
+
+### id 和标题属性
+
+
+
+如果要替代 `scope` 属性，可以使用 `id` 和 `headers` 属性来创造标题与单元格之间的联系。使用方法如下:
+
+1. 为每个<th> 元素添加一个唯一的 `id` 。
+2. 为每个<td> 元素添加一个 `headers` 属性。每个单元格的`headers` 属性需要包含它从属于的所有标题的id，之间用空格分隔开。
+
+这会给你的HTML表格中每个单元格的位置一个明确的定义。像一个电子表格一样，通过 headers 属性来定义属于哪些行或列。为了让它工作良好，表格同时需要列和行标题。
+
+回到我们的花费成本示例，前两个片段可以重写为：
+
+```html
+<thead>
+  <tr>
+    <th id="purchase">Purchase</th>
+    <th id="location">Location</th>
+    <th id="date">Date</th>
+    <th id="evaluation">Evaluation</th>
+    <th id="cost">Cost (€)</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+  <th id="haircut">Haircut</th>
+  <td headers="location haircut">Hairdresser</td>
+  <td headers="date haircut">12/09</td>
+  <td headers="evaluation haircut">Great idea</td>
+  <td headers="cost haircut">30</td>
+</tr>
+
+  ...
+
+</tbody>
+```
+
+**注意**: 这个放进为标题单元格和数据单元格之间创造了非常精确的联系。但是这个方法使用了大量的标记，所以容错率比较低。使用 `scope` 的方法对于大多数表格来说，也够用了。
+

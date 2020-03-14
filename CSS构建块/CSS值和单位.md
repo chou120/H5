@@ -1,0 +1,567 @@
+CSS中使用的每个属性都有该属性允许的一个值或一组值，而查看MDN上的任何属性页将帮助您了解对任何特定属性均有效的值。在本课程中，我们将介绍一些最常用的值和使用的单位。
+
+| 先决条件： | 基本的计算机知识，[已安装的基本软件](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Installing_basic_software)，[使用文件的](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Dealing_with_files)基本知识，HTML基础（研究[HTML简介](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML)）以及CSS的工作原理（研究[CSS第一步）](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps)。 |
+| :--------- | ------------------------------------------------------------ |
+| 目的：     | 了解CSS属性中使用的不同类型的值和单位。                      |
+
+## 什么是CSS值？
+
+在CSS规范和MDN此处的属性页上，您将能够发现值，因为它们将被尖括号包围，例如<color>或<length>。当您看到该值<color>对特定属性有效时，这意味着您可以使用任何有效颜色作为该属性的值，如<color>参考页上所列 。
+
+**注意**：您还将看到称为*数据类型的* CSS值。这些术语基本上可以互换-当您在CSS中看到某种称为数据类型的内容时，它实际上只是一种表达价值的奇特方式。
+
+**注意**：是的，CSS值倾向于使用尖括号来表示，以将它们与CSS属性（例如，[`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color)属性与<color>数据类型）区分开。您可能也会对CSS数据类型和HTML元素感到困惑，因为它们都使用尖括号，但这不太可能-它们用于非常不同的上下文中。
+
+在以下示例中，我们使用关键字设置标题的颜色，并使用`rgb()`函数设置背景的颜色：
+
+```
+h1 { 
+  color: black; 
+  background-color: rgb(197,93,161); 
+} 
+```
+
+CSS中的值是定义允许的子值的集合的一种方式。这意味着，如果您认为<color>有效，则无需怀疑可以使用哪种不同类型的颜色值-关键字，十六进制值，rgb()函数等。可以使用*任何*可用的<color>值，前提是它们受浏览器支持。
+
+让我们通过示例来看看您可能经常遇到的某些类型的值和单位，以便您尝试不同的可能值。
+
+## 数字，长度和百分比
+
+您可能会发现自己在CSS中使用了各种数字数据类型。以下全部归类为数字：
+
+| 数据类型     | 描述                                                         |
+| :----------- | :----------------------------------------------------------- |
+| <integer>    | <integer>是整数，例如`1024`或`-55`。                         |
+| <number>     | <number>代表十进制数-它可以或可以不具有一个小数点带有小数部分，例如`0.255`，`128`，或`-1.2`。 |
+| <dimension>  | <dimension>是一个<number>具有连接到其上的单元，例如`45deg`，`5s`，或`10px`。<dimension>是一个伞类，其中包括<length>，<angle>，<time>，和<resolution>类型 |
+| <percentage> | 例如，<percentage>代表其他值的分数`50%`。百分比值始终相对于另一个数量，例如元素的长度相对于其父元素的长度。 |
+
+### 衣长
+
+
+
+您最常遇到的数字类型是<length>，例如`10px`（像素）或`30em`。CSS中使用两种类型的长度-相对长度和绝对长度。重要的是要了解差异，以了解事物会变得多么大。
+
+#### 绝对长度单位
+
+以下是**绝对**长度单位-它们与其他单位无关，通常被认为总是相同的大小。
+
+| 单元 | 名称         | 相当于                  |
+| :--- | :----------- | :---------------------- |
+| `cm` | 公分         | 1厘米= 96px / 2.54      |
+| `mm` | 毫米         | 1mm = 1厘米的1/10       |
+| `Q`  | 四分之一毫米 | 1Q = 1厘米的1/40        |
+| `in` | 英制         | 1英寸= 2.54厘米= 96像素 |
+| `pc` | 皮卡斯       | 1个= 1英寸的1/6         |
+| `pt` | 点数         | 1pt = 1英寸的1/72       |
+| `px` | 像素         | 1px = 1in的1/96         |
+
+这些值中的大多数在用于打印而不是屏幕输出时更有用。例如，我们通常`cm`在屏幕上不使用（厘米）。通常将唯一使用的值是`px`（像素）。
+
+#### 相对长度单位
+
+相对长度单位是相对于其他单位的，可能是父元素的字体的大小或视口的大小。使用相对单位的好处是，通过一些周密的计划，您可以使其相对于页面上的所有其他内容缩放文本或其他元素的大小。下表列出了一些用于Web开发的最有用的单元。
+
+| 单元   | 关系到                                 |
+| :----- | :------------------------------------- |
+| `em`   | 元素的字体大小。                       |
+| `ex`   | 元素字体的x高度。                      |
+| `ch`   | 元素字体的字形“ 0”的提前量度（宽度）。 |
+| `rem`  | 根元素的字体大小。                     |
+| `lh`   | 元素的线高。                           |
+| `vw`   | 视口宽度的1％。                        |
+| `vh`   | 视口高度的1％。                        |
+| `vmin` | 视口较小尺寸的1％。                    |
+| `vmax` | 视口较大尺寸的1％。                    |
+
+#### 探索一个例子
+
+在下面的示例中，您可以看到一些相对和绝对长度单位的行为。第一个框具有一[`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width)组像素。作为绝对单位，此宽度将保持不变，无论其他变化如何。
+
+第二个框的宽度设置为`vw`（视口宽度）单位。此值是相对于视口宽度的，因此10vw是视口宽度的10％。如果更改浏览器窗口的宽度，则框的大小应更改，但是此示例使用嵌入到页面中<iframe>，因此无法使用。要查看实际效果，您必须[在自己的浏览器标签中打开示例后再尝试该示例](https://mdn.github.io/css-examples/learn/values-units/length.html)。
+
+第三个框使用`em`单位。这些是相对于字体大小的。我`1em`在包含<div>的类中将设置为的字体大小`.wrapper`。将此值更改为`1.5em`，您会看到所有元素的字体大小都增加了，但是只有最后一项会变宽，因为宽度是相对于该字体大小而言的。
+
+按照上述说明进行操作后，请尝试以其他方式使用这些值，以查看得到的结果。
+
+```
+.wrapper {
+  font-size: 1em;
+}
+
+.px {
+  width: 200px;
+}
+
+.vw {
+  width: 10vw;
+}
+
+.em {
+  width: 10em;
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box px">I am 200px wide</div>
+  <div class="box vw">I am 10vw wide</div>
+  <div class="box em">I am 10em wide</div>
+</div>
+    
+```
+
+
+
+#### ems和rems
+
+`em`以及`rem`从框到文本的大小调整时，您最经常会遇到的两个相对长度。值得理解它们是如何工作的以及它们之间的区别，尤其是当您开始着手研究[样式文本](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text)或[CSS布局](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout)等更复杂的主题时。下面的示例提供了一个演示。
+
+HTML是一组嵌套列表-我们总共有三个列表，并且两个示例都具有相同的HTML。唯一的区别是，第一个具有*ems*类，第二个具有*rems*类。
+
+首先，我们将16px设置为<html>元素的字体大小。
+
+**回顾一下，em单元的意思是“我的父元素的font-size”**。在<li>里面的元素<ul>`class`的`ems`把他们的大小，从他们的父母。因此，每一个连续的嵌套级别都会逐渐变大，因为每个字体的字体大小都设置`1.3em`为父字体大小的1.3倍。
+
+**回顾一下，rem单元的意思是“根元素的字体大小”**。（REM标准“根EM”。）的<li>内部的元件<ul>用`class`的`rems`从根元素采取其大小（<html>）。这意味着嵌套的每个连续级别都不会继续变大。
+
+但是，如果您<html>font-size`在CSS中进行了更改，则会看到相对于它的所有其他更改`rem`- `em大小文本。
+
+ ```
+html {
+  font-size: 16px;
+}
+
+.ems li {
+  font-size: 1.3em;
+}
+
+.rems li {
+  font-size: 1.3rem;
+}
+
+ ```
+
+```
+<ul class="ems">
+  <li>One</li>
+  <li>Two</li>
+  <li>Three
+    <ul>
+      <li>Three A</li>
+      <li>Three B
+        <ul>
+          <li>Three B 2</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<ul class="rems">
+  <li>One</li>
+  <li>Two</li>
+  <li>Three
+    <ul>
+      <li>Three A</li>
+      <li>Three B
+        <ul>
+          <li>Three B 2</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+    
+```
+
+
+
+### 百分比
+
+
+
+在很多情况下，百分比与长度的处理方式相同。具有百分比的事情是，它们总是相对于其他某个值进行设置。例如，如果将元素的设置`font-size`为百分比，则它将是`font-size`元素父元素的百分比。如果您使用百分比作为`width`值，它将是`width`父代的百分比。
+
+在下面的示例中，两个百分比大小的框和两个像素大小的框具有相同的类名。两组的宽度分别为200px和40％。
+
+不同之处在于第二组两个盒子位于一个400像素宽的包装纸内。第二个200px宽的框与第一个框的宽度相同，但是第二个40％的框现在是400px的40％-比第一个窄得多！
+
+**尝试更改包装纸的宽度或百分比值，以了解其工作原理。**
+
+ ```
+.wrapper {
+  width: 400px;
+  border: 5px solid rebeccapurple;
+}
+
+.px {
+  width: 200px;
+}
+
+.percent {
+  width: 40%;
+}
+    
+ ```
+
+```
+<div class="box px">I am 200px wide</div>
+<div class="box percent">I am 40% wide</div>
+<div class="wrapper">
+  <div class="box px">I am 200px wide</div>
+  <div class="box percent">I am 40% wide</div>
+</div>
+    
+```
+
+
+
+下一个示例以百分比设置字体大小。每个``都有`font-size`80％的值，因此嵌套列表项从父项继承其大小时，它们会逐渐变小。
+
+```
+li {
+  font-size: 80%;
+}
+```
+
+```
+<ul>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three
+    <ul>
+      <li>Three A</li>
+      <li>Three B
+        <ul>
+          <li>Three B 2</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>  
+
+```
+
+
+
+ 
+
+请注意，尽管许多值接受长度或百分比，但有些仅接受长度。您可以在MDN属性参考页面上查看接受哪些值。如果允许的值包括在内，``则可以使用长度或百分比。如果允许的值仅包括``，则无法使用百分比。
+
+### 号码
+
+
+
+一些值接受数字，而没有添加任何单位。接受无单位数字的`opacity`属性的一个示例是该属性，它控制元素的不透明度（透明度）。此属性接受介于`0`（完全透明）和`1`（完全不透明）之间的数字。
+
+**在下面的示例中，尝试将的值更改为`opacity`之间的各种十进制值`0`，`1`然后查看框及其内容如何变得或多或少变得不透明。**
+
+ ```
+.box {
+  opacity: 0.6;
+}
+ 
+ ```
+
+```
+<div class="wrapper">
+  <div class="box">I am a box with opacity</div>
+</div>     
+```
+
+
+
+**注意**：在CSS中使用数字作为值时，不应将其用引号引起来。
+
+## 颜色
+
+在CSS中指定颜色的方法有很多，其中一些方法比其他方法更新实现。无论您是指定文本颜色，背景颜色还是其他颜色，都可以在CSS中的任何地方使用相同的颜色值。
+
+现代计算机中可用的标准色彩系统是24位，它可以通过组合不同的红色，绿色和蓝色通道显示大约1670万种不同的颜色，每个通道具有256个不同的值（256 x 256 x 256 = 16,777,216）。看看我们可以在CSS中指定颜色的一些方法。
+
+**注意**：在本教程中，我们将介绍具有良好浏览器支持的指定颜色的常用方法。还有其他人，但他们没有得到很好的支持，也很少见。
+
+### 颜色关键字
+
+
+
+在学习部分或MDN上其他地方的示例中，您经常会看到所使用的color关键字，因为它们是一种简单易懂的指定颜色的方式。这些关键字有很多，其中一些具有相当有趣的名称！您可以在页面上看到该<color>值的完整列表。
+
+**尝试在下面的实时示例中使用不同的颜色值，以更好地了解它们的工作原理。**
+
+### 十六进制RGB值
+
+您可能会遇到的下一种颜色值是十六进制代码。每个十六进制值都由一个哈希/磅符号（＃）以及六个十六进制数组成，每个十六进制数都可以采用0到f（代表15）之间的16个值之一（因此）`0123456789abcdef`。每对值代表一个通道（红色，绿色和蓝色），并允许我们为每个通道指定256个可用值中的任意一个（16 x 16 = 256）。
+
+这些值稍微复杂一些，不易理解，但是比关键字具有更多的用途-您可以使用十六进制值来表示要在配色方案中使用的任何颜色。
+
+```
+.one {
+  background-color: #02798b;
+}
+
+.two {
+  background-color: #c55da1;
+}
+
+.three {
+  background-color: #128a7d;
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box one">#02798b</div>
+  <div class="box two">#c55da1</div>
+  <div class="box three">128a7d</div>
+</div>
+```
+
+
+
+**同样，尝试更改值以查看颜色如何变化。**
+
+### RGB和RGBA值
+
+
+
+我们将在这里讨论的第三个方案是RGB。RGB值是一个函数— `rgb()`—给出了三个参数，这些参数代表颜色的红色，绿色和蓝色通道值，与十六进制值几乎相同。与RGB的区别在于，每个通道不是由两个十六进制数字表示，而是由0到255之间的十进制数字表示-有点容易理解。
+
+让我们重写最后一个示例以使用RGB颜色：
+
+ ```
+.one {
+  background-color: rgb(2, 121, 139);
+}
+
+.two {
+  background-color: rgb(197, 93, 161);
+}
+
+.three {
+  background-color: rgb(18, 138, 125);
+}
+ ```
+
+```
+<div class="wrapper">
+  <div class="box one">rgb(2, 121, 139)</div>
+  <div class="box two">rgb(197, 93, 161)</div>
+  <div class="box three">rgb(18, 138, 125)</div>
+</div>
+    
+```
+
+
+
+您还可以使用RGBA颜色-这些颜色的工作方式与RGB颜色完全相同，因此可以使用任何RGB值，但是还有第四个值代表该颜色的Alpha通道，该值控制不透明度。如果将此值设置为`0`它将使颜色完全透明，而`1`使它完全不透明。两者之间的值可为您提供不同程度的透明度。
+
+**注意**：在颜色上设置Alpha通道与使用[`opacity`](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity)我们之前介绍的属性有一个关键区别。使用不透明度时，会使元素及其内部的所有内容都不透明，而使用RGBA颜色只会使您指定的颜色不透明。
+
+在下面的示例中，我将背景图像添加到了彩色框的包含块中。然后，我将这些框设置为具有不同的不透明度值-请注意，当Alpha通道值较小时，背景如何显示更多。
+
+```
+.one {
+  background-color: rgba(2, 121, 139, .3);
+}
+
+.two {
+  background-color: rgba(197, 93, 161, .7);
+}
+
+.three {
+  background-color: rgba(18, 138, 125, .9);
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box one">rgba(2, 121, 139, .3)</div>
+  <div class="box two">rgba(197, 93, 161, .7)</div>
+  <div class="box three">rgba(18, 138, 125, .9)</div>
+</div>
+    
+```
+
+
+
+**在此示例中，尝试更改Alpha通道值以查看它如何影响颜色输出。**
+
+**注意**：在某些时候，现代浏览器已经更新，因此`rgba()`和`rgb()`，和`hsl()`和`hsla()`（见下文）成为彼此的纯别名，并开始表现出完全相同的行为。因此，例如`rgba()`和都`rgb()`接受带有和不带有alpha通道值的颜色。尝试将上面示例的`rgba()`功能更改为`rgb()`，看看颜色是否仍然有效！使用哪种样式由您决定，但是将非透明和透明的颜色定义分开使用不同的功能可以（非常）更好地支持浏览器，并且可以直观地指示代码中定义透明颜色的位置。
+
+### HSL和HSLA值
+
+
+
+HSL颜色模型（在旧版本的IE中不受支持）比RGB的支持程度略差，该模型是在设计师的极大兴趣下实现的。该`hsl()`函数接受色相，饱和度和亮度值，而不是红色，绿色和蓝色值，这些值用于区分1670万种颜色，但以不同的方式：
+
+- **色相**：颜色的基础色。这取一个介于0到360之间的值，代表色轮周围的角度。
+- **饱和度**：颜色的**饱和度**如何？取值范围是0–100％，其中0是无颜色（它将显示为灰色阴影），而100％是全色饱和度
+- **亮度**：颜色有多亮？此值的取值范围是0–100％，其中0是无光（它将显示为完全黑色），而100％是全光（将显示为完全白色）
+
+我们可以将RGB示例更新为使用HSL颜色，如下所示：
+
+```
+.one {
+  background-color: hsl(188, 97%, 28%);
+}
+
+.two {
+  background-color: hsl(321, 47%, 57%);
+}
+
+.three {
+  background-color: hsl(174, 77%, 31%);
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box one">hsl(188, 97%, 28%)</div>
+  <div class="box two">hsl(321, 47%, 57%)</div>
+  <div class="box three">hsl(174, 77%, 31%)</div>
+</div>
+ 
+```
+
+
+
+就像RGB具有RGBA一样，HSL也具有等效的HSLA，这使您具有指定alpha通道的相同能力。我在下面通过将RGBA示例更改为使用HSLA颜色进行了演示。
+
+ ```
+.one {
+  background-color: hsla(188, 97%, 28%, .3);
+}
+
+.two {
+  background-color: hsla(321, 47%, 57%, .7);
+}
+
+.three {
+  background-color: hsla(174, 77%, 31%, .9);
+}
+    
+ ```
+
+```
+<div class="wrapper">
+  <div class="box one">hsla(188, 97%, 28%, .3)</div>
+  <div class="box two">hsla(321, 47%, 57%, .7)</div>
+  <div class="box three">hsla(174, 77%, 31%, .9)</div>
+</div>
+ 
+```
+
+
+
+您可以在项目中使用任何这些颜色值。对于大多数项目，您可能会决定一个调色板，然后在整个项目中使用这些颜色以及您选择的指定颜色的方法。您可以混合和匹配颜色模型，但是为了保持一致性，通常最好在整个项目中使用相同的模型！
+
+## 图片
+
+该<img>数据类型被用于任何的图像是有效的值。这可以是通过`url()`函数或渐变指向的实际图像文件。
+
+在下面的示例中，我们演示了图像和渐变用作CSS `background-image`属性的值。
+
+```
+.image {
+  background-image: url(star.png);
+}
+
+.gradient {
+  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+}
+```
+
+```
+<div class="box image"></div>
+<div class="box gradient"></div>  
+    
+```
+
+**注意**：，还有其他一些可能的值<image>，但是这些值较新，当前对浏览器的支持较差。
+
+## 位置
+
+<position>数据类型表示一组2D坐标，诸如背景图像（通过用于定位的项的`background-position`）。它可以采取关键字，例如`top`，`left`，`bottom`，`right`，和`center`对齐的物品与2D盒的具体界限，具有沿长度，它代表从所述盒的顶部和左侧边缘偏移。
+
+典型的位置值由两个值组成-第一个值水平设置位置，第二个值垂直设置位置。如果仅为一个轴指定值，则另一个将默认为`center`。
+
+在下面的示例中，我们使用关键字在容器的顶部和右侧放置了40px的背景图像。
+
+```
+.box {
+  height: 300px;
+  width: 400px;
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: right 40px;
+}
+ 
+```
+
+```
+<div class="box"></div> 
+    
+```
+
+
+
+**试着使用这些值来查看如何推挤图像。**
+
+## 字符串和标识符
+
+纵观上面的例子中，我们已经看到了其中的关键字作为价值的地方（例如<color>关键字时`red`，`black`，`rebeccapurple`，和goldenrod）。这些关键字被更准确地描述为*标识符*，即CSS可以理解的特殊值。因此，它们不会被引用-它们不会被视为字符串。
+
+在CSS中有使用字符串的地方，例如，[在指定生成的content时](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#Generating_content_with_before_and_after)。在这种情况下，用引号引起来表明它是一个字符串。在下面的示例中，我们使用未加引号的颜色关键字以及带引号的生成内容字符串。
+
+ ```
+.box {
+  width:400px;
+  padding: 1em;
+  border-radius: .5em;
+  border: 5px solid rebeccapurple;
+  background-color: lightblue;
+}
+
+.box::after {
+  content: "This is a string. I know because it is quoted in the CSS."
+}
+    
+ ```
+
+```
+<div class="box"></div> 
+```
+
+
+
+## 功能
+
+我们将要看的最后一种类型的值是称为函数的一组值。在编程中，功能是代码的可重用部分，可以多次运行以完成开发人员和计算机双方的重复性任务。函数通常与JavaScript，Python或C ++等语言相关联，但它们也确实作为属性值存在于CSS中。我们已经在“颜色”部分中看到了作用中的函数- `rgb()`，`hsl()`等等。用于从文件返回图像的值`url()`-也是一个函数。
+
+`calc()`CSS函数是一个行为更像您在传统编程语言中可能发现的值的值。此功能使您能够在CSS内进行简单的计算。如果您想计算出为项目编写CSS时无法定义的值，并且需要浏览器在运行时为您计算出值，则该功能特别有用。
+
+例如，下面我们`calc()`用来使框`20% + 100px`变宽。20％是根据父容器的宽度计算得出的`.wrapper`，因此，如果该宽度发生更改，则该百分比会更改。我们无法事先进行此计算，因为我们不知道20％的父对象是多少，因此我们`calc()`经常告诉浏览器为我们做。
+
+```
+.wrapper {
+  width: 400px;
+}
+
+.box {
+  width: calc(20% + 100px);
+}
+
+```
+
+```
+<div class="wrapper">
+  <div class="box">My width is calculated.</div> 
+</div>
+    
+```
+

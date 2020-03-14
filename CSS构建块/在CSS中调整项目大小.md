@@ -1,0 +1,198 @@
+到目前为止，在各种课程中，您遇到了许多使用CSS来调整网页上项目大小的方法。了解设计中的不同功能有多重要很重要，在本课程中，我们将总结元素通过CSS获得尺寸的各种方式，并定义一些关于尺寸的术语，这些将在将来对您有所帮助。
+
+| 先决条件： | 基本的计算机知识，[已安装的基本软件](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Installing_basic_software)，[使用文件的](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Dealing_with_files)基本知识，HTML基础（研究[HTML简介](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML)）以及CSS的工作原理（研究[CSS第一步）](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps)。 |
+| :--------- | ------------------------------------------------------------ |
+| 目的：     | 为了理解不同的方式，我们可以在CSS中调整大小。                |
+
+## 事物的自然或内在大小
+
+HTML元素具有自然大小，可以在不受任何CSS影响之前进行设置。一个简单的例子是图像。图像具有嵌入到页面中的图像文件中定义的宽度和高度。该大小被描述为**固有大小** -来自图像本身。
+
+如果您使用<img>标签上的属性或CSS将图像放置在页面上并且不更改其高度和宽度，则将使用该固有尺寸显示图像。在示例中，我们在边框下方提供了图像，以便您可以查看文件的范围。
+
+```
+img {
+  border: 5px solid darkblue;
+}
+    
+```
+
+```
+<img src="star.png" alt="star">
+    
+```
+
+**<div>但是，一个空值本身没有大小。如果您<div>在HTML中添加没有内容的，然后像对待图片一样为其添加边框，则会在页面上看到一行。这是元素上的折叠边框-没有内容可以将其保持打开状态。在下面的示例中，该边框一直延伸到容器的宽度，因为它是一个块级元素，这种行为应该已经开始为您所熟悉。它没有高度（或块尺寸的大小），因为没有内容。**
+
+在上面的示例中，尝试在empty元素内添加一些文本。边框现在包含该文本，因为元素的高度由内容定义。因此，其<div>在块尺寸中的大小来自内容的大小。同样，这是元素的固有大小-其大小由其内容定义。
+
+## 设定特定尺寸
+
+我们当然可以给设计中的元素指定特定大小。当给元素指定大小（然后其内容需要适合该大小）时，我们将其称为**外部大小**。<div>从上面的示例中获取我们的信息-我们可以为其指定具体值[`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width)和[`height`](https://developer.mozilla.org/en-US/docs/Web/CSS/height)值，无论放入什么内容，它都将具有该大小。正如我们在[上一课有关溢出的](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Overflowing_content)内容中所发现的，如果内容的数量超出了元素可容纳的空间，则设置的高度会导致内容溢出。
+
+```
+.box {
+  border: 5px solid darkblue;
+  height: 150px;
+  width: 200px;
+}
+ 
+```
+
+```
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">These boxes both have a height set, this box has content in it which will need more space than the assigned height, and so we get overflow. </div>
+</div>
+ 
+```
+
+
+
+由于存在溢出问题，我们需要在网络上非常小心地使用长度或百分比固定元素的高度。
+
+### 使用百分比
+
+
+
+在许多方面，百分比的作用类似于长度单位，正如我们[在本课程中讨论的值和单位一样](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#Percentages)，它们通常可以与长度互换使用。当使用百分比，你需要知道它是什么，一个个*的*。对于在另一个容器中的盒子，如果给子盒子一个百分比宽度，它将是父容器宽度的百分比。
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 50%;
+}
+    
+```
+
+```
+<div class="box">
+  I have a percentage width.
+</div>
+    
+```
+
+
+
+这是因为百分比根据包含块的大小来解析。如果不应用任何百分比，我们<div>将占用100％的可用空间，因为它是一个块级元素。如果我们给它一个百分比宽度，它将变成通常填充的空间的百分比。
+
+### 百分比边距和填充
+
+
+
+如果设置`margins`并`padding`为百分比您可能会注意到一些奇怪的行为。在下面的示例中，我们有一个框。我们给内盒一个[`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)10％和一个[`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)10％。框顶部和底部的边距和边距与左侧和右侧的边距大小相同。
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 300px;
+  margin: 10%;
+  padding: 10%;
+}
+  
+```
+
+```
+<div class="box">
+  I have margin and padding set to 10% on all sides.
+</div>
+    
+```
+
+
+
+例如，您可能希望上边距和下边距的百分比是元素高度的百分比，而上边距和下边距的百分比是元素宽度的百分比。然而，这种情况并非如此！
+
+当您使用以百分比设置的边距和填充时，该值是根据**内联大小**（即使用水平语言工作时的宽度）计算得出的。在我们的示例中，所有边距和填充都是宽度的10％。这意味着您可以在框的四周具有相同大小的边距和填充。如果您确实以这种方式使用百分比，这是一个值得记住的事实。
+
+## 最小和最大尺寸
+
+除了给事物提供固定大小外，我们还可以要求CSS为元素提供最小或最大大小。如果您有一个可能包含可变数量内容的框，并且始终希望它*至少*为某个高度，则可以[`min-height`](https://developer.mozilla.org/en-US/docs/Web/CSS/min-height)在其上设置属性。盒子将始终至少处于此高度，但是如果内容量超过盒子的最小高度，则盒子会变得更高。
+
+在下面的示例中，您可以看到两个框，两个框的定义高度均为150像素。左侧的框高为150像素；右侧的框包含的内容需要更多的空间，因此它的高度已超过150像素。
+
+```
+.box {
+  border: 5px solid darkblue;
+  min-height: 150px;
+  width: 200px;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">These boxes both have a min-height set, this box has content in it which will need more space than the assigned height, and so it grows from the minimum.</div>
+</div>
+```
+
+
+
+这对于处理可变数量的内容同时避免溢出非常有用。
+
+的常见用法[`max-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)是，如果没有足够的空间以其固有宽度显示图像，请确保图像按比例缩小，同时确保它们不会变得大于该宽度。
+
+例如，如果要设置`width: 100%`在图像上，并且其固有宽度小于其容器，则图像将被迫拉伸并变大，从而使其看起来像是像素化。如果其固有宽度大于容器的宽度，则会溢出该容器。两种情况都不是您想要发生的情况。
+
+如果改用`max-width: 100%`，则图像可以变得小于其固有尺寸，但将以其尺寸的100％停止。
+
+在下面的示例中，我们使用同一张图片两次。已给出第一张图像，该图像`width: 100%`位于比其大的容器中，因此它会拉伸到容器的宽度。第二个图像已`max-width: 100%`设置在其上，因此不会拉伸以填充容器。第三个框再次包含相同的图像，也带有`max-width: 100%`set；在这种情况下，您可以看到它如何缩小以适合盒子。
+
+```
+.box {
+  width: 200px;
+}
+.minibox {
+  width: 50px;
+}
+.width {
+  width: 100%;
+}
+.max {
+  max-width: 100%;
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box"><img src="star.png" alt="star" class="width"></div>
+  <div class="box"><img src="star.png" alt="star" class="max"></div>
+  <div class="minibox"><img src="star.png" alt="star" class="max></div>
+</div>
+```
+
+
+
+此技术用于使图像*响应*，以便在较小的设备上查看时，它们会适当缩小。但是，您不应使用此技术加载非常大的图像，然后在浏览器中按比例缩小它们。图像的大小应适当，以使其不大于设计中显示的最大尺寸。下载过大的图像会导致您的网站变慢，并且如果用户处于计量连接状态，可能会花费更多的钱。
+
+**注意**：了解有关[响应式图像技术的](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)更多信息。
+
+## 视口单位
+
+视口（它是用于查看站点的浏览器中页面的可见区域）也具有大小。在CSS中，我们具有与视口大小相关的`vw`单位- 视口宽度和`vh`视口高度的单位。使用这些单位，您可以相对于用户视口调整大小。
+
+`1vh`等于视口高度的1％，并且`1vw`等于视口宽度的1％。您可以使用这些单位调整框的大小，也可以调整文本的大小。在下面的示例中，我们有一个框，其大小为20vh和20vw。盒子里有一封信`A`，给它一个[`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)10vh的信。
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 20vw;
+  height: 20vh;
+  font-size: 10vh;
+}
+ 
+```
+
+```
+<div class="box">
+  A
+</div>
+    
+```
+
+
+
+**如果更改`vh`和`vw`值，这将更改框或字体的大小；更改视口的大小也会更改其大小，因为它们的大小是相对于视口的大小。要在更改视口大小时看到示例更改，您需要将示例加载到可以调整大小的新浏览器窗口中（因为<iframe>包含上面显示的示例的嵌入式文件是其视口）。[打开示例](https://mdn.github.io/css-examples/learn/sizing/vw-vh.html)，调整浏览器窗口的大小，然后观察框和文本大小的变化。**
+
+根据视口调整大小在您的设计中可能很有用。例如，如果您希望将整页英雄部分显示在其余内容之前，则将页面的该部分设置为100vh高将把其余内容推到视口下方，这意味着它仅在滚动文档后才会显示。
