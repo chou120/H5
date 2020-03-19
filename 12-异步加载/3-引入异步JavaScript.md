@@ -74,7 +74,7 @@ btn.addEventListener('click', () => {
 
 当我们把回调函数作为一个参数传递给另一个函数时，仅仅是把回调函数定义作为参数传递过去 — 回调函数并没有立刻执行，回调函数会在包含它的函数的某个地方异步执行，包含函数负责在合适的时候执行回调函数。
 
-你可以自己写一个容易的，包含回调函数的函数。来看另外一个例子，用 [`XMLHttpRequest` API](1/en-US/docs/Web/API/XMLHttpRequest) ([运行它]( 1/learning-area/javascript/asynchronous/introducing/xhr-async-callback.html), and [源代码](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/xhr-async-callback.html)) 加载资源：
+你可以自己写一个容易的，包含回调函数的函数。来看另外一个例子，用 [`XMLHttpRequest` API ([运行它]( 1/learning-area/javascript/asynchronous/introducing/xhr-async-callback.html), and [源代码](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/xhr-async-callback.html)) 加载资源：
 
 ```js
 function loadAsset(url, type, callback) {
@@ -133,12 +133,12 @@ fetch('products.json').then(function(response) {
 
 
 
-这里`fetch()` 只需要一个参数— 资源的网络 URL — 返回一个 [promise](1/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). promise 是表示异步操作完成或失败的对象。可以说，它代表了一种中间状态。 本质上，这是浏览器说“我保证尽快给您答复”的方式，因此得名“promise”。
+这里`fetch()` 只需要一个参数— 资源的网络 URL — 返回一个 [promise. promise 是表示异步操作完成或失败的对象。可以说，它代表了一种中间状态。 本质上，这是浏览器说“我保证尽快给您答复”的方式，因此得名“promise”。
 
 这个概念需要练习来适应;它感觉有点像运行中的[薛定谔猫](https://zh.wikipedia.org/wiki/薛定谔猫)。这两种可能的结果都还没有发生，因此fetch操作目前正在等待浏览器试图在将来某个时候完成该操作的结果。然后我们有三个代码块链接到fetch()的末尾：
 
 - 两个 `then()` 块。两者都包含一个回调函数，如果前一个操作成功，该函数将运行，并且每个回调都接收前一个成功操作的结果作为输入，因此您可以继续对它执行其他操作。每个 `.then()`块返回另一个promise，这意味着可以将多个`.then()`块链接到另一个块上，这样就可以依次执行多个异步操作。
-- 如果其中任何一个`then()`块失败，则在末尾运行`catch()`块——与同步`try...catch`类似，`catch()`提供了一个错误对象，可用来报告发生的错误类型。但是请注意，同步`try...catch`不能与promise一起工作，尽管它可以与[async/await](1/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)一起工作，稍后您将了解到这一点。
+- 如果其中任何一个`then()`块失败，则在末尾运行`catch()`块——与同步`try...catch`类似，`catch()`提供了一个错误对象，可用来报告发生的错误类型。但是请注意，同步`try...catch`不能与promise一起工作，尽管它可以与[async/await一起工作，稍后您将了解到这一点。
 
 **Note**: 在本模块稍后的部分中，你将学习更多关于promise的内容，所以如果你还没有完全理解这些promise，请不要担心。
 

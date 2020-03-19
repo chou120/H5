@@ -4,7 +4,7 @@
 
 若想深入理解这个单元的内容, 你必须能够以自己的能力较好地学完之前的几个章节 ([JavaScript第一步]( 1/docs/Learn/JavaScript/First_steps), [JavaScript]( 1/docs/Learn/JavaScript/First_steps)[基础要件]( 1/docs/Learn/JavaScript/Building_blocks), 和[JavaScript]( 1/docs/Learn/JavaScript/First_steps)[对象介绍]( 1/docs/Learn/JavaScript/Objects)). 这几部分涉及到了许多简单的API的使用， 如果没有它们我们将很难做一些实际的事情。在这个教程中，我们会认为你懂得JavaScript的核心知识，而且我们将更深入地探索常见的网页API。
 
-若你知道 [HTML](1/en-US/docs/Learn/HTML) 和 [CSS](1/en-US/docs/Learn/CSS) 的基本知识，也会对理解这个单元的内容大有裨益。
+若你知道 [HTML 和 [CSS 的基本知识，也会对理解这个单元的内容大有裨益。
 
 注意：如果你正在使用一台无法创建你自身文件的电脑、平板或其他设备，你可以尝试使用一些在线网页编辑器如[JSBin](http://jsbin.com/)或者[Thimble](https://thimble.mozilla.org/)，来尝试编辑一些代码示例。
 
@@ -20,7 +20,7 @@
 
 - [从服务器获取数据]( 1/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data)
 
-  在现代网页及其APP中另外一个很常见的任务就是与服务器进行数据交互时不再刷新整个页面，这看起来微不足道，但却对一个网页的展现和交互上起到了很大的作用，在这篇文章里，我们将阐述这个概念，然后来了解实现这个功能的技术，例如 [`XMLHttpRequest`]( 1/docs/Web/API/XMLHttpRequest) 和 [Fetch API](1/en-US/docs/Web/API/Fetch_API).（抓取API）。
+  在现代网页及其APP中另外一个很常见的任务就是与服务器进行数据交互时不再刷新整个页面，这看起来微不足道，但却对一个网页的展现和交互上起到了很大的作用，在这篇文章里，我们将阐述这个概念，然后来了解实现这个功能的技术，例如 [`XMLHttpRequest`]( 1/docs/Web/API/XMLHttpRequest) 和 [Fetch API.（抓取API）。
 
 - [第三方 API]( 1/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs)
 
@@ -34,6 +34,6 @@
 
   HTML5能够通过元素标签嵌入富媒体——`<video>` and `<audio>`——而将有自己的API来控制回放，搜索等功能。本文向您展示了如何创建自定义播放控制等常见的任务。
 
-- [客户端存储](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)
+- [客户端存储 
 
   现代web浏览器拥有很多不同的技术，能够让你存储与网站相关的数据，并在需要时调用它们，能够让你长期保存数据、保存离线网站及其他实现其他功能。本文解释了这些功能的基本原理

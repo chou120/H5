@@ -6,7 +6,7 @@
 
 ## 什么是Promise？
 
-在本课程的第一篇文章中，我们简要地介绍了[Promises](1/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，但在这里我们将更深入地探讨它们。
+在本课程的第一篇文章中，我们简要地介绍了[Promises，但在这里我们将更深入地探讨它们。
 
 从本质上讲，Promise是表示操作的中间状态的对象-实际上，是将来会在某个时候返回某种结果的*保证*。不能保证确切地知道何时该操作将完成并返回结果，但是*可以*保证当结果可用或承诺失败时，将执行您提供的代码，以便用成功的结果，或者很好地处理失败案例。
 
@@ -14,9 +14,9 @@
 
 与诺言最常见的约定之一就是返回诺言的Web API。让我们考虑一个假设的视频聊天应用程序。该应用程序具有一个包含用户好友列表的窗口，单击用户旁边的按钮可发起对该用户的视频通话。
 
-该按钮的处理程序将调用[`getUserMedia()`](1/en-US/docs/Web/API/MediaDevices/getUserMedia)以便访问用户的摄像头和麦克风。由于`getUserMedia()`必须确保用户有权使用这些设备*并*询问用户使用哪个麦克风和使用哪个摄像头（或是否为仅语音呼叫，以及其他可能的选择），因此它可以阻止直到所有这些决定中，还有摄像头和麦克风已投入使用。此外，用户可能不会立即响应这些权限请求。这可能会花费很长时间。
+该按钮的处理程序将调用[`getUserMedia()`以便访问用户的摄像头和麦克风。由于`getUserMedia()`必须确保用户有权使用这些设备*并*询问用户使用哪个麦克风和使用哪个摄像头（或是否为仅语音呼叫，以及其他可能的选择），因此它可以阻止直到所有这些决定中，还有摄像头和麦克风已投入使用。此外，用户可能不会立即响应这些权限请求。这可能会花费很长时间。
 
-由于`getUserMedia()`是从浏览器的主线程进行的调用，因此整个浏览器将被阻止，直到`getUserMedia()`返回为止！显然，这不是一个可以接受的选择。没有承诺，浏览器中的所有内容将变得无法使用，直到用户决定如何处理摄像头和麦克风。因此，与其等待用户，不如启用所选设备，并直接返回[`MediaStream`](1/en-US/docs/Web/API/MediaStream)从所选源创建的流的，而是在可用后立即`getUserMedia()`返回。[`promise`](1/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise)[`MediaStream`](1/en-US/docs/Web/API/MediaStream)
+由于`getUserMedia()`是从浏览器的主线程进行的调用，因此整个浏览器将被阻止，直到`getUserMedia()`返回为止！显然，这不是一个可以接受的选择。没有承诺，浏览器中的所有内容将变得无法使用，直到用户决定如何处理摄像头和麦克风。因此，与其等待用户，不如启用所选设备，并直接返回[`MediaStream`从所选源创建的流的，而是在可用后立即`getUserMedia()`返回。[`promise`[`MediaStream` 
 
 视频聊天应用程序将使用的代码如下所示：
 
@@ -34,13 +34,13 @@ function handleCallButton(evt) {
 }
 ```
 
-此功能通过使用一个名为`setStatusMessage()`“ Calling ...”的消息来更新状态显示的函数来开始，该消息表示正在尝试进行呼叫。然后`getUserMedia()`，它调用，要求同时包含视频和音频轨道的流，然后获取该流，然后设置视频元素以将来自摄像机的流显示为“自视图”，然后获取该流的每个轨道并将它们添加到[WebRTC，](1/en-US/docs/Web/API/WebRTC_API) [`RTCPeerConnection`](1/en-US/docs/Web/API/RTCPeerConnection)代表与另一个用户的连接。之后，状态显示更新为“已连接”。
+此功能通过使用一个名为`setStatusMessage()`“ Calling ...”的消息来更新状态显示的函数来开始，该消息表示正在尝试进行呼叫。然后`getUserMedia()`，它调用，要求同时包含视频和音频轨道的流，然后获取该流，然后设置视频元素以将来自摄像机的流显示为“自视图”，然后获取该流的每个轨道并将它们添加到[WebRTC， [`RTCPeerConnection`代表与另一个用户的连接。之后，状态显示更新为“已连接”。
 
 如果`getUserMedia()`失败，则该`catch`块运行。这用于`setStatusMessage()`更新状态框以指示发生了错误。
 
 这里重要的是`getUserMedia()`，即使尚未获取摄像机流，呼叫也几乎立即返回。即使该`handleCallButton()`函数已经返回到调用它的代码，在`getUserMedia()`完成工作后，它也会调用您提供的处理程序。只要应用程序不认为流媒体已经开始，它就可以继续运行。
 
-**注意：**如果您有兴趣，可以在[信号和视频通话](1/docs/Web/API/WebRTC_API/Signaling_and_video_calling)文章中了解有关此高级主题的更多信息。在该示例中使用了与此类似但更完整的代码。
+**注意：**如果您有兴趣，可以在[信号和视频通话文章中了解有关此高级主题的更多信息。在该示例中使用了与此类似但更完整的代码。
 
 ## 回调的麻烦
 
@@ -135,9 +135,9 @@ chooseToppings().then(placeOrder).then(collectOrder).then(eatPizza).catch(failur
 
 理解这一点很重要，因为大多数现代的Web API都将它们用于执行可能冗长的任务的功能。要使用现代网络技术，您需要使用promise。在本章的后面，我们将研究如何编写自己的Promise，但是现在，我们将研究Web API中遇到的一些简单示例。
 
-在第一个示例中，我们将使用该`fetch()`方法从Web上获取图像，该[`blob()`](1/en-US/docs/Web/API/Body/blob)方法将获取响应的原始内容转换为[`Blob`](1/en-US/docs/Web/API/Blob)对象，然后在`<img>`元素内部显示该Blob 。这与我们在[本系列](1/en-US/docs/Learn/JavaScript/Asynchronous/Introducing#Asynchronous_JavaScript)的[第一篇文章中](1/en-US/docs/Learn/JavaScript/Asynchronous/Introducing#Asynchronous_JavaScript)看到的示例非常相似，但是当您构建自己的基于Promise的代码时，我们会做些不同的事情。
+在第一个示例中，我们将使用该`fetch()`方法从Web上获取图像，该[`blob()`方法将获取响应的原始内容转换为[`Blob`对象，然后在`<img>`元素内部显示该Blob 。这与我们在[本系列](1/en-US/docs/Learn/JavaScript/Asynchronous/Introducing#Asynchronous_JavaScript)的[第一篇文章中](1/en-US/docs/Learn/JavaScript/Asynchronous/Introducing#Asynchronous_JavaScript)看到的示例非常相似，但是当您构建自己的基于Promise的代码时，我们会做些不同的事情。
 
-**注意**：如果仅从文件直接运行（即通过`file://`URL），则以下示例将不起作用。您需要通过[本地测试服务器](1/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server)运行它，或使用在线解决方案，例如[Glitch](https://glitch.com/)或[GitHub页面](1/en-US/docs/Learn/Common_questions/Using_Github_pages)。
+**注意**：如果仅从文件直接运行（即通过`file://`URL），则以下示例将不起作用。您需要通过[本地测试服务器运行它，或使用在线解决方案，例如[Glitch](https://glitch.com/)或[GitHub页面。
 
 1. 首先，下载我们的[简单HTML模板](https://github.com/mdn/learning-area/blob/master/html/introduction-to-html/getting-started/index.html)和我们将获取的[示例图像文件]()
 
@@ -151,7 +151,7 @@ chooseToppings().then(placeOrder).then(collectOrder).then(eatPizza).catch(failur
 
    这将调用该`fetch()`方法，并将要传递给网络的图像URL作为参数传递给该方法。这也可以将options对象作为可选的第二个参数，但是我们现在仅使用最简单的版本。我们将存储在`fetch()`称为的变量内部返回的Promise对象`promise`。就像我们之前说过的那样，此对象表示一个初始状态既不是成功也不是失败的中间状态-此状态下的诺言的正式术语**尚待确认**。
 
-4. 为了响应成功完成的操作（在这种情况下，当[`Response`](1/en-US/docs/Web/API/Response)返回a时），我们调用`.then()`promise对象的方法。内部的回调`.then()`块（简称**执行人**），只有当承诺调用成功完成，并返回运行[`Response`](1/en-US/docs/Web/API/Response)中的承诺发言，当它已经-对象**实现**。将返回的[`Response`](1/en-US/docs/Web/API/Response)对象作为参数传递给它。
+4. 为了响应成功完成的操作（在这种情况下，当[`Response`返回a时），我们调用`.then()`promise对象的方法。内部的回调`.then()`块（简称**执行人**），只有当承诺调用成功完成，并返回运行[`Response`中的承诺发言，当它已经-对象**实现**。将返回的[`Response`对象作为参数传递给它。
 
    **注意**：`.then()`块的工作方式类似于使用来向对象添加事件侦听器时`AddEventListener()`。直到事件发生时（诺言履行时），它才会运行。最明显的区别是.then（）每次使用仅会运行一次，而事件侦听器可以多次调用。
 
@@ -194,7 +194,7 @@ chooseToppings().then(placeOrder).then(collectOrder).then(eatPizza).catch(failur
    document.body.appendChild(image);
    ```
 
-   在这里，我们运行[`URL.createObjectURL()`](1/en-US/docs/Web/API/URL/createObjectURL)方法，将其作为参数传递`Blob`给第二个Promise满足时返回。这将返回指向该对象的URL。然后，我们创建一个`<img>`元素，将其`src`属性设置为等于对象URL并将其附加到DOM，这样图像就会显示在页面上！
+   在这里，我们运行[`URL.createObjectURL()`方法，将其作为参数传递`Blob`给第二个Promise满足时返回。这将返回指向该对象的URL。然后，我们创建一个`<img>`元素，将其`src`属性设置为等于对象URL并将其附加到DOM，这样图像就会显示在页面上！
 
 如果保存刚创建的HTML文件并将其加载到浏览器中，则会看到图像按预期显示在页面中。干得好！
 
@@ -364,7 +364,7 @@ Promise.all([a, b, c]).then(values => {
 
 **注意**：如果要改进此代码，则可能需要循环显示要显示的项目列表，获取并解码每个结果，然后循环遍历内部结果，并`Promise.all()`根据其类型运行不同的功能以显示每个项目代码是。这将使其适用于任何数量的项目，而不仅仅是三个。
 
-此外，您可以确定要获取的文件类型，而无需显式`type`属性。例如，您可以使用分别检查[`Content-Type`](1/en-US/docs/Web/HTTP/Headers/Content-Type)响应的HTTP标头`response.headers.get("content-type")`，然后做出相应的反应。
+此外，您可以确定要获取的文件类型，而无需显式`type`属性。例如，您可以使用分别检查[`Content-Type`响应的HTTP标头`response.headers.get("content-type")`，然后做出相应的反应。
 
 ## 在诺言兑现/拒绝后运行一些最终代码
 
@@ -518,7 +518,7 @@ timeoutPromise('Hello there!', 1000)
 
 上面的示例经过精心设计，以使概念易于理解，但实际上并不是非常异步。异步性质基本上是使用伪造的`setTimeout()`，尽管它仍然显示诺言对于创建具有合理操作流程，良好错误处理等的自定义函数很有用。
 
-我们希望邀请您进行研究的一个例子`Promise()`是[Jake Archibald的idb库](https://github.com/jakearchibald/idb/)，它确实显示了构造函数的一个有用的异步应用程序。这采用了[IndexedDB API](1/en-US/docs/Web/API/IndexedDB_API)，它是一种基于回调的旧式API，用于在客户端存储和检索数据，并允许您将其与promises一起使用。如果查看[主库文件](https://github.com/jakearchibald/idb/blob/master/lib/idb.js)，将会看到上面讨论过的相同技术。以下块将许多IndexedDB方法使用的基本请求模型转换为使用Promise：
+我们希望邀请您进行研究的一个例子`Promise()`是[Jake Archibald的idb库](https://github.com/jakearchibald/idb/)，它确实显示了构造函数的一个有用的异步应用程序。这采用了[IndexedDB API，它是一种基于回调的旧式API，用于在客户端存储和检索数据，并允许您将其与promises一起使用。如果查看[主库文件](https://github.com/jakearchibald/idb/blob/master/lib/idb.js)，将会看到上面讨论过的相同技术。以下块将许多IndexedDB方法使用的基本请求模型转换为使用Promise：
 
 ```js
 function promisifyRequest(request) {
@@ -536,6 +536,6 @@ function promisifyRequest(request) {
 
 这可以通过添加几个事件处理程序来实现，这些事件处理程序在适当的时间实现和拒绝承诺：
 
-- 当`request`的[`success`事件](1/en-US/docs/Web/API/IDBRequest/success_event)触发时，`onsuccess`处理程序将通过request履行承诺`result`。
-- 当`request`的[`error`事件](1/en-US/docs/Web/API/IDBRequest/error_event)触发时，`onerror`处理程序会拒绝带有请求的Promise `error`。
+- 当`request`的[`success`事件触发时，`onsuccess`处理程序将通过request履行承诺`result`。
+- 当`request`的[`error`事件触发时，`onerror`处理程序会拒绝带有请求的Promise `error`。
 

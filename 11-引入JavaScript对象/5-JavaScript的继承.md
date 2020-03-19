@@ -1,6 +1,6 @@
 现在说明了OOJS的大多数细节，本文介绍了如何创建从其“父”类继承特征的“子”对象类（构造函数）。另外，我们为您在何时何地可能使用OOJS提供了一些建议，并介绍了如何使用现代ECMAScript语法处理类。
 
-| 先决条件： | 基本的计算机知识，对HTML和CSS的基本理解，对JavaScript的基础知识（请参阅“ [第一步](1/en-US/docs/Learn/JavaScript/First_steps)和[构建模块”](1/en-US/docs/Learn/JavaScript/Building_blocks)）和OOJS的基础知识（请参见[“对象简介”](1/en-US/docs/Learn/JavaScript/Object-oriented/Introduction)）。 |
+| 先决条件： | 基本的计算机知识，对HTML和CSS的基本理解，对JavaScript的基础知识（请参阅“ [第一步和[构建模块”）和OOJS的基础知识（请参见[“对象简介”）。 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解如何在JavaScript中实现继承。                             |
 
@@ -190,7 +190,7 @@ teacher1.farewell();
 
 我们这里介绍的技术不是在JavaScript中创建继承类的唯一方法，但是它可以正常工作，并且为您提供了有关如何在JavaScript中实现继承的好主意。
 
-您可能还对检查一些新的[ECMAScript](1/en-US/docs/Glossary/ECMAScript)功能感兴趣，这些功能使我们能够在JavaScript中更干净地进行继承（请参阅[Classs](1/en-US/docs/Web/JavaScript/Reference/Classes)）。我们在此不介绍这些内容，因为它们尚未在各种浏览器中得到广泛支持。早在IE9或更早的版本中，我们就支持了本文中讨论的所有其他代码构造，并且还有一些方法可以实现更早的支持。
+您可能还对检查一些新的[ECMAScript功能感兴趣，这些功能使我们能够在JavaScript中更干净地进行继承（请参阅[Classs）。我们在此不介绍这些内容，因为它们尚未在各种浏览器中得到广泛支持。早在IE9或更早的版本中，我们就支持了本文中讨论的所有其他代码构造，并且还有一些方法可以实现更早的支持。
 
 一种常见的方法是使用JavaScript库-大多数流行的选项都具有一组简单的功能，可用于更轻松，更快速地进行继承。[的CoffeeScript](http://coffeescript.org/#classes)例如提供`class`，`extends`等等。
 
@@ -211,7 +211,7 @@ teacher1.farewell();
 
 ## ECMAScript 2015类
 
-ECMAScript 2015将[类语法](1/en-US/docs/Web/JavaScript/Reference/Classes)引入JavaScript，作为一种使用更简单，更简洁的语法来编写可重用类的方法，该语法与C ++或Java中的类更相似。在本节中，我们将把Person和Teacher的示例从原型继承转换为类，向您展示它是如何完成的。
+ECMAScript 2015将[类语法引入JavaScript，作为一种使用更简单，更简洁的语法来编写可重用类的方法，该语法与C ++或Java中的类更相似。在本节中，我们将把Person和Teacher的示例从原型继承转换为类，向您展示它是如何完成的。
 
 **注意**：这种现代的编写类方法在所有现代的浏览器中均受支持，但是如果您在需要支持不支持该语法的浏览器的项目中工作，那么仍然值得了解基础原型继承。 ）。
 
@@ -239,12 +239,12 @@ class Person {
 }
 ```
 
-在[类](1/en-US/docs/Web/JavaScript/Reference/Statements/class)的语句表明我们正在创造一个新的类。在此块内，我们定义该类的所有功能：
+在[类的语句表明我们正在创造一个新的类。在此块内，我们定义该类的所有功能：
 
 - 该`constructor()`方法定义了代表我们`Person`类的构造函数。
-- `greeting()`和`farewell()`是类方法。您想要与该类关联的任何方法都在构造函数之后在其内部定义。在此示例中，我们使用[模板文字](1/en-US/docs/Web/JavaScript/Reference/Template_literals)而不是字符串连接来使代码更易于阅读。
+- `greeting()`和`farewell()`是类方法。您想要与该类关联的任何方法都在构造函数之后在其内部定义。在此示例中，我们使用[模板文字而不是字符串连接来使代码更易于阅读。
 
-现在，我们可以使用[`new`运算符](1/en-US/docs/Web/JavaScript/Reference/Operators/new)实例化对象实例，就像之前一样：
+现在，我们可以使用[`new`运算符实例化对象实例，就像之前一样：
 
 ```js
 let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
@@ -264,7 +264,7 @@ leia.farewell();
 
 上面我们创建了一个代表人的类。它们具有所有人共有的一系列属性。在本节中，我们将创建专门的`Teacher`类，使其`Person`使用现代类语法继承。这称为创建子类或子类。
 
-要创建子类，我们可以使用[extends关键字](1/en-US/docs/Web/JavaScript/Reference/Classes/extends)告诉JavaScript我们要基于其类的类，
+要创建子类，我们可以使用[extends关键字告诉JavaScript我们要基于其类的类，
 
 ```js
 class Teacher extends Person {
@@ -277,7 +277,7 @@ class Teacher extends Person {
 
 但是有一点收获。
 
-不像老派构造函数[`new`运营商](1/en-US/docs/Web/JavaScript/Reference/Operators/new)做的初始化`this`到新分配的对象，这不是自动初始化由定义的类[扩展](1/en-US/docs/Web/JavaScript/Reference/Classes/extends)关键词，即子类。
+不像老派构造函数[`new`运营商做的初始化`this`到新分配的对象，这不是自动初始化由定义的类[扩展关键词，即子类。
 
 因此，运行上面的代码将产生错误：
 
@@ -290,7 +290,7 @@ accessing 'this' or returning from derived constructor
 
 在这里，我们扩展`Person`类- `Teacher`子类是类的扩展`Person`。因此，对于`Teacher`，`this`初始化由`Person`构造函数完成。
 
-要调用父构造函数，我们必须使用[`super()`operator](1/en-US/docs/Web/JavaScript/Reference/Operators/super)，如下所示：
+要调用父构造函数，我们必须使用[`super()`operator，如下所示：
 
 ```js
 class Teacher extends Person {
@@ -303,7 +303,7 @@ class Teacher extends Person {
 ```
 
 如果没有从父类继承的属性，则没有子类是没有意义的。
-很好的是，[`super()`运算符](1/en-US/docs/Web/JavaScript/Reference/Operators/super)也接受父构造函数的参数。
+很好的是，[`super()`运算符也接受父构造函数的参数。
 
 回顾我们的`Person`构造函数，我们可以看到它的构造函数方法中包含以下代码块：
 

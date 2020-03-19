@@ -6,15 +6,15 @@
 
 ## 如何访问浏览器DevTools
 
-“ [什么是浏览器开发人员工具”一文](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)是最新指南，解释了如何在各种浏览器和平台中访问这些工具。尽管您可能选择主要在特定的浏览器中进行开发，因此将最熟悉该浏览器中包含的工具，但值得了解如何在其他浏览器中访问它们。如果您在多个浏览器之间看到不同的呈现，这将有所帮助。
+“ [什么是浏览器开发人员工具”一文是最新指南，解释了如何在各种浏览器和平台中访问这些工具。尽管您可能选择主要在特定的浏览器中进行开发，因此将最熟悉该浏览器中包含的工具，但值得了解如何在其他浏览器中访问它们。如果您在多个浏览器之间看到不同的呈现，这将有所帮助。
 
-您还将发现浏览器在创建DevTools时已选择专注于不同领域。例如，在Firefox中，有一些出色的工具可以直观地使用CSS布局，使您可以检查和编辑[Grid Layouts](1/en-US/docs/Tools/Page_Inspector/How_to/Examine_grid_layouts)，[Flexbox](1/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts)和[Shapes](1/en-US/docs/Tools/Page_Inspector/How_to/Edit_CSS_shapes)。但是，所有不同的浏览器都具有相似的基本工具，例如，用于检查应用于页面元素的属性和值，并从编辑器对其进行更改。
+您还将发现浏览器在创建DevTools时已选择专注于不同领域。例如，在Firefox中，有一些出色的工具可以直观地使用CSS布局，使您可以检查和编辑[Grid Layouts，[Flexbox和[Shapes。但是，所有不同的浏览器都具有相似的基本工具，例如，用于检查应用于页面元素的属性和值，并从编辑器对其进行更改。
 
 在本课程中，我们将介绍Firefox DevTools的一些有用的功能，这些功能可用于CSS。为此，我将使用[一个示例文件]( 1/css-examples/learn/inspecting/inspecting.html)。如果要继续，请在新选项卡中加载它，然后按上面链接的文章中所述打开您的DevTools。
 
 ## DOM与视图源
 
-可以使新手跳入DevTools的地方是，您在[查看](1/en-US/docs/Tools/View_source)网页[源](1/en-US/docs/Tools/View_source)或查看放在服务器上的HTML文件时所看到的内容与在DevTools 的[HTML窗格](1/en-US/docs/Tools/Page_Inspector/UI_Tour#HTML_pane)中所看到的内容之间的差异。尽管它看起来与通过“查看源”可以看到的大致相似，但还是有一些区别。
+可以使新手跳入DevTools的地方是，您在[查看网页[源或查看放在服务器上的HTML文件时所看到的内容与在DevTools 的[HTML窗格](1/en-US/docs/Tools/Page_Inspector/UI_Tour#HTML_pane)中所看到的内容之间的差异。尽管它看起来与通过“查看源”可以看到的大致相似，但还是有一些区别。
 
 在呈现的DOM中，浏览器可能已为您纠正了一些写得不好的HTML。如果您错误地关闭了一个元素，例如打开an，`<h2>`但用`</h3>`关闭，则浏览器将弄清楚您要执行的操作，而DOM中的HTML将正确地`<h3>`使用` </h3>`。浏览器还将标准化所有HTML，而DOM也将显示JavaScript所做的任何更改。
 
@@ -52,11 +52,11 @@
 
 ![DevTools面板，为规则添加了一个新属性，并且自动完成字体打开](https://mdn.mozillademos.org/files/16608/inspecting3-font-size.png)
 
-**注意**：“规则”视图中还有其他有用的功能，例如，带有无效值的声明被划掉。您可以在[检查和编辑CSS中](1/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS)找到更多信息。
+**注意**：“规则”视图中还有其他有用的功能，例如，带有无效值的声明被划掉。您可以在[检查和编辑CSS中找到更多信息。
 
 ## 了解盒子模型
 
-在先前的课程中，我们讨论[了Box模型](1/en-US/docs/Learn/CSS/Building_blocks/The_box_model)，还有一个替代[的Box模型](1/en-US/docs/Learn/CSS/Building_blocks/The_box_model)，该模型可以根据您给它们提供的尺寸以及填充和边框来更改元素尺寸的计算方式。DevTools确实可以帮助您了解如何计算元素的大小。
+在先前的课程中，我们讨论[了Box模型，还有一个替代[的Box模型，该模型可以根据您给它们提供的尺寸以及填充和边框来更改元素尺寸的计算方式。DevTools确实可以帮助您了解如何计算元素的大小。
 
 “ [布局”视图为](1/en-US/docs/Tools/Page_Inspector/UI_Tour#Layout_view)您显示了所选元素上的盒子模型的示意图，并描述了更改元素布局方式的属性和值。其中包括对属性的描述，这些属性可能尚未在元素上显式使用，但确实设置了初始值。
 
@@ -68,7 +68,7 @@
 
 ![DevTools的Layout部分](https://mdn.mozillademos.org/files/16609/inspecting4-box-model.png)
 
-**注意**：有关[检查和检查Box模型的更多信息](1/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_the_box_model)。
+**注意**：有关[检查和检查Box模型的更多信息。
 
 ## 解决特异性问题
 
@@ -91,7 +91,7 @@ em {
 }
 ```
 
-您会从[级联和继承](1/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)的课程中讨论过特异性的课程中回想起，类选择器比元素选择器更具体，因此这就是适用的值。DevTools可以帮助您发现此类问题，尤其是当信息隐藏在巨大的样式表中的某个位置时。
+您会从[级联和继承的课程中讨论过特异性的课程中回想起，类选择器比元素选择器更具体，因此这就是适用的值。DevTools可以帮助您发现此类问题，尤其是当信息隐藏在巨大的样式表中的某个位置时。
 
 **使用<em>和的类进行检查`.special`，DevTools将显示橙色是适用的颜色，还显示了`color`应用于被划掉的em 的属性。现在，您可以看到该类正在覆盖元素选择器。**
 
@@ -99,7 +99,7 @@ em {
 
 ## 了解有关Firefox DevTools的更多信息
 
-MDN上有很多有关Firefox DevTools的信息。看一下主要的[DevTools部分](1/en-US/docs/Tools)，有关本课中我们简要介绍的内容的更多详细信息，请参见[《指南》](1/en-US/docs/Tools/Page_Inspector#How_to)。
+MDN上有很多有关Firefox DevTools的信息。看一下主要的[DevTools部分，有关本课中我们简要介绍的内容的更多详细信息，请参见[《指南》](1/en-US/docs/Tools/Page_Inspector#How_to)。
 
 ## CSS中的调试问题
 

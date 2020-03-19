@@ -1,6 +1,6 @@
 到目前为止，我们已经介绍的API已内置在浏览器中，但并非所有API都是内置的。许多大型网站和服务（例如Google Maps，Twitter，Facebook，PayPal等）都提供了API，允许开发人员利用其数据（例如，在博客上显示Twitter流）或服务（例如，使用Facebook登录名登录用户） ）。本文着眼于浏览器API与第三方API的区别，并展示了后者的一些典型用法。
 
-| 先决条件： | JavaScript基础知识（请参阅[第一步](1/en-US/docs/Learn/JavaScript/First_steps)，[构建基块](1/en-US/docs/Learn/JavaScript/Building_blocks)，[JavaScript对象](1/en-US/docs/Learn/JavaScript/Objects)），[客户端API](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)的[基础知识](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction) |
+| 先决条件： | JavaScript基础知识（请参阅[第一步，[构建基块，[JavaScript对象），[客户端API的[基础知识 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解第三方API的工作方式，以及如何使用它们来增强您的网站。    |
 
@@ -16,7 +16,7 @@
 
 
 
-浏览器API内置在浏览器中-您可以立即从JavaScript访问它们。例如，可以使用本机对象访问[在介绍性文章中看到](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#How_do_APIs_work)的Web Audio API [`AudioContext`](1/en-US/docs/Web/API/AudioContext)。例如：
+浏览器API内置在浏览器中-您可以立即从JavaScript访问它们。例如，可以使用本机对象访问[在介绍性文章中看到](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#How_do_APIs_work)的Web Audio API [`AudioContext`。例如：
 
 ```js
 const audioCtx = new AudioContext();
@@ -46,7 +46,7 @@ let map = L.mapquest.map('map', {
 });
 ```
 
-在这里，我们要创建一个变量来存储地图信息，然后使用`mapquest.map()`方法创建一个新地图，该方法将[``](1/en-US/docs/Web/HTML/Element/div)要在其中显示地图的元素的ID （“ map”）作为参数，并包含一个我们要显示的特定地图的详细信息。在这种情况下，我们指定地图中心的坐标，`map`要显示的类型的地图图层（使用`mapquest.tileLayer()`方法创建）以及默认缩放级别。
+在这里，我们要创建一个变量来存储地图信息，然后使用`mapquest.map()`方法创建一个新地图，该方法将[``要在其中显示地图的元素的ID （“ map”）作为参数，并包含一个我们要显示的特定地图的详细信息。在这种情况下，我们指定地图中心的坐标，`map`要显示的类型的地图图层（使用`mapquest.tileLayer()`方法创建）以及默认缩放级别。
 
 这是Mapquest API绘制简单地图所需的全部信息。您要连接的服务器可以处理所有复杂的内容，例如为显示的区域显示正确的地图图块等。
 
@@ -183,7 +183,7 @@ Google Maps可以说是最受欢迎的Maps API，那么为什么在我们的地�
 
 
 
-首先，您需要在API和您的应用之间建立连接。对于此API，每次从正确的URL向服务请求数据时，都需要将API密钥作为[get](1/en-US/docs/Web/HTTP/Methods/GET)参数包括在内。
+首先，您需要在API和您的应用之间建立连接。对于此API，每次从正确的URL向服务请求数据时，都需要将API密钥作为[get参数包括在内。
 
 1. 找到以下行：
 
@@ -250,7 +250,7 @@ https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=YOUR-API-KEY-HE
 
 
 
-现在，我们已经构造了URL，让我们对其进行请求。我们将使用[Fetch API](1/en-US/docs/Web/API/Fetch_API/Using_Fetch)进行此操作。
+现在，我们已经构造了URL，让我们对其进行请求。我们将使用[Fetch API进行此操作。
 
 在`fetchResults()`函数内的右花括号上方添加以下代码块：
 
@@ -347,7 +347,7 @@ fetch(url).then(function(result) {
 
   ）。这些操作大多数都很明显，但有些值得一提：
 
-  - 我们使用了[for循环](1/en-US/docs/Web/JavaScript/Reference/Statements/for)（`for(var j = 0; j < current.keywords.length; j++) { ... }`）来遍历与每篇文章相关的所有关键字，并将每一个关键字插入其自己的`<span>`，之中`<p>`。这样做是为了简化每个样式的样式。
+  - 我们使用了[for循环（`for(var j = 0; j < current.keywords.length; j++) { ... }`）来遍历与每篇文章相关的所有关键字，并将每一个关键字插入其自己的`<span>`，之中`<p>`。这样做是为了简化每个样式的样式。
   - 我们使用`if()`块（`if(current.multimedia.length > 0) { ... }`）检查每篇文章是否有任何与之相关的图像（有些故事没有）。我们仅在第一幅图像存在的情况下显示它（否则会引发错误）。
   - 我们为`<div>`元素提供了一个“ clearfix”类，因此我们可以轻松地对其应用清除。
 

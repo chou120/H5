@@ -126,7 +126,7 @@ function checkGuess() {
 
 当我们要运行代码时，我们键入函数的名称，后跟括号。
 
-让我们现在尝试。保存代码并在浏览器中刷新页面。然后进入[开发人员工具JavaScript控制台](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)，并输入以下行：
+让我们现在尝试。保存代码并在浏览器中刷新页面。然后进入[开发人员工具JavaScript控制台，并输入以下行：
 
 ```js
 checkGuess();
@@ -138,7 +138,7 @@ checkGuess();
 
 JavaScript运算符使我们能够执行测试，进行数学运算，将字符串连接在一起以及其他类似的事情。
 
-如果尚未这样做，请保存代码，在浏览器中刷新页面，然后打开[开发人员工具JavaScript控制台](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)。然后，我们可以尝试键入下面显示的示例-完全按照所示在“示例”列中键入每个示例，在每个示例之后按Return/ Enter，然后查看它们返回的结果。
+如果尚未这样做，请保存代码，在浏览器中刷新页面，然后打开[开发人员工具JavaScript控制台。然后，我们可以尝试键入下面显示的示例-完全按照所示在“示例”列中键入每个示例，在每个示例之后按Return/ Enter，然后查看它们返回的结果。
 
 首先让我们看一下算术运算符，例如：
 
@@ -160,7 +160,7 @@ let greeting = name + hello;
 greeting;
 ```
 
-还有一些可用的捷径运算符，称为增强[分配运算符](1/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators)。例如，如果您只想向现有文本字符串中添加一个新的文本字符串并返回结果，则可以执行以下操作：
+还有一些可用的捷径运算符，称为增强[分配运算符。例如，如果您只想向现有文本字符串中添加一个新的文本字符串并返回结果，则可以执行以下操作：
 
 ```js
 name += ' says hello!';
@@ -172,7 +172,7 @@ name += ' says hello!';
 name = name + ' says hello!';
 ```
 
-当我们运行对/错测试时（例如在条件语句内部-参见[下文](1/en-US/docs/Learn/JavaScript/First_steps/A_first_splash#Conditionals)），我们使用[比较运算符](1/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)。例如：
+当我们运行对/错测试时（例如在条件语句内部-参见[下文](1/en-US/docs/Learn/JavaScript/First_steps/A_first_splash#Conditionals)），我们使用[比较运算符。例如：
 
 | 操作员 | 名称                     | 例                                                           |
 | :----- | :----------------------- | :----------------------------------------------------------- |
@@ -255,7 +255,7 @@ function checkGuess() {
 guessSubmit.addEventListener('click', checkGuess);
 ```
 
-在这里，我们向`guessSubmit`按钮添加了一个事件监听器。这是一种采用两个输入值（称为*arguments*）的方法-我们正在侦听的事件的类型（在此例中`click`为字符串），以及当事件发生时我们要运行的代码（在本例中为`checkGuess()`函数） 。请注意，在内部编写括号时，无需指定括号[`addEventListener()`](1/en-US/docs/Web/API/EventTarget/addEventListener)。
+在这里，我们向`guessSubmit`按钮添加了一个事件监听器。这是一种采用两个输入值（称为*arguments*）的方法-我们正在侦听的事件的类型（在此例中`click`为字符串），以及当事件发生时我们要运行的代码（在本例中为`checkGuess()`函数） 。请注意，在内部编写括号时，无需指定括号[`addEventListener()`。
 
 现在尝试保存并刷新代码，这样您的示例就可以工作了。现在唯一的问题是，如果您猜对了答案或猜对了，游戏将会中断，因为我们尚未定义`setGameOver()`游戏结束后应该运行的功能。让我们现在添加缺少的代码，并完成示例功能。
 
@@ -319,9 +319,9 @@ function resetGame() {
 
 
 
-我们需要更详细地研究上述代码的一部分是[for](1/en-US/docs/Web/JavaScript/Reference/Statements/for)循环。循环是编程中非常重要的概念，它使您可以反复运行一段代码，直到满足特定条件为止。
+我们需要更详细地研究上述代码的一部分是[for循环。循环是编程中非常重要的概念，它使您可以反复运行一段代码，直到满足特定条件为止。
 
-首先，请再次转到[浏览器开发人员工具JavaScript控制台](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)，然后输入以下内容：
+首先，请再次转到[浏览器开发人员工具JavaScript控制台，然后输入以下内容：
 
 ```js
 for (let i = 1 ; i < 21 ; i++) { console.log(i) }
@@ -331,7 +331,7 @@ for (let i = 1 ; i < 21 ; i++) { console.log(i) }
 
 1. **起始值**：在这种情况下，我们将从1开始计数，但是它可以是您喜欢的任何数字。您也可以`i`用任何喜欢的名称替换字母，但`i`由于其简短易记，因此被用作惯例。
 2. **退出条件**：这里已指定`i < 21`-循环将继续进行，直到`i`不小于21。当`i`达到21时，循环将不再运行。
-3. **增量器**：我们已指定`i++`，表示“将i加1”。循环将针对的每个值运行一次`i`，直到`i`达到21的值（如上所述）。在这种情况下，我们只需`i`在每次迭代中将out 的值输出到控制台即可[`console.log()`](1/en-US/docs/Web/API/Console/log)。
+3. **增量器**：我们已指定`i++`，表示“将i加1”。循环将针对的每个值运行一次`i`，直到`i`达到21的值（如上所述）。在这种情况下，我们只需`i`在每次迭代中将out 的值输出到控制台即可[`console.log()`。
 
 现在，让我们看一下猜数字游戏中的循环-在`resetGame()`函数内部可以找到以下内容：
 
@@ -342,7 +342,7 @@ for (let i = 0 ; i < resetParas.length ; i++) {
 }
 ```
 
-这段代码`<div class="resultParas"></div>`使用该[`querySelectorAll()`](1/en-US/docs/Web/API/Document/querySelectorAll)方法创建了一个变量，其中包含所有内部段落的列表，然后循环遍历每个段落，删除每个段落的文本内容。
+这段代码`<div class="resultParas"></div>`使用该[`querySelectorAll()`方法创建了一个变量，其中包含所有内部段落的列表，然后循环遍历每个段落，删除每个段落的文本内容。
 
 ### 关于对象的小讨论
 
@@ -354,7 +354,7 @@ for (let i = 0 ; i < resetParas.length ; i++) {
 guessField.focus();
 ```
 
-此行使用此[`focus()`](1/en-US/docs/Web/API/HTMLElement/focus)方法，将在`<input>`页面加载后立即将文本光标自动放入文本字段，这意味着用户可以立即开始键入他们的第一个猜测，而不必先单击表单字段。这只是一个很小的补充，但它提高了可用性-为用户提供了一个很好的视觉线索，以了解他们在玩游戏时需要做什么。
+此行使用此[`focus()`方法，将在`<input>`页面加载后立即将文本光标自动放入文本字段，这意味着用户可以立即开始键入他们的第一个猜测，而不必先单击表单字段。这只是一个很小的补充，但它提高了可用性-为用户提供了一个很好的视觉线索，以了解他们在玩游戏时需要做什么。
 
 让我们更详细地分析这里发生的事情。在JavaScript中，一切都是对象。对象是存储在单个分组中的相关功能的集合。您可以创建自己的对象，但这是相当高级的，我们将在本课程的稍后部分进行介绍。现在，我们将简要讨论浏览器包含的内置对象，这些对象使您可以做很多有用的事情。
 
@@ -364,7 +364,7 @@ guessField.focus();
 const guessField = document.querySelector('.guessField');
 ```
 
-为了获得参考，我们使用[`querySelector()`](1/en-US/docs/Web/API/Document/querySelector)了[`document`](1/en-US/docs/Web/API/Document)对象的方法。`querySelector()`需要一条信息—一个[CSS选择器](1/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors)，用于选择要引用的元素。
+为了获得参考，我们使用[`querySelector()`了[`document`对象的方法。`querySelector()`需要一条信息—一个[CSS选择器，用于选择要引用的元素。
 
 因为`guessField`现在包含对`<input>`元素的引用，所以它现在可以访问许多属性（基本上是存储在对象内部的变量，其中一些不能更改其值）和方法（基本上是存储在对象内部的函数）。输入元素可用的一种方法是`focus()`，因此我们现在可以使用此行来集中文本输入：
 
@@ -382,7 +382,7 @@ guessField.focus();
 
 1. 首先，在浏览器中打开程序。
 
-2. 接下来，打开[浏览器开发人员工具](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)，并确保JavaScript控制台选项卡已打开。
+2. 接下来，打开[浏览器开发人员工具，并确保JavaScript控制台选项卡已打开。
 
 3. 键入`guessField`到控制台和控制台显示你的变量中包含`<input>`的元素。您还会注意到，控制台会自动完成执行环境中存在的对象的名称，包括变量！
 

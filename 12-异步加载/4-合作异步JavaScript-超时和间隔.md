@@ -247,7 +247,7 @@ draw();
 
 **注意**：如果要执行某种简单的恒定DOM动画，则[CSS动画]( /CSS_Animations)可能会更快。它们由浏览器的内部代码而不是JavaScript直接计算。
 
-但是，如果您正在做一些更复杂的事情，并且涉及在DOM内部无法直接访问的对象（例如[2D Canvas API](1/en-US/docs/Web/API/Canvas_API)或[WebGL](1/en-US/docs/Web/API/WebGL_API)对象），`requestAnimationFrame()`则在大多数情况下是更好的选择。
+但是，如果您正在做一些更复杂的事情，并且涉及在DOM内部无法直接访问的对象（例如[2D Canvas API或[WebGL对象），`requestAnimationFrame()`则在大多数情况下是更好的选择。
 
 ### 动画的运行速度有多快？
 

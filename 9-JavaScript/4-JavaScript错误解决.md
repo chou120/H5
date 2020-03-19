@@ -26,7 +26,7 @@
 
 ## 修复语法错误
 
-在本课程的前面，我们让您在[开发人员工具JavaScript控制台中](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)键入一些简单的JavaScript命令（如果您不记得如何在浏览器中打开它，请按照上一个链接查找操作方法）。更有用的是，只要将JavaScript内部存在语法错误并送入浏览器的JavaScript引擎，控制台就会向您显示错误消息。现在开始狩猎。
+在本课程的前面，我们让您在[开发人员工具JavaScript控制台中键入一些简单的JavaScript命令（如果您不记得如何在浏览器中打开它，请按照上一个链接查找操作方法）。更有用的是，只要将JavaScript内部存在语法错误并送入浏览器的JavaScript引擎，控制台就会向您显示错误消息。现在开始狩猎。
 
 1. 转到`number-game-errors.html`打开的选项卡，然后打开JavaScript控制台。您应该看到以下几行的错误消息：![img](https://mdn.mozillademos.org/files/13496/not-a-function.png)
 
@@ -48,7 +48,7 @@
 
 5. 因此，在查看此页面时，错误似乎是我们将函数名称拼写错误！请记住，JavaScript区分大小写，因此拼写或大小写的任何细微差异都会导致错误。更改`addeventListener`为`addEventListener`应该可以解决此问题。现在就做。
 
-**注意**：有关此错误的更多详细信息，请参见我们的[TypeError：“ x”不是函数](1/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function)参考页。
+**注意**：有关此错误的更多详细信息，请参见我们的[TypeError：“ x”不是函数参考页。
 
 ### 第二轮语法错误
 
@@ -62,7 +62,7 @@
 
    **注意**：`Null`是一个特殊值，表示“无”或“无值”。因此`lowOrHi`已经被声明和初始化，但是没有任何有意义的值-它没有类型或值。
 
-   **注意**：页面加载后不会立即出现此错误，因为此错误发生在函数内部（在`checkGuess() { ... }`块内部）。正如您将在后面的[函数文章](1/en-US/docs/Learn/JavaScript/Building_blocks/Functions)中更详细地了解的那样，[函数](1/en-US/docs/Learn/JavaScript/Building_blocks/Functions)内部的代码与函数外部的代码在不同的范围内运行。在这种情况下，直到`checkGuess()`函数由第86行运行时，代码才运行，并且没有引发错误。
+   **注意**：页面加载后不会立即出现此错误，因为此错误发生在函数内部（在`checkGuess() { ... }`块内部）。正如您将在后面的[函数文章中更详细地了解的那样，[函数内部的代码与函数外部的代码在不同的范围内运行。在这种情况下，直到`checkGuess()`函数由第86行运行时，代码才运行，并且没有引发错误。
 
 4. 看看第78行，您将看到以下代码：
 
@@ -196,7 +196,7 @@ var userGuess === Number(guessField.value);
 
 抛出此错误是因为它认为您正在尝试执行其他操作。您应确保不要将赋值运算符（`=`）（将变量设置为等于值）与严格相等运算符（`===`）混淆，后者用于测试一个值是否等于另一个值，并返回`true`/ `false`结果。
 
-**注意**：请参见我们的[SyntaxError：before语句](1/en-US/docs/Web/JavaScript/Reference/Errors/Missing_semicolon_before_statement)参考页，以获取有关此错误的更多详细信息。
+**注意**：请参见我们的[SyntaxError：before语句参考页，以获取有关此错误的更多详细信息。
 
 ### 程序总是说您赢了，无论您输入什么猜测
 
@@ -222,7 +222,7 @@ if (userGuess = randomNumber) {
 
 这很简单-通常意味着您在函数/方法调用的末尾错过了右括号。
 
-**注意**：有关此错误的更多详细信息，请参见[参数列表](1/en-US/docs/Web/JavaScript/Reference/Errors/Missing_parenthesis_after_argument_list)参考页面[后的SyntaxError：missing）](1/en-US/docs/Web/JavaScript/Reference/Errors/Missing_parenthesis_after_argument_list)。
+**注意**：有关此错误的更多详细信息，请参见[参数列表参考页面[后的SyntaxError：missing）。
 
 ### SyntaxError：缺少：属性ID之后
 
@@ -256,6 +256,6 @@ function checkGuess( {
 
 对于所有这些错误，请考虑一下我们如何解决本演练中看到的示例。当出现错误时，查看给出的行号，转到该行，看看是否可以找出问题所在。请记住，该错误不一定会在该行上，并且该错误也可能不是由我们上面引用的完全相同的问题引起的！
 
-**注意**：有关这些错误的更多详细信息，请参见我们的[SyntaxError：意外令牌](1/en-US/docs/Web/JavaScript/Reference/Errors/Unexpected_token)和[SyntaxError：未终止字符串文字](1/en-US/docs/Web/JavaScript/Reference/Errors/Unterminated_string_literal)参考页。
+**注意**：有关这些错误的更多详细信息，请参见我们的[SyntaxError：意外令牌和[SyntaxError：未终止字符串文字参考页。
 
 ## 

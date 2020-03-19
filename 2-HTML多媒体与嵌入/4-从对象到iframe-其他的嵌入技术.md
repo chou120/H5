@@ -8,7 +8,7 @@
 
 很久以前，很流行在网络上使用**框架**创建网站 — 网站的一小部分存储于单独的HTML页面中。这些被嵌入在一个称为**框架集**的主文档中，它允许您指定每个框架能够填充在屏幕上的区域，非常像调整表格的列和行的大小。这些做法在90年代中期至90年代后期被认为是比较酷的，有证据表明，将网页分解成较小的块，这样有利于下载速度 —尤其是在那时网络连接速度太慢的情况下更为明显。然而，这些技术有很多问题，随着网络速度越来越快，这些技术带来的问题远超过它们带来的积极因素，所以你再也看不到它们被使用了。
 
-一小段时间之后（20世纪90年代末，21世纪初），插件技术变得非常受欢迎，例如[Java Applet](1/en-US/docs/Glossary/Java)和[Flash](1/en-US/docs/Glossary/Adobe_Flash) — 这些技术允许网络开发者将丰富的内容嵌入到网页中，例如视频和动画等，这些内容不能通过HTML单独实现。嵌入这些技术是通过诸如`<object>`和较少使用`<embed>`的元素来实现的，当时它们非常有用。由于许多问题，包括可访问性、安全性、文件大小等，它们已经过时了; 如今，大多数移动设备不再支持这些插件，桌面端也逐渐不再支持。最后,`<iframe>`元素出现了（连同其他嵌入内容的方式，如`<canvas>`，`<video>`等），它提供了一种将整个web页嵌入到另一个网页的方法，看起来就像那个web页是另一个网页的一个`<img>`或其他元素一样。`<iframe>`现在经常被使用。
+一小段时间之后（20世纪90年代末，21世纪初），插件技术变得非常受欢迎，例如[Java Applet和[Flash — 这些技术允许网络开发者将丰富的内容嵌入到网页中，例如视频和动画等，这些内容不能通过HTML单独实现。嵌入这些技术是通过诸如`<object>`和较少使用`<embed>`的元素来实现的，当时它们非常有用。由于许多问题，包括可访问性、安全性、文件大小等，它们已经过时了; 如今，大多数移动设备不再支持这些插件，桌面端也逐渐不再支持。最后,`<iframe>`元素出现了（连同其他嵌入内容的方式，如`<canvas>`，`<video>`等），它提供了一种将整个web页嵌入到另一个网页的方法，看起来就像那个web页是另一个网页的一个`<img>`或其他元素一样。`<iframe>`现在经常被使用。
 
 
 
@@ -38,7 +38,7 @@
 
 - `frameborder`
 
-  如果设置为1，则会告诉浏览器在此框架和其他框架之间绘制边框，这是默认行为。0删除边框。不推荐这样设置，因为在[CSS中](1/en-US/docs/Glossary/CSS)可以更好地实现相同的效果。[`border`]( /border)`: none;`
+  如果设置为1，则会告诉浏览器在此框架和其他框架之间绘制边框，这是默认行为。0删除边框。不推荐这样设置，因为在[CSS中可以更好地实现相同的效果。[`border`]( /border)`: none;`
 
 - `src`
 
@@ -56,7 +56,7 @@
 
   该属性需要在已经支持其他`<iframe>`功能（例如IE 10及更高版本）但稍微更现代的浏览器上才能工作，该属性可以提高安全性设置; 我们将在下一节中更加详细地谈到。
 
-**注意**：为了提高速度，在主内容完成加载后，使用JavaScript设置iframe的`src`属性是个好主意。这使您的页面可以更快地被使用，并减少您的官方页面加载时间（重要的[SEO](1/en-US/docs/Glossary/SEO)指标）。
+**注意**：为了提高速度，在主内容完成加载后，使用JavaScript设置iframe的`src`属性是个好主意。这使您的页面可以更快地被使用，并减少您的官方页面加载时间（重要的[SEO指标）。
 
 ### 安全隐患
 
@@ -68,7 +68,7 @@
 
 [单击劫持](https://en.wikipedia.org/wiki/Clickjacking)是一种常见的iframe攻击，黑客将隐藏的iframe嵌入到您的文档中（或将您的文档嵌入到他们自己的恶意网站），并使用它来捕获用户的交互。这是误导用户或窃取敏感数据的常见方式。
 
-一个快速的例子 — 尝试在浏览器中加载上面的例子 - 你也可以[在Github上找到它](http://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)（[参见源代码](https://github.com/mdn/learning-area/blob/gh-pages/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)）。你将不会看到任何内容，但如果你点击[浏览器开发者工具](1/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)中的*控制台*，你会看到一条消息，告诉你为什么没有显示内容。在Firefox中，您会*被告知：“X-Frame-Options拒绝加载1/en-US/docs/Glossary”*。这是因为构建MDN的开发人员已经在网站页面的服务器上设置了一个不允许被嵌入到``的设置（请参阅[配置CSP指令]( 1/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies#配置CSP指令)）这是有必要的 — 整个MDN页面被嵌入在其他页面中没有多大意义，除非您想要将其嵌入到您的网站上并将其声称为自己的内容，或尝试通过单击劫持来窃取数据，这都是非常糟糕的事情。此外，如果每个人都这样做，所有额外的带宽将花费Mozilla很多资金。
+一个快速的例子 — 尝试在浏览器中加载上面的例子 - 你也可以[在Github上找到它](http://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)（[参见源代码](https://github.com/mdn/learning-area/blob/gh-pages/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)）。你将不会看到任何内容，但如果你点击[浏览器开发者工具中的*控制台*，你会看到一条消息，告诉你为什么没有显示内容。在Firefox中，您会*被告知：“X-Frame-Options拒绝加载1/en-US/docs/Glossary”*。这是因为构建MDN的开发人员已经在网站页面的服务器上设置了一个不允许被嵌入到``的设置（请参阅[配置CSP指令]( 1/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies#配置CSP指令)）这是有必要的 — 整个MDN页面被嵌入在其他页面中没有多大意义，除非您想要将其嵌入到您的网站上并将其声称为自己的内容，或尝试通过单击劫持来窃取数据，这都是非常糟糕的事情。此外，如果每个人都这样做，所有额外的带宽将花费Mozilla很多资金。
 
 #### 只有在必要时嵌入
 
@@ -80,14 +80,14 @@
 
 #### 使用 HTTPS
 
-[HTTPS](1/en-US/docs/Glossary/HTTPS)是[HTTP](1/en-US/docs/Glossary/HTTP)的加密版本。您应该尽可能使用HTTPS为您的网站提供服务：
+[HTTPS是[HTTP的加密版本。您应该尽可能使用HTTPS为您的网站提供服务：
 
 1. HTTPS减少了远程内容在传输过程中被篡改的机会，
 2. HTTPS防止嵌入式内容访问您的父文档中的内容，反之亦然。
 
 使用HTTPS需要一个安全证书，这可能是昂贵的（尽管[Let's Encrypt](https://letsencrypt.org/)让这件事变得更容易），如果你没有，可以使用HTTP来为你的父文档提供服务。但是，由于HTTPS的第二个好处，*无论成本如何，您绝对不能使用HTTP嵌入第三方内容*（在最好的情况下，您的用户的Web浏览器会给他们一个可怕的警告）。所有有声望的公司，例如Google Maps或Youtube，当您嵌入内容时，``将通过HTTPS提供 - 查看`` `src`属性内的URL。
 
-**注意**：[Github页面](1/en-US/docs/Learn/Common_questions/Using_Github_pages)允许默认情况下通过HTTPS提供内容，因此对托管内容很有用。如果您正在使用不同的托管，并且不确定，请向您的托管服务商询问。
+**注意**：[Github页面允许默认情况下通过HTTPS提供内容，因此对托管内容很有用。如果您正在使用不同的托管，并且不确定，请向您的托管服务商询问。
 
 #### 始终使用`sandbox`属性
 
@@ -97,11 +97,11 @@
 
 如果绝对需要，您可以逐个添加权限（`sandbox=""`属性值内） - 请参阅`sandbox`所有可用选项的参考条目。其中重要的一点是，你*永远不*应该同时添加`allow-scripts`和`allow-same-origin`到你的`sandbox`属性中-在这种情况下，嵌入式内容可以绕过阻止站点执行脚本的同源安全策略，并使用JavaScript完全关闭沙盒。
 
-**注意**：如果攻击者可以欺骗人们直接访问恶意内容（在iframe之外），则沙盒无法提供保护。如果某些内容可能是恶意的（例如，用户生成的内容），请保证其是从不同的[域](1/en-US/docs/Glossary/domain)向您的主站点提供的。
+**注意**：如果攻击者可以欺骗人们直接访问恶意内容（在iframe之外），则沙盒无法提供保护。如果某些内容可能是恶意的（例如，用户生成的内容），请保证其是从不同的[域向您的主站点提供的。
 
 #### 配置CSP指令
 
-[CSP](1/en-US/docs/Glossary/CSP)代表**[内容安全策略](1/en-US/docs/Web/Security/CSP)**，它提供[一组HTTP标头](1/en-US/docs/Web/Security/CSP/CSP_policy_directives)（由web服务器发送时与元数据一起发送的元数据），旨在提高HTML文档的安全性。在`<iframe>`安全性方面，您可以*[将服务器配置为发送适当的`X-Frame-Options` 标题。](1/en-US/docs/Web/HTTP/X-Frame-Options)*这样做可以防止其他网站在其网页中嵌入您的内容（这将导致[点击](https://en.wikipedia.org/wiki/clickjacking)和一系列其他攻击），正如我们之前看到的那样，MDN开发人员已经做了这些工作。
+[CSP代表**[内容安全策略**，它提供[一组HTTP标头（由web服务器发送时与元数据一起发送的元数据），旨在提高HTML文档的安全性。在`<iframe>`安全性方面，您可以*[将服务器配置为发送适当的`X-Frame-Options` 标题。*这样做可以防止其他网站在其网页中嵌入您的内容（这将导致[点击](https://en.wikipedia.org/wiki/clickjacking)和一系列其他攻击），正如我们之前看到的那样，MDN开发人员已经做了这些工作。
 
 
 
@@ -117,13 +117,13 @@
 
 |                                                             | `<embed>`                    | `<object>`                              |
 | :---------------------------------------------------------- | :--------------------------- | :-------------------------------------- |
-| 嵌入内容的[网址](1/en-US/docs/Glossary/URL)                 | `src`                        | `data`                                  |
-| 嵌入内容的*准确*[媒体类型](1/en-US/docs/Glossary/MIME_type) | `type`                       | `type`                                  |
+| 嵌入内容的[网址                 | `src`                        | `data`                                  |
+| 嵌入内容的*准确*[媒体类型 | `type`                       | `type`                                  |
 | 由插件控制的框的高度和宽度（以CSS像素为单位）               | `height` `width`             | `height` `width`                        |
 | 名称和值，将插件作为参数提供                                | 具有这些名称和值的ad hoc属性 | 单标签`<param>`元素，包含在内`<object>` |
 | 独立的HTML内容作为不可用资源的回退                          | 不支持（`<noembed>`已过时）  | 包含在元素`<obejct>`之后`<param>`       |
 
-**注意**：`<object>`需要`data`属性，`type`属性或两者。如果您同时使用这两个，您也可以使用该`typemustmatch`属性（仅在Firefox中实现，在本文中）。`typemustmatch`保持嵌入文件不运行，除非`type`属性提供正确的媒体类型。`typemustmatch`因此，当您嵌入来自不同[来源的](1/en-US/docs/Glossary/origin)内容（可以防止攻击者通过插件运行任意脚本）时，可以赋予重要的安全优势。
+**注意**：`<object>`需要`data`属性，`type`属性或两者。如果您同时使用这两个，您也可以使用该`typemustmatch`属性（仅在Firefox中实现，在本文中）。`typemustmatch`保持嵌入文件不运行，除非`type`属性提供正确的媒体类型。`typemustmatch`因此，当您嵌入来自不同[来源的内容（可以防止攻击者通过插件运行任意脚本）时，可以赋予重要的安全优势。
 
 下面是一个使用该`<embed>`元素嵌入Flash影片的示例：
 
@@ -156,10 +156,10 @@ PDF是纸与数据之间重要的阶梯，但它们[在可访问性上有些问�
 - **从Flash和其他插件附带的[额外的可访问性问题](http://webaim.org/techniques/flash/)中摆脱。**
 - **避免额外的安全隐患。**即使经过无数次补丁[，](http://www.cvedetails.com/product/6761/Adobe-Flash-Player.html?vendor_id=53) Adobe Flash也是[非常不安全的](http://www.cvedetails.com/product/6761/Adobe-Flash-Player.html?vendor_id=53)。2015年，Facebook的首席安全官Alex Stamos甚至[要求Adobe停止Flash。](http://www.theverge.com/2015/7/13/8948459/adobe-flash-insecure-says-facebook-cso)
 
-那你该怎么办？如果您需要交互性，HTML和[JavaScript](1/en-US/docs/Glossary/JavaScript)可以轻松地为您完成工作，而不需要Java小程序或过时的ActiveX / BHO技术。您可以使用[HTML5视频]( 1/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)来满足媒体需求，矢量图形[SVG]( 1/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)，以及复杂图像和动画[画布]( 1/docs/Web/API/Canvas_API/Tutorial)。[彼得·埃尔斯特（Peter Elst）几年前已经提到](https://plus.google.com/+PeterElst/posts/P5t4pFhptvp)，对于工作Adobe Flash极少是正确的工具，除了专门的游戏和商业应用。对于ActiveX，即使微软的[Edge](1/en-US/docs/Glossary/Microsoft_Edge)浏览器也不再支持。
+那你该怎么办？如果您需要交互性，HTML和[JavaScript可以轻松地为您完成工作，而不需要Java小程序或过时的ActiveX / BHO技术。您可以使用[HTML5视频]( 1/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)来满足媒体需求，矢量图形[SVG]( 1/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)，以及复杂图像和动画[画布]( 1/docs/Web/API/Canvas_API/Tutorial)。[彼得·埃尔斯特（Peter Elst）几年前已经提到](https://plus.google.com/+PeterElst/posts/P5t4pFhptvp)，对于工作Adobe Flash极少是正确的工具，除了专门的游戏和商业应用。对于ActiveX，即使微软的[Edge浏览器也不再支持。
 
 ## 总结
 
 在Web文档中嵌入其他内容这一主题可以很快变得非常复杂，因此在本文中，我们尝试以一种简单而熟悉的方式来介绍它，这种介绍方式将立即显示出相关性，同时仍暗示了一些涉及更高级功能的技术。刚开始，除了嵌入第三方内容（如地图和视频），您不太可能在网页上使用到嵌入技术。当你变得更有经验时，你可能会开始为他们找到更多的用途。
 
-除了我们在这里讨论的那些外，还有许多涉及嵌入外部内容的技术。我们看到了一些在前面的文章中出现的，如**`<video>`**，`<audio>`和`<img>`，但还有其它的有待关注，如`<canvas>`用于JavaScript生成的2D和3D图形，`<svg>`用于嵌入矢量图形。我们将在此学习模块的下一篇文章中学习[SVG](1/en-US/docs/Web/SVG)。
+除了我们在这里讨论的那些外，还有许多涉及嵌入外部内容的技术。我们看到了一些在前面的文章中出现的，如**`<video>`**，`<audio>`和`<img>`，但还有其它的有待关注，如`<canvas>`用于JavaScript生成的2D和3D图形，`<svg>`用于嵌入矢量图形。我们将在此学习模块的下一篇文章中学习[SVG。

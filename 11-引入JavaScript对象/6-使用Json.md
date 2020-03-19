@@ -1,6 +1,6 @@
 JavaScript对象表示法（JSON）是用于将结构化数据表示为JavaScript对象的标准格式，通常用于在网站上表示和传输数据（例如从服务器向客户端发送一些数据，因此可以将其显示在网页上）。您会经常遇到它，所以在本文中，我们向您提供使用JavaScript处理JSON的所有工作，包括访问JSON对象中的数据项并编写自己的JSON。
 
-| 前提: | 计算机基础知识，HTML 和 CSS 基础 (see [First steps](1/en-US/docs/Learn/JavaScript/First_steps) and [Building blocks](1/en-US/docs/Learn/JavaScript/Building_blocks)) 和 JS 面向对象基础(see [Introduction to objects](1/en-US/docs/Learn/JavaScript/Object-oriented/Introduction))。 |
+| 前提: | 计算机基础知识，HTML 和 CSS 基础 (see [First steps and [Building blocks) 和 JS 面向对象基础(see [Introduction to objects)。 |
 | :---- | ------------------------------------------------------------ |
 | 目标: | 理解 JSON 的数据储存工作原理，创建您的 JSON 对象。           |
 
@@ -8,7 +8,7 @@ JavaScript对象表示法（JSON）是用于将结构化数据表示为JavaScrip
 
 [JSON]( 1/docs/Glossary/JSON) 是一种按照JavaScript对象语法的数据格式，这是 [Douglas Crockford](https://en.wikipedia.org/wiki/Douglas_Crockford) 推广的。虽然它是基于 JavaScript 语法，但它独立于JavaScript，这也是为什么许多程序环境能够读取（解读）和生成 JSON。 
 
-JSON可以作为一个对象或者字符串存在，前者用于解读 JSON 中的数据，后者用于通过网络传输 JSON 数据。 这不是一个大事件——JavaScript 提供一个全局的 可访问的 [JSON](1/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) 对象来对这两种数据进行转换。
+JSON可以作为一个对象或者字符串存在，前者用于解读 JSON 中的数据，后者用于通过网络传输 JSON 数据。 这不是一个大事件——JavaScript 提供一个全局的 可访问的 [JSON 对象来对这两种数据进行转换。
 
 一个 JSON 对象可以被储存在它自己的文件中，这基本上就是一个文本文件，扩展名为 `.json`， 还有 [MIME type]( 1/docs/Glossary/MIME_type) 用于 `application/json`.
 

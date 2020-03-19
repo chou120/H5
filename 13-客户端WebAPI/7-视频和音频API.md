@@ -1,12 +1,12 @@
-HTML5带有用于在文档中嵌入富媒体的元素- [``](1/en-US/docs/Web/HTML/Element/video)和[``](1/en-US/docs/Web/HTML/Element/audio)-进而具有它们自己的用于控制播放，搜索等的API。本文向您展示如何执行常见任务，例如创建自定义播放控件。
+HTML5带有用于在文档中嵌入富媒体的元素- [``和[``-进而具有它们自己的用于控制播放，搜索等的API。本文向您展示如何执行常见任务，例如创建自定义播放控件。
 
-| 先决条件： | JavaScript基础知识（请参阅[第一步](1/en-US/docs/Learn/JavaScript/First_steps)，[构建基块](1/en-US/docs/Learn/JavaScript/Building_blocks)，[JavaScript对象](1/en-US/docs/Learn/JavaScript/Objects)），[客户端API](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction)的[基础知识](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction) |
+| 先决条件： | JavaScript基础知识（请参阅[第一步，[构建基块，[JavaScript对象），[客户端API的[基础知识 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解如何使用浏览器API来控制视频和音频播放。                  |
 
 ## HTML5视频和音频
 
-在`<video>`和` <audio>`元素使我们能够嵌入视频和音频到网页。如我们在 [视频和音频内容中所示](1/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)，典型的实现如下所示：
+在`<video>`和` <audio>`元素使我们能够嵌入视频和音频到网页。如我们在 [视频和音频内容中所示，典型的实现如下所示：
 
 ```html
 <video controls>
@@ -28,7 +28,7 @@ HTML5带有用于在文档中嵌入富媒体的元素- [``](1/en-US/docs/Web/HTM
 
 ## HTMLMediaElement API
 
-HTML5规范的一部分，该[`HTMLMediaElement`](1/en-US/docs/Web/API/HTMLMediaElement)API提供的功能，让您可以编程控制的视频和音频播放器-例如[`HTMLMediaElement.play()`](1/en-US/docs/Web/API/HTMLMediaElement/play)，[`HTMLMediaElement.pause()`](1/en-US/docs/Web/API/HTMLMediaElement/pause)等此接口可用于两个`<audio>`和`<video>`元素，功能，你会希望实现几乎相同。
+HTML5规范的一部分，该[`HTMLMediaElement`API提供的功能，让您可以编程控制的视频和音频播放器-例如[`HTMLMediaElement.play()`，[`HTMLMediaElement.pause()`等此接口可用于两个`<audio>`和`<video>`元素，功能，你会希望实现几乎相同。
 
 ### 入门
 
@@ -229,9 +229,9 @@ button:before {
    }
    ```
 
-   在这里，我们使用一条`if`语句来检查视频是否已暂停。[`HTMLMediaElement.paused`](1/en-US/docs/Web/API/HTMLMediaElement/paused)如果媒体暂停（在任何时候都没有播放视频，包括在第一次加载后将其设置为0时），则该属性返回true。如果已暂停，`data-icon`则将播放按钮上的属性值设置为“ u”（这是一个“已暂停”图标），并调用该[`HTMLMediaElement.play()`](1/en-US/docs/Web/API/HTMLMediaElement/play)方法来播放媒体。
+   在这里，我们使用一条`if`语句来检查视频是否已暂停。[`HTMLMediaElement.paused`如果媒体暂停（在任何时候都没有播放视频，包括在第一次加载后将其设置为0时），则该属性返回true。如果已暂停，`data-icon`则将播放按钮上的属性值设置为“ u”（这是一个“已暂停”图标），并调用该[`HTMLMediaElement.play()`方法来播放媒体。
 
-   第二次单击时，该按钮将再次切换回-“播放”图标将再次显示，并且视频将以暂停[`HTMLMediaElement.paused()`](1/en-US/docs/Web/API/HTMLMediaElement/paused)。
+   第二次单击时，该按钮将再次切换回-“播放”图标将再次显示，并且视频将以暂停[`HTMLMediaElement.paused()`。
 
 #### 停止视频
 
@@ -254,7 +254,7 @@ button:before {
    }
    ```
 
-   `stop()`HTMLMediaElement API上没有方法-等效于`pause()`视频，并将其[`currentTime`](1/en-US/docs/Web/API/HTMLMediaElement/currentTime)属性设置`currentTime`为0。设置为值（以秒为单位）会立即将媒体跳转到该位置。
+   `stop()`HTMLMediaElement API上没有方法-等效于`pause()`视频，并将其[`currentTime`属性设置`currentTime`为0。设置为值（以秒为单位）会立即将媒体跳转到该位置。
 
    之后要做的就是将显示的图标设置为“播放”图标。无论按下暂停按钮是暂停视频还是播放视频，您都希望以后可以开始播放。
 
@@ -312,8 +312,8 @@ button:before {
 
    1. 我们清除快进功能上设置的所有类别和时间间隔–之所以这样做，是因为如果在按下`rwd`按钮后按下`fwd`按钮，我们想取消任何快进功能并将其替换为快退功能。如果我们试图同时做到这两者，那么玩家会破产。
    2. 我们使用一条`if`语句来检查是否在按钮`active`上设置了该类`rwd`，表明该类已经被按下。这`classList`是一个非常方便的属性，它存在于每个元素上-它包含该元素上设置的所有类的列表以及添加/删除类的`classList.contains()`方法等。我们使用该方法检查列表中是否包含`active`该类。这将返回一个布尔值`true`/ `false`结果。
-   3. 如果`active`已在`rwd`按钮上设置，我们将使用删除它`classList.remove()`，清除第一次按下按钮时设置的间隔（有关更多说明，请参见下文），然后使用[`HTMLMediaElement.play()`](1/en-US/docs/Web/API/HTMLMediaElement/play)取消快退并正常开始播放视频。
-   4. 如果尚未设置，我们使用将该`active`类添加到`rwd`按钮上，使用`classList.add()`暂停视频[`HTMLMediaElement.pause()`](1/en-US/docs/Web/API/HTMLMediaElement/pause)，然后将该`intervalRwd`变量设置为等于[`setInterval()`](1/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)通话。调用时，将`setInterval()`创建一个活动间隔，这意味着它将每x毫秒运行作为第一个参数给出的函数，其中x是第二个参数的值。因此，这里我们`windBackward()`每200毫秒运行一次该函数-我们将使用此函数不断向后倒退视频。要停止[`setInterval()`](1/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)运行，您必须调用[`clearInterval()`](1/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval)，为其指定要清除的时间间隔的标识名称，在这种情况下，该名称是变量名称`intervalRwd`（请参见`clearInterval()`函数中前面的调用）。
+   3. 如果`active`已在`rwd`按钮上设置，我们将使用删除它`classList.remove()`，清除第一次按下按钮时设置的间隔（有关更多说明，请参见下文），然后使用[`HTMLMediaElement.play()`取消快退并正常开始播放视频。
+   4. 如果尚未设置，我们使用将该`active`类添加到`rwd`按钮上，使用`classList.add()`暂停视频[`HTMLMediaElement.pause()`，然后将该`intervalRwd`变量设置为等于[`setInterval()`通话。调用时，将`setInterval()`创建一个活动间隔，这意味着它将每x毫秒运行作为第一个参数给出的函数，其中x是第二个参数的值。因此，这里我们`windBackward()`每200毫秒运行一次该函数-我们将使用此函数不断向后倒退视频。要停止[`setInterval()`运行，您必须调用[`clearInterval()`，为其指定要清除的时间间隔的标识名称，在这种情况下，该名称是变量名称`intervalRwd`（请参见`clearInterval()`函数中前面的调用）。
 
 3. 最后，我们需要定义在调用中调用的`windBackward()`和`windForward()`函数`setInterval()`。将以下内容添加到之前的两个功能下面：
 
@@ -385,12 +385,12 @@ function setTime() {
 
 这是一个相当长的函数，所以让我们逐步进行一下操作：
 
-1. 首先，我们计算出该值的分钟和秒数[`HTMLMediaElement.currentTime`](1/en-US/docs/Web/API/HTMLMediaElement/currentTime)。
+1. 首先，我们计算出该值的分钟和秒数[`HTMLMediaElement.currentTime`。
 2. 然后，我们再初始化两个变量- `minuteValue`和`secondValue`。
 3. 这两个`if`语句可以计算出分钟数和秒数是否小于10。如果是，则它们会以数字时钟显示的相同方式在值上添加前导零。
 4. 要显示的实际时间值设置为`minuteValue`加冒号加`secondValue`。
-5. [`Node.textContent`](1/en-US/docs/Web/API/Node/textContent)计时器的值设置为时间值，因此它显示在UI中。
-6. ``首先，通过计算外部的宽度``（任何元素的`clientWidth`属性将包含其长度），然后乘以[`HTMLMediaElement.currentTime`](1/en-US/docs/Web/API/HTMLMediaElement/currentTime)除以[`HTMLMediaElement.duration`](1/en-US/docs/Web/API/HTMLMediaElement/duration)介质的总和，得出应该设置内部的长度。
+5. [`Node.textContent`计时器的值设置为时间值，因此它显示在UI中。
+6. ``首先，通过计算外部的宽度``（任何元素的`clientWidth`属性将包含其长度），然后乘以[`HTMLMediaElement.currentTime`除以[`HTMLMediaElement.duration`介质的总和，得出应该设置内部的长度。
 7. 我们将内部的宽度设置``为等于所计算的条形长度加上“ px”，因此它将被设置为该像素数。
 
 #### 固定播放和暂停
