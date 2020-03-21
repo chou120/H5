@@ -1,6 +1,6 @@
 到目前为止，您应该掌握了将图像、视频和音频嵌入到网页上的诀窍了。此刻，让我们继续深入学习，来看一些能让您在网页中嵌入各种内容类型的元素：`<iframe>`, `<embed>` 和`<object>`元素。`<iframe>`用于嵌入其他网页，另外两个元素则允许您嵌入PDF，SVG，甚至Flash — 一种正在被淘汰的技术，但您仍然会时不时的看到它。
 
-| 预备知识： | 基本的计算机素养，[安装基础软件]( 1/Learn/Getting_started_with_the_web/Installing_basic_software)，[文件处理]( 1/Learn/Getting_started_with_the_web/Dealing_with_files) 的基本知识，熟悉HTML基础知识（阅读 [开始学习 HTML]( 1/docs/Learn/HTML/Introduction_to_HTML/Getting_started)）以及本模块中以前的文章。 |
+| 预备知识： | 基本的计算机素养，安装基础软件,文件处理的基本知识，熟悉HTML基础知识（阅读 开始学习 HTML）以及本模块中以前的文章。 |
 | :--------- | ------------------------------------------------------------ |
 | 学习目标： | 要了解如何使用`<object>`、`<embed>`以及`<iframe>`在网页中嵌入部件，例如Flash电影或其他网页。 |
 
@@ -18,7 +18,7 @@
 
 是不是很简单又有趣呢？`<iframe>`元素旨在允许您将其他Web文档嵌入到当前文档中。这很适合将第三方内容纳入您的网站，您可能无法直接控制，也不希望实现自己的版本 - 例如来自在线视频提供商的视频，[Disqus](https://disqus.com/)等评论系统，在线地图提供商，广告横幅等。
 
-我们会在后面提到，关于`<iframe>`有一些严重的[安全隐患]( 1/docs/Learn/HTML/Multimedia_and_embedding/其他嵌入技术#安全隐患)需要考虑，但这并不意味着你不应该在你的网站上使用它们 — 它只需要一些知识和仔细地思考。让我们更详细地探索这些代码。假设您想在其中一个网页上加入MDN词汇表，您可以尝试以下方式：
+我们会在后面提到，关于`<iframe>`有一些严重的安全隐患需要考虑，但这并不意味着你不应该在你的网站上使用它们 — 它只需要一些知识和仔细地思考。让我们更详细地探索这些代码。假设您想在其中一个网页上加入MDN词汇表，您可以尝试以下方式：
 
 ```
 <iframe src="1/en-US/docs/Glossary"
@@ -34,11 +34,11 @@
 
 - `allowfullscreen`
 
-  如果设置，`<iframe>`则可以通过[全屏API]( 1/docs/Web/API/Fullscreen_API)设置为全屏模式（稍微超出本文的范围）。
+  如果设置，`<iframe>`则可以通过全屏API设置为全屏模式（稍微超出本文的范围）。
 
 - `frameborder`
 
-  如果设置为1，则会告诉浏览器在此框架和其他框架之间绘制边框，这是默认行为。0删除边框。不推荐这样设置，因为在[CSS中可以更好地实现相同的效果。[`border`]( /border)`: none;`
+  如果设置为1，则会告诉浏览器在此框架和其他框架之间绘制边框，这是默认行为。0删除边框。不推荐这样设置，因为在[CSS中可以更好地实现相同的效果。`border`: `none;`
 
 - `src`
 
@@ -68,7 +68,7 @@
 
 [单击劫持](https://en.wikipedia.org/wiki/Clickjacking)是一种常见的iframe攻击，黑客将隐藏的iframe嵌入到您的文档中（或将您的文档嵌入到他们自己的恶意网站），并使用它来捕获用户的交互。这是误导用户或窃取敏感数据的常见方式。
 
-一个快速的例子 — 尝试在浏览器中加载上面的例子 - 你也可以[在Github上找到它](http://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)（[参见源代码](https://github.com/mdn/learning-area/blob/gh-pages/html/multimedia-and-embedding/other-embedding-technologies/iframe-detail.html)）。你将不会看到任何内容，但如果你点击[浏览器开发者工具中的*控制台*，你会看到一条消息，告诉你为什么没有显示内容。在Firefox中，您会*被告知：“X-Frame-Options拒绝加载1/en-US/docs/Glossary”*。这是因为构建MDN的开发人员已经在网站页面的服务器上设置了一个不允许被嵌入到``的设置（请参阅[配置CSP指令]( 1/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies#配置CSP指令)）这是有必要的 — 整个MDN页面被嵌入在其他页面中没有多大意义，除非您想要将其嵌入到您的网站上并将其声称为自己的内容，或尝试通过单击劫持来窃取数据，这都是非常糟糕的事情。此外，如果每个人都这样做，所有额外的带宽将花费Mozilla很多资金。
+
 
 #### 只有在必要时嵌入
 
@@ -76,7 +76,7 @@
 
 除了安全问题，你还应该意识到知识产权问题。无论在线内容还是离线内容，绝大部分内容都是有版权的，甚至是一些你没想到有版权的内容（例如，[Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)上的大多数图片）。不要在网页上展示一些不属于你的内容，除非你是所有者或所有者给了你明确的、书面的许可。对于侵犯版权的惩罚是严厉的。再说一次，你再小心也不为过。
 
-如果内容获得许可，你必须遵守许可条款。例如，MDN上的内容是[在CC-BY-SA下许可的]( 1/docs/MDN/About#版权和许可)，这意味着，如果你要引用我们的内容，就必须[用适当的方式注明来源](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution)，即使你对内容做了实质性的修改。
+
 
 #### 使用 HTTPS
 
@@ -85,9 +85,9 @@
 1. HTTPS减少了远程内容在传输过程中被篡改的机会，
 2. HTTPS防止嵌入式内容访问您的父文档中的内容，反之亦然。
 
-使用HTTPS需要一个安全证书，这可能是昂贵的（尽管[Let's Encrypt](https://letsencrypt.org/)让这件事变得更容易），如果你没有，可以使用HTTP来为你的父文档提供服务。但是，由于HTTPS的第二个好处，*无论成本如何，您绝对不能使用HTTP嵌入第三方内容*（在最好的情况下，您的用户的Web浏览器会给他们一个可怕的警告）。所有有声望的公司，例如Google Maps或Youtube，当您嵌入内容时，``将通过HTTPS提供 - 查看`` `src`属性内的URL。
+使用HTTPS需要一个安全证书，这可能是昂贵的，如果你没有，可以使用HTTP来为你的父文档提供服务。但是，由于HTTPS的第二个好处，*无论成本如何，您绝对不能使用HTTP嵌入第三方内容*（在最好的情况下，您的用户的Web浏览器会给他们一个可怕的警告）。
 
-**注意**：[Github页面允许默认情况下通过HTTPS提供内容，因此对托管内容很有用。如果您正在使用不同的托管，并且不确定，请向您的托管服务商询问。
+**注意**：Github页面允许默认情况下通过HTTPS提供内容，因此对托管内容很有用。如果您正在使用不同的托管，并且不确定，请向您的托管服务商询问。
 
 #### 始终使用`sandbox`属性
 
@@ -111,7 +111,7 @@
 
 **注意**：**插件**是一种对浏览器原生无法读取的内容提供访问权限的软件。
 
-然而，您不太可能使用这些元素 - Applet几年来一直没有被使用；由于许多原因，Flash不再受欢迎（见下面的[插件案例]( 1/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies#The_case_against_plugins)）；PDF更倾向于被链接而不是被嵌入；其他内容，如图像和视频都有更优秀、更容易元素来处理。插件和这些嵌入方法真的是一种传统技术，我们提及它们主要是为了以防您在某些情况下遇到问题，比如内部网或企业项目等。
+然而，您不太可能使用这些元素 - Applet几年来一直没有被使用；由于许多原因，Flash不再受欢迎；PDF更倾向于被链接而不是被嵌入；其他内容，如图像和视频都有更优秀、更容易元素来处理。插件和这些嵌入方法真的是一种传统技术，我们提及它们主要是为了以防您在某些情况下遇到问题，比如内部网或企业项目等。
 
 如果您发现自己需要嵌入插件内容，那么您至少需要一些这样的信息：
 
@@ -156,10 +156,10 @@ PDF是纸与数据之间重要的阶梯，但它们[在可访问性上有些问�
 - **从Flash和其他插件附带的[额外的可访问性问题](http://webaim.org/techniques/flash/)中摆脱。**
 - **避免额外的安全隐患。**即使经过无数次补丁[，](http://www.cvedetails.com/product/6761/Adobe-Flash-Player.html?vendor_id=53) Adobe Flash也是[非常不安全的](http://www.cvedetails.com/product/6761/Adobe-Flash-Player.html?vendor_id=53)。2015年，Facebook的首席安全官Alex Stamos甚至[要求Adobe停止Flash。](http://www.theverge.com/2015/7/13/8948459/adobe-flash-insecure-says-facebook-cso)
 
-那你该怎么办？如果您需要交互性，HTML和[JavaScript可以轻松地为您完成工作，而不需要Java小程序或过时的ActiveX / BHO技术。您可以使用[HTML5视频]( 1/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)来满足媒体需求，矢量图形[SVG]( 1/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)，以及复杂图像和动画[画布]( 1/docs/Web/API/Canvas_API/Tutorial)。[彼得·埃尔斯特（Peter Elst）几年前已经提到](https://plus.google.com/+PeterElst/posts/P5t4pFhptvp)，对于工作Adobe Flash极少是正确的工具，除了专门的游戏和商业应用。对于ActiveX，即使微软的[Edge浏览器也不再支持。
+那你该怎么办？如果您需要交互性，HTML和[JavaScript可以轻松地为您完成工作，而不需要Java小程序或过时的ActiveX / BHO技术。您可以使用HTML5视频来满足媒体需求，矢量图形SVG，以及复杂图像和动画画布。[彼得·埃尔斯特（Peter Elst）几年前已经提到](https://plus.google.com/+PeterElst/posts/P5t4pFhptvp)，对于工作Adobe Flash极少是正确的工具，除了专门的游戏和商业应用。对于ActiveX，即使微软的[Edge浏览器也不再支持。
 
 ## 总结
 
 在Web文档中嵌入其他内容这一主题可以很快变得非常复杂，因此在本文中，我们尝试以一种简单而熟悉的方式来介绍它，这种介绍方式将立即显示出相关性，同时仍暗示了一些涉及更高级功能的技术。刚开始，除了嵌入第三方内容（如地图和视频），您不太可能在网页上使用到嵌入技术。当你变得更有经验时，你可能会开始为他们找到更多的用途。
 
-除了我们在这里讨论的那些外，还有许多涉及嵌入外部内容的技术。我们看到了一些在前面的文章中出现的，如**`<video>`**，`<audio>`和`<img>`，但还有其它的有待关注，如`<canvas>`用于JavaScript生成的2D和3D图形，`<svg>`用于嵌入矢量图形。我们将在此学习模块的下一篇文章中学习[SVG。
+除了我们在这里讨论的那些外，还有许多涉及嵌入外部内容的技术。我们看到了一些在前面的文章中出现的，如**`<video>`**，`<audio>`和`<img>`，但还有其它的有待关注，如`<canvas>`用于JavaScript生成的2D和3D图形，`<svg>`用于嵌入矢量图形。我们将在此学习模块的下一篇文章中学习SVG。

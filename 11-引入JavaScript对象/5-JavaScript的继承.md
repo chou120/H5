@@ -1,6 +1,6 @@
 现在说明了OOJS的大多数细节，本文介绍了如何创建从其“父”类继承特征的“子”对象类（构造函数）。另外，我们为您在何时何地可能使用OOJS提供了一些建议，并介绍了如何使用现代ECMAScript语法处理类。
 
-| 先决条件： | 基本的计算机知识，对HTML和CSS的基本理解，对JavaScript的基础知识（请参阅“ [第一步和[构建模块”）和OOJS的基础知识（请参见[“对象简介”）。 |
+| 先决条件： | 基本的计算机知识，对HTML和CSS的基本理解，对JavaScript的基础知识（请参阅“ 第一步和构建模块”）和OOJS的基础知识（请参见“对象简介”）。 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解如何在JavaScript中实现继承。                             |
 
@@ -12,7 +12,7 @@
 
 ## 入门
 
-首先，使自己成为我们的[oojs-class-inheritance-start.html](https://github.com/mdn/learning-area/blob/master/javascript/oojs/advanced/oojs-class-inheritance-start.html)文件的本地副本（也[可以实时运行](http://mdn.github.io/learning-area/javascript/oojs/advanced/oojs-class-inheritance-start.html)）。在这里，您会发现`Person()`我们在模块中一直使用的相同构造函数示例，只是略有不同-我们仅在构造函数内部定义了属性：
+在这里，您会发现`Person()`我们在模块中一直使用的相同构造函数示例，只是略有不同-我们仅在构造函数内部定义了属性：
 
 ```js
 function Person(first, last, age, gender, interests) {
@@ -119,15 +119,15 @@ function BlueGlassBrick() {
    ```
 
    ```
-Person.prototype
+   Person.prototype
    ```
-   
+
    其原型，因此将在需要时继承上可用的所有方法
 
    ```
-Person.prototype。
+   Person.prototype。
    ```
-   
+
 2. 我们需要继续做一件事。在添加最后一行之后，`Teacher.``prototype`的`constructor`属性现在等于`Person()`，因为我们只是设置`Teacher.prototype`为引用一个对象，该对象继承自`Person.prototype`！尝试保存代码，在浏览器中加载页面，然后进入`Teacher.prototype.constructor`控制台进行验证。
 
 3. 这可能会成为一个问题，因此我们需要设置此权限。您可以通过返回源代码并在底部添加以下行来实现：
@@ -186,17 +186,17 @@ teacher1.farewell();
 
 这些都应该正常工作。第1、2、3和6行的查询访问从通用`Person()`构造函数（类）继承的成员。第4行的查询访问仅在更专门的`Teacher()`构造函数（类）上可用的成员。第5行的查询将访问从继承的成员`Person()`，但`Teacher()`拥有自己的成员具有相同名称的事实除外，因此查询将访问该成员。
 
-**注意**：如果您无法正常使用它，请将您的代码与我们的[最终版本](https://github.com/mdn/learning-area/blob/master/javascript/oojs/advanced/oojs-class-inheritance-finished.html)进行比较（也[可以实时](http://mdn.github.io/learning-area/javascript/oojs/advanced/oojs-class-inheritance-finished.html)查看代码）。
+
 
 我们这里介绍的技术不是在JavaScript中创建继承类的唯一方法，但是它可以正常工作，并且为您提供了有关如何在JavaScript中实现继承的好主意。
 
-您可能还对检查一些新的[ECMAScript功能感兴趣，这些功能使我们能够在JavaScript中更干净地进行继承（请参阅[Classs）。我们在此不介绍这些内容，因为它们尚未在各种浏览器中得到广泛支持。早在IE9或更早的版本中，我们就支持了本文中讨论的所有其他代码构造，并且还有一些方法可以实现更早的支持。
+您可能还对检查一些新的ECMAScript功能感兴趣，这些功能使我们能够在JavaScript中更干净地进行继承（请参阅Classs）。我们在此不介绍这些内容，因为它们尚未在各种浏览器中得到广泛支持。早在IE9或更早的版本中，我们就支持了本文中讨论的所有其他代码构造，并且还有一些方法可以实现更早的支持。
 
-一种常见的方法是使用JavaScript库-大多数流行的选项都具有一组简单的功能，可用于更轻松，更快速地进行继承。[的CoffeeScript](http://coffeescript.org/#classes)例如提供`class`，`extends`等等。
+一种常见的方法是使用JavaScript库-大多数流行的选项都具有一组简单的功能，可用于更轻松，更快速地进行继承。[CoffeeScript](http://coffeescript.org/#classes)例如提供`class`，`extends`等等。
 
 ## 进一步的练习
 
-在我们的[OOP理论部分](1/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS#Object-oriented_programming_from_10000_meters)，我们还包括一个`Student`类作为概念，它继承了的所有功能`Person`，并且具有一种不同于问候的非正式`greeting()`方法。看一下该部分学生的问候语，然后尝试实现自己的构造函数，该构造函数继承的所有功能并实现不同的功能。`Person``Teacher``Student()``Person()``greeting()`
+在我们的OOP理论部分，我们还包括一个`Student`类作为概念，它继承了的所有功能`Person`，并且具有一种不同于问候的非正式`greeting()`方法。看一下该部分学生的问候语，然后尝试实现自己的构造函数，该构造函数继承的所有功能并实现不同的功能。`Person``Teacher``Student()``Person()``greeting()`
 
 ## 对象成员摘要
 
@@ -211,7 +211,7 @@ teacher1.farewell();
 
 ## ECMAScript 2015类
 
-ECMAScript 2015将[类语法引入JavaScript，作为一种使用更简单，更简洁的语法来编写可重用类的方法，该语法与C ++或Java中的类更相似。在本节中，我们将把Person和Teacher的示例从原型继承转换为类，向您展示它是如何完成的。
+ECMAScript 2015将类语法引入JavaScript，作为一种使用更简单，更简洁的语法来编写可重用类的方法，该语法与C ++或Java中的类更相似。在本节中，我们将把Person和Teacher的示例从原型继承转换为类，向您展示它是如何完成的。
 
 **注意**：这种现代的编写类方法在所有现代的浏览器中均受支持，但是如果您在需要支持不支持该语法的浏览器的项目中工作，那么仍然值得了解基础原型继承。 ）。
 
@@ -239,12 +239,12 @@ class Person {
 }
 ```
 
-在[类的语句表明我们正在创造一个新的类。在此块内，我们定义该类的所有功能：
+在类的语句表明我们正在创造一个新的类。在此块内，我们定义该类的所有功能：
 
 - 该`constructor()`方法定义了代表我们`Person`类的构造函数。
-- `greeting()`和`farewell()`是类方法。您想要与该类关联的任何方法都在构造函数之后在其内部定义。在此示例中，我们使用[模板文字而不是字符串连接来使代码更易于阅读。
+- `greeting()`和`farewell()`是类方法。您想要与该类关联的任何方法都在构造函数之后在其内部定义。在此示例中，我们使用模板文字而不是字符串连接来使代码更易于阅读。
 
-现在，我们可以使用[`new`运算符实例化对象实例，就像之前一样：
+现在，我们可以使用`new`运算符实例化对象实例，就像之前一样：
 
 ```js
 let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
@@ -264,7 +264,7 @@ leia.farewell();
 
 上面我们创建了一个代表人的类。它们具有所有人共有的一系列属性。在本节中，我们将创建专门的`Teacher`类，使其`Person`使用现代类语法继承。这称为创建子类或子类。
 
-要创建子类，我们可以使用[extends关键字告诉JavaScript我们要基于其类的类，
+要创建子类，我们可以使用extends关键字告诉JavaScript我们要基于其类的类，
 
 ```js
 class Teacher extends Person {
@@ -277,7 +277,7 @@ class Teacher extends Person {
 
 但是有一点收获。
 
-不像老派构造函数[`new`运营商做的初始化`this`到新分配的对象，这不是自动初始化由定义的类[扩展关键词，即子类。
+不像老派构造函数`new`运营商做的初始化`this`到新分配的对象，这不是自动初始化由定义的类扩展关键词，即子类。
 
 因此，运行上面的代码将产生错误：
 
@@ -290,7 +290,7 @@ accessing 'this' or returning from derived constructor
 
 在这里，我们扩展`Person`类- `Teacher`子类是类的扩展`Person`。因此，对于`Teacher`，`this`初始化由`Person`构造函数完成。
 
-要调用父构造函数，我们必须使用[`super()`operator，如下所示：
+要调用父构造函数，我们必须使用`super()`operator，如下所示：
 
 ```js
 class Teacher extends Person {
@@ -303,7 +303,7 @@ class Teacher extends Person {
 ```
 
 如果没有从父类继承的属性，则没有子类是没有意义的。
-很好的是，[`super()`运算符也接受父构造函数的参数。
+很好的是，`super()`运算符也接受父构造函数的参数。
 
 回顾我们的`Person`构造函数，我们可以看到它的构造函数方法中包含以下代码块：
 
@@ -411,4 +411,3 @@ console.log(snape.subject) // Returns "Balloon animals"
 使用继承时，建议您不要拥有太多级别的继承，并仔细跟踪定义方法和属性的位置。可以开始编写临时修改内置浏览器对象原型的代码，但是除非有充分的理由，否则不要这样做。当您尝试调试此类代码时，太多的继承会导致无休止的混乱和无尽的痛苦。
 
 最终，对象只是具有其特定角色和优点的另一种代码重用形式，例如函数或循环。如果您发现自己创建了一堆相关的变量和函数，并希望将它们一起跟踪并整齐地打包，则对象是个好主意。当您要将一组数据从一个地方传递到另一个地方时，对象也非常有用。无需使用构造函数或继承就可以实现这两件事。如果您只需要一个对象的单个实例，那么最好只使用一个对象文字，并且您当然不需要继承。
-

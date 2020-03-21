@@ -1,6 +1,6 @@
 本文将从HTML表格开始，介绍一些基本的内容，如行和单元格、标题、使单元格跨越多个列和行，以及如何将列中的所有单元组合在一起进行样式化。
 
-| 前置知识: | HTML基本概念 (参见 [Introduction to HTML)。 |
+| 前置知识: | HTML基本概念 。 |
 | :-------- | ------------------------------------------------------------ |
 | 目标:     | 了解熟悉HTML表格基本知识。                                   |
 
@@ -18,25 +18,15 @@
 
 因此，HTML的创建者们提供了一种方法来构建和呈现web上的表格数据，这也就不足为奇了。
 
-### 表格风格
-
-
-
-你可以在 GitHub 上找到上面表格的 [HTML源码](https://github.com/mdn/learning-area/blob/master/html/tables/basic/personal-pronouns.html) ; 先去看看, 当然也可以看看这个 [look at the live example](http://mdn.github.io/learning-area/html/tables/basic/personal-pronouns.html)! 你也许会注意到一件事情，那就是这个表格看上去可读性不是很好，那是因为现在这个页面上面的那个表格通过 MDN 站点添加了一些样式, 而 GitHub 上面的并没有添加。
-
-不要幻想; 为了能够让表格在网页上有效, 你需要提供一些 CSS 的样式信息，以及尽可能好的 HTML 固定结构. 在这个模块中，我们将专注于 HTML 部分; 在你完成这里的内容之后，你可以浏览 [Styling tables 来了解 CSS 的部分。
-
-虽然在这个模块中我们不会专注于 CSS, 但是我们提供了一个较小的 CSS 样式表让你使用，和默认的没有采用任何 CSS 样式的表相比，表格会更加可读。 你可以在 [stylesheet here](https://github.com/mdn/learning-area/blob/master/html/tables/basic/minimal-table.css) 获取样式表，以及在 [HTML template](https://github.com/mdn/learning-area/blob/master/html/tables/basic/blank-template.html) 获取 HTML 文件来应用样式表，这些会让你在 “测试 HTML 表格” 中有一个好的起点。
-
 ### 什么时候你不应该使用 HTML 表格?
 
 
 
-HTML 表格 应该用于表格数据 ，这正是 HTML 表格设计出来的用途. 不幸的是, 许多人习惯用 HTML 表格来实现网页布局， e.g. 一行包含 header, 一行包含几列内容, 一行包含 footer, etc. 你可以在我们的 [Accessibility Learning Module 中的 [Page Layouts](1/en-US/docs/Learn/Accessibility/HTML#Page_layouts) 获得更多细节内容和一个示例。这种做法以前是很常见的，因为以前 CSS 在不同浏览器上的兼容性比较糟糕 ; 表格布局现在不太普遍，但您可能仍然会在网络的某些角落看到它们。
+HTML 表格 应该用于表格数据 ，这正是 HTML 表格设计出来的用途. 不幸的是, 许多人习惯用 HTML 表格来实现网页布局， e.g. 一行包含 header, 一行包含几列内容, 一行包含 footer, etc. 你可以在我们的 Accessibility Learning Module 中的 Page Layouts 获得更多细节内容和一个示例。这种做法以前是很常见的，因为以前 CSS 在不同浏览器上的兼容性比较糟糕 ; 表格布局现在不太普遍，但您可能仍然会在网络的某些角落看到它们。
 
 简单来说, 使用表格布局而不使用 [CSS layout techniques 是很糟糕的. 主要的理由有以下几个:
 
-1. **表格布局减少了视觉受损的用户的可访问性**: [屏幕阅读器](1/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#Screenreaders), 被盲人所使用, 解析存在于 HTML 页面上的标签，然后为用户读出其中的内容。因为对于布局来说，表格不是一个正确的工具， 使用的标记比使用 CSS 布局技术更复杂, 所以屏幕阅读器的输出会让他们的用户感到困惑。
+1. **表格布局减少了视觉受损的用户的可访问性**: 屏幕阅读器, 被盲人所使用, 解析存在于 HTML 页面上的标签，然后为用户读出其中的内容。因为对于布局来说，表格不是一个正确的工具， 使用的标记比使用 CSS 布局技术更复杂, 所以屏幕阅读器的输出会让他们的用户感到困惑。
 2. **表格会产生很多标签**: 正如刚才提到的, 表格布局通常会比正确的布局技术涉及更复杂的标签结构，这会导致代码变得更难于编写、维护、调试.
 3. **表格不能自动响应**: 当你使用正确的布局容器 (比如 `<header>`, `<section>`, `<article>`, 或是`<div>`), 它们的默认宽度是父元素的 100%. 而表格的的默认大小是根据其内容而定的。因此，需要采取额外的措施来获取表格布局样式，以便有效地在各种设备上工作。
 
@@ -152,9 +142,8 @@ HTML 表格 应该用于表格数据 ，这正是 HTML 表格设计出来的用�
 
 让我们使用 `colspan` 和 `rowspan` 来改进现有的表格。
 
-1. 首先，把 [animals-table.html](https://github.com/mdn/learning-area/blob/master/html/tables/basic/animals-table.html) 和 [minimal-table.css](https://github.com/mdn/learning-area/blob/master/html/tables/basic/minimal-table.css) 文件复制到你的本地环境，HTML 文件中包含了你刚才看到的动物示例的数据。
-2. 接着，使用 `colspan` 让 "Animals", "Hippopotamus", 和 "Crocodile" 占 2 个单元格的宽度。
-3. 最后，使用 `rowspan` 让 "Horse" 和 "Chicken" 占 2 个单元格的高度。
+1. 使用 `colspan` 让 "Animals", "Hippopotamus", 和 "Crocodile" 占 2 个单元格的宽度。
+3. 使用 `rowspan` 让 "Horse" 和 "Chicken" 占 2 个单元格的高度。
 4. 保存后，用浏览器打开你写的 HTML 文件，看看改进的地方。
 
 ## 为表格中的列提供共同的样式

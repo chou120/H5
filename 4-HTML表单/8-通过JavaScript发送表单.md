@@ -2,7 +2,7 @@ HTML表单可以声明式发送[HTTP请求。但是表单也可以准备HTTP请�
 
 ## 形式并不总是形式
 
-对于渐进式Web应用程序，单页应用程序和基于框架的应用程序，通常在接收到响应数据时使用[HTML表单发送数据而不加载新文档。让我们首先讨论为什么这需要一种不同的方法。
+对于渐进式Web应用程序，单页应用程序和基于框架的应用程序，通常在接收到响应数据时使用HTML表单发送数据而不加载新文档。让我们首先讨论为什么这需要一种不同的方法。
 
 ### 获得对全局接口的控制
 
@@ -12,15 +12,15 @@ HTML表单可以声明式发送[HTTP请求。但是表单也可以准备HTTP请�
 
 许多现代UI仅使用HTML表单来收集用户输入，而不使用数据提交。当用户尝试发送数据时，应用程序将控制并在后台异步传输数据，仅更新UI中需要更改的部分。
 
-异步发送任意数据通常称为[AJAX，它代表**“异步JavaScript和XML”**。
+异步发送任意数据通常称为AJAX，它代表**“异步JavaScript和XML”**。
 
 ### 有什么不同？
 
 
 
-[Ť他[`XMLHttpRequest`（XHR）DOM对象可以建立HTTP请求，向他们发送和检索其结果。从历史上看，它[`XMLHttpRequest`被设计为以交换格式获取和发送[XML，此后已被[JSON取代。但是XML和JSON都不适合表单数据请求编码。表单数据（`application/x-www-form-urlencoded`）由URL编码的键/值对列表组成。为了传输二进制数据，HTTP请求被重塑为`multipart/form-data`。
+Ť他`XMLHttpRequest`（XHR）DOM对象可以建立HTTP请求，向他们发送和检索其结果。从历史上看，它`XMLHttpRequest`被设计为以交换格式获取和发送XML，此后已被JSON取代。但是XML和JSON都不适合表单数据请求编码。表单数据（`application/x-www-form-urlencoded`）由URL编码的键/值对列表组成。为了传输二进制数据，HTTP请求被重塑为`multipart/form-data`。
 
-**注意**：[如今，Fetch API经常代替XHR使用-它是XHR的现代更新版本，其工作方式类似，但具有一些优点。您将在本文中看到的大多数XHR代码都可以换成Fetch。
+**注意**：如今，Fetch API经常代替XHR使用-它是XHR的现代更新版本，其工作方式类似，但具有一些优点。您将在本文中看到的大多数XHR代码都可以换成Fetch。
 
 如果您控制前端（在浏览器中执行的代码）和后端（在服务器上执行的代码），则可以发送JSON / XML并根据需要进行处理。
 
@@ -30,13 +30,13 @@ HTML表单可以声明式发送[HTTP请求。但是表单也可以准备HTTP请�
 
 ## 发送表格数据
 
-从传统技术到较新的[`FormData`对象，共有3种发送表单数据的方法。让我们详细看看它们。
+从传统技术到较新的`FormData`对象，共有3种发送表单数据的方法。让我们详细看看它们。
 
 ### 手动构建XMLHttpRequest
 
 
 
-[`XMLHttpRequest`是发出HTTP请求的最安全，最可靠的方法。要使用发送表单数据[`XMLHttpRequest`，请通过对URL进行编码来准备数据，并遵守表单数据请求的细节。
+`XMLHttpRequest`是发出HTTP请求的最安全，最可靠的方法。要使用发送表单数据`XMLHttpRequest`，请通过对URL进行编码来准备数据，并遵守表单数据请求的细节。
 
 让我们看一个例子：
 
@@ -94,17 +94,17 @@ btn.addEventListener( 'click', function() {
 
 
 
-**注意：**如果您想将数据发送到第三方网站，[`XMLHttpRequest`则此使用受[同源策略的约束。对于跨域请求，您将需要[CORS和HTTP访问控制。
+**注意：**如果您想将数据发送到第三方网站，`XMLHttpRequest`则此使用受同源策略的约束。对于跨域请求，您将需要CORS和HTTP访问控制。
 
 ### 使用XMLHttpRequest和FormData对象
 
 
 
-手动建立HTTP请求可能会很麻烦。幸运的是，[XMLHttpRequest规范](http://www.w3.org/TR/XMLHttpRequest/)提供了一种更简单的方法来处理带有该[`FormData`对象的表单数据请求。
+手动建立HTTP请求可能会很麻烦。幸运的是，[XMLHttpRequest规范](http://www.w3.org/TR/XMLHttpRequest/)提供了一种更简单的方法来处理带有该`FormData`对象的表单数据请求。
 
-该[`FormData`对象可用于构建用于传输的表单数据，或用于获取表单元素中的数据以管理其发送方式。请注意，[`FormData`对象是“仅写”的，这意味着您可以更改它们，但不能检索其内容。
+该`FormData`对象可用于构建用于传输的表单数据，或用于获取表单元素中的数据以管理其发送方式。请注意，`FormData`对象是“仅写”的，这意味着您可以更改它们，但不能检索其内容。
 
-“使用[FormData对象”中详细介绍了使用此对象的方法，但这是两个示例：
+“使用FormData对象”中详细介绍了使用此对象的方法，但这是两个示例：
 
 #### 使用独立的FormData对象
 
@@ -204,17 +204,17 @@ window.addEventListener( "load", function () {
 
 ```
 
-您甚至可以通过使用表单的[`elements`属性来获取表单中所有数据元素的列表，然后一次手动管理它们，从而使流程更多地参与其中。
+您甚至可以通过使用表单的`elements`属性来获取表单中所有数据元素的列表，然后一次手动管理它们，从而使流程更多地参与其中。
 
 ## 处理二进制数据
 
-如果将[`FormData`对象与包含`<input type="file">`小部件的表单一起使用，则数据将被自动处理。但是要手动发送二进制数据，还有很多工作要做。
+如果将`FormData`对象与包含`<input type="file">`小部件的表单一起使用，则数据将被自动处理。但是要手动发送二进制数据，还有很多工作要做。
 
-有二进制数据，其中包括许多来源[`FileReader`，[`Canvas`和[的WebRTC](1/en-US/docs/WebRTC/navigator.getUserMedia)。不幸的是，某些旧版浏览器无法访问二进制数据或需要复杂的解决方法.
+有二进制数据，其中包括许多来源`FileReader`，`Canvas`和WebRTC。不幸的是，某些旧版浏览器无法访问二进制数据或需要复杂的解决方法.
 
-发送二进制数据[`FormData`最简单的`append()`方法是使用上面演示的方法。如果必须手动操作，则比较棘手。
+发送二进制数据`FormData`最简单的`append()`方法是使用上面演示的方法。如果必须手动操作，则比较棘手。
 
-在以下示例中，我们使用[`FileReader`API访问二进制数据，然后手动构建多部分表单数据请求：
+在以下示例中，我们使用`FileReader`API访问二进制数据，然后手动构建多部分表单数据请求：
 
 ```html
 <form id="theForm">
@@ -350,5 +350,5 @@ window.addEventListener( 'load', function () {
     event.preventDefault();
     sendData();
   } );
-} );
+} )
 ```

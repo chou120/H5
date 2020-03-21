@@ -1,12 +1,12 @@
-HTML5带有用于在文档中嵌入富媒体的元素- [``和[``-进而具有它们自己的用于控制播放，搜索等的API。本文向您展示如何执行常见任务，例如创建自定义播放控件。
+HTML5带有用于在文档中嵌入富媒体的元素- `<video>`和`<audio>`-进而具有它们自己的用于控制播放，搜索等的API。本文向您展示如何执行常见任务，例如创建自定义播放控件。
 
-| 先决条件： | JavaScript基础知识（请参阅[第一步，[构建基块，[JavaScript对象），[客户端API的[基础知识 |
+| 先决条件： | JavaScript基础知识（请参阅第一步，构建基块，JavaScript对象），客户端API的基础知识 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解如何使用浏览器API来控制视频和音频播放。                  |
 
 ## HTML5视频和音频
 
-在`<video>`和` <audio>`元素使我们能够嵌入视频和音频到网页。如我们在 [视频和音频内容中所示，典型的实现如下所示：
+在`<video>`和` <audio>`元素使我们能够嵌入视频和音频到网页。如我们在 视频和音频内容中所示，典型的实现如下所示：
 
 ```html
 <video controls>
@@ -28,7 +28,7 @@ HTML5带有用于在文档中嵌入富媒体的元素- [``和[``-进而具有它
 
 ## HTMLMediaElement API
 
-HTML5规范的一部分，该[`HTMLMediaElement`API提供的功能，让您可以编程控制的视频和音频播放器-例如[`HTMLMediaElement.play()`，[`HTMLMediaElement.pause()`等此接口可用于两个`<audio>`和`<video>`元素，功能，你会希望实现几乎相同。
+HTML5规范的一部分，该`HTMLMediaElement`API提供的功能，让您可以编程控制的视频和音频播放器-例如`HTMLMediaElement.play()`，`HTMLMediaElement.pause()`等此接口可用于两个`<audio>`和`<video>`元素，功能，你会希望实现几乎相同。
 
 ### 入门
 
@@ -90,9 +90,9 @@ HTML5规范的一部分，该[`HTMLMediaElement`API提供的功能，让您可�
 }
 ```
 
-- 我们首先[`visibility`]( /visibility)将自定义控件的设置为`hidden`。稍后在JavaScript中，我们将控件设置为`visible`，然后`controls`从`<video>`元素中删除属性。这样一来，如果由于某种原因无法加载JavaScript，则用户仍可以将视频与本机控件一起使用。
-- [`opacity`]( /opacity)默认情况下，我们将控件设置为0.5，这样在您尝试观看视频时，它们的注意力就会减少。只有当您将鼠标悬停在播放器上或将焦点对准播放器时，控件才会完全不透明。
-- 我们使用Flexbox（[`display`]( /display)：flex）在控制栏内布置按钮，以使事情变得更容易。
+- 我们首先`visibility`将自定义控件的设置为`hidden`。稍后在JavaScript中，我们将控件设置为`visible`，然后`controls`从`<video>`元素中删除属性。这样一来，如果由于某种原因无法加载JavaScript，则用户仍可以将视频与本机控件一起使用。
+- `opacity`默认情况下，我们将控件设置为0.5，这样在您尝试观看视频时，它们的注意力就会减少。只有当您将鼠标悬停在播放器上或将焦点对准播放器时，控件才会完全不透明。
+- 我们使用Flexbox（`display`：flex）在控制栏内布置按钮，以使事情变得更容易。
 
 接下来，让我们看一下按钮图标：
 
@@ -117,15 +117,15 @@ button:before {
 }
 ```
 
-首先，在CSS的顶部，我们使用一个[`@font-face`]( /@font-face)块来导入自定义Web字体。这是一种图标字体-字母表中的所有字符都等同于您可能希望在应用程序中使用的常用图标。
+首先，在CSS的顶部，我们使用一个`@font-face`块来导入自定义Web字体。这是一种图标字体-字母表中的所有字符都等同于您可能希望在应用程序中使用的常用图标。
 
 接下来，我们使用生成的内容在每个按钮上显示一个图标：
 
-- 我们使用[`::before`]( /::before)选择器在每个`<button>`元素之前显示内容。
-- 我们使用该[`content`]( /content)属性将每种情况下要显示的内容设置为等于该`data-icon`属性的内容。在我们的播放按钮的情况下，`data-icon`包含大写字母“ P”。
-- 我们使用将自定义网络字体应用于按钮[`font-family`]( /font-family)。在此字体中，“ P”实际上是“播放”图标，因此播放按钮上显示有“播放”图标。
+- 我们使用`::before`选择器在每个`<button>`元素之前显示内容。
+- 我们使用该`content`属性将每种情况下要显示的内容设置为等于该`data-icon`属性的内容。在我们的播放按钮的情况下，`data-icon`包含大写字母“ P”。
+- 我们使用将自定义网络字体应用于按钮`font-family`。在此字体中，“ P”实际上是“播放”图标，因此播放按钮上显示有“播放”图标。
 
-图标字体之所以非常酷，有很多原因-减少了HTTP请求，因为您不需要将这些图标下载为图像文件，可伸缩性强，并且可以使用文本属性来设置它们的样式（例如[`color`]( /color)和）[`text-shadow`]( /text-shadow)。
+图标字体之所以非常酷，有很多原因-减少了HTTP请求，因为您不需要将这些图标下载为图像文件，可伸缩性强，并且可以使用文本属性来设置它们的样式。
 
 最后但并非最不重要的一点，让我们看一下计时器的CSS：
 
@@ -157,10 +157,10 @@ button:before {
 }
 ```
 
-- 我们将外部设置`.timer` `<div>`为具有flex：5，因此它占据了控制栏的大部分宽度。我们还给出了，以便我们可以根据元素的边界而不是元素的边界方便地将元素放置在其中。[`position`]( /position)`: relative`,`<body>`
+- 我们将外部设置`.timer` `<div>`为具有flex：5，因此它占据了控制栏的大部分宽度。我们还给出了，以便我们可以根据元素的边界而不是元素的边界方便地将元素放置在其中。`position`: `relative`,`<body>`
 - 内部`<div>`绝对定位为直接位于外部之上。它的初始宽度也为0，因此您根本看不到它。随着视频的播放，随着时间的流逝，宽度会通过JavaScript增大。
 - 该`<span>`也绝对定位坐在附近的计时器栏的左侧。
-- 我们还提供内部``和``适当数量[`z-index`]( /z-index)的计时器，以便计时器显示在顶部，内部显示在`<div>`底部。这样，我们确保可以看到所有信息-一个框不会遮挡另一个框。
+- 我们还提供内部`<div>`和`<span>`适当数量`z-index`的计时器，以便计时器显示在顶部，内部显示在`<div>`底部。这样，我们确保可以看到所有信息-一个框不会遮挡另一个框。
 
 ### 实施JavaScript
 
@@ -229,9 +229,9 @@ button:before {
    }
    ```
 
-   在这里，我们使用一条`if`语句来检查视频是否已暂停。[`HTMLMediaElement.paused`如果媒体暂停（在任何时候都没有播放视频，包括在第一次加载后将其设置为0时），则该属性返回true。如果已暂停，`data-icon`则将播放按钮上的属性值设置为“ u”（这是一个“已暂停”图标），并调用该[`HTMLMediaElement.play()`方法来播放媒体。
+   在这里，我们使用一条`if`语句来检查视频是否已暂停。`HTMLMediaElement.paused`如果媒体暂停（在任何时候都没有播放视频，包括在第一次加载后将其设置为0时），则该属性返回true。如果已暂停，`data-icon`则将播放按钮上的属性值设置为“ u”（这是一个“已暂停”图标），并调用该`HTMLMediaElement.play()`方法来播放媒体。
 
-   第二次单击时，该按钮将再次切换回-“播放”图标将再次显示，并且视频将以暂停[`HTMLMediaElement.paused()`。
+   第二次单击时，该按钮将再次切换回-“播放”图标将再次显示，并且视频将以暂停`HTMLMediaElement.paused()`。
 
 #### 停止视频
 
@@ -254,7 +254,7 @@ button:before {
    }
    ```
 
-   `stop()`HTMLMediaElement API上没有方法-等效于`pause()`视频，并将其[`currentTime`属性设置`currentTime`为0。设置为值（以秒为单位）会立即将媒体跳转到该位置。
+   `stop()`HTMLMediaElement API上没有方法-等效于`pause()`视频，并将其`currentTime`属性设置`currentTime`为0。设置为值（以秒为单位）会立即将媒体跳转到该位置。
 
    之后要做的就是将显示的图标设置为“播放”图标。无论按下暂停按钮是暂停视频还是播放视频，您都希望以后可以开始播放。
 
@@ -312,8 +312,8 @@ button:before {
 
    1. 我们清除快进功能上设置的所有类别和时间间隔–之所以这样做，是因为如果在按下`rwd`按钮后按下`fwd`按钮，我们想取消任何快进功能并将其替换为快退功能。如果我们试图同时做到这两者，那么玩家会破产。
    2. 我们使用一条`if`语句来检查是否在按钮`active`上设置了该类`rwd`，表明该类已经被按下。这`classList`是一个非常方便的属性，它存在于每个元素上-它包含该元素上设置的所有类的列表以及添加/删除类的`classList.contains()`方法等。我们使用该方法检查列表中是否包含`active`该类。这将返回一个布尔值`true`/ `false`结果。
-   3. 如果`active`已在`rwd`按钮上设置，我们将使用删除它`classList.remove()`，清除第一次按下按钮时设置的间隔（有关更多说明，请参见下文），然后使用[`HTMLMediaElement.play()`取消快退并正常开始播放视频。
-   4. 如果尚未设置，我们使用将该`active`类添加到`rwd`按钮上，使用`classList.add()`暂停视频[`HTMLMediaElement.pause()`，然后将该`intervalRwd`变量设置为等于[`setInterval()`通话。调用时，将`setInterval()`创建一个活动间隔，这意味着它将每x毫秒运行作为第一个参数给出的函数，其中x是第二个参数的值。因此，这里我们`windBackward()`每200毫秒运行一次该函数-我们将使用此函数不断向后倒退视频。要停止[`setInterval()`运行，您必须调用[`clearInterval()`，为其指定要清除的时间间隔的标识名称，在这种情况下，该名称是变量名称`intervalRwd`（请参见`clearInterval()`函数中前面的调用）。
+   3. 如果`active`已在`rwd`按钮上设置，我们将使用删除它`classList.remove()`，清除第一次按下按钮时设置的间隔（有关更多说明，请参见下文），然后使用`HTMLMediaElement.play()`取消快退并正常开始播放视频。
+   4. 如果尚未设置，我们使用将该`active`类添加到`rwd`按钮上，使用`classList.add()`暂停视频`HTMLMediaElement.pause()`，然后将该`intervalRwd`变量设置为等于`setInterval()`通话。调用时，将`setInterval()`创建一个活动间隔，这意味着它将每x毫秒运行作为第一个参数给出的函数，其中x是第二个参数的值。因此，这里我们`windBackward()`每200毫秒运行一次该函数-我们将使用此函数不断向后倒退视频。要停止`setInterval()`运行，您必须调用`clearInterval()`，为其指定要清除的时间间隔的标识名称，在这种情况下，该名称是变量名称`intervalRwd`（请参见`clearInterval()`函数中前面的调用）。
 
 3. 最后，我们需要定义在调用中调用的`windBackward()`和`windForward()`函数`setInterval()`。将以下内容添加到之前的两个功能下面：
 
@@ -385,13 +385,13 @@ function setTime() {
 
 这是一个相当长的函数，所以让我们逐步进行一下操作：
 
-1. 首先，我们计算出该值的分钟和秒数[`HTMLMediaElement.currentTime`。
+1. 首先，我们计算出该值的分钟和秒数`HTMLMediaElement.currentTime`。
 2. 然后，我们再初始化两个变量- `minuteValue`和`secondValue`。
 3. 这两个`if`语句可以计算出分钟数和秒数是否小于10。如果是，则它们会以数字时钟显示的相同方式在值上添加前导零。
 4. 要显示的实际时间值设置为`minuteValue`加冒号加`secondValue`。
-5. [`Node.textContent`计时器的值设置为时间值，因此它显示在UI中。
-6. ``首先，通过计算外部的宽度``（任何元素的`clientWidth`属性将包含其长度），然后乘以[`HTMLMediaElement.currentTime`除以[`HTMLMediaElement.duration`介质的总和，得出应该设置内部的长度。
-7. 我们将内部的宽度设置``为等于所计算的条形长度加上“ px”，因此它将被设置为该像素数。
+5. `Node.textContent`计时器的值设置为时间值，因此它显示在UI中。
+6. ``首先，通过计算外部的宽度``（任何元素的`clientWidth`属性将包含其长度），然后乘以`HTMLMediaElement.currentTime`除以`HTMLMediaElement.duration`介质的总和，得出应该设置内部的长度。
+7. 我们将内部的宽度设置等于所计算的条形长度加上“ px”，因此它将被设置为该像素数。
 
 #### 固定播放和暂停
 

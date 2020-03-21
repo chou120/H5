@@ -1,6 +1,6 @@
-在[CSS中，选择器用于定位我们要设置样式的网页上的[HTML元素。有多种CSS选择器可供选择，在选择要设置样式的元素时可以实现细粒度的精度。在本文及其子文章中，我们将详细介绍各种类型，并了解它们的工作原理。
+在CSS中，选择器用于定位我们要设置样式的网页上的HTML元素。有多种CSS选择器可供选择，在选择要设置样式的元素时可以实现细粒度的精度。在本文及其子文章中，我们将详细介绍各种类型，并了解它们的工作原理。
 
-| 先决条件： | 基本的计算机知识，[已安装的基本软件]( 1
+| 先决条件： | 基本的计算机知识，已安装的基本软件
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解CSS选择器的详细工作方式。                                |
 
@@ -174,16 +174,16 @@ article > p { }
 
 下表概述了可使用的选择器，并提供了指向本指南页面的链接，这些链接将向您展示如何使用每种选择器。我还为每个选择器都提供了指向MDN页面的链接，您可以在其中检查浏览器支持信息。当您稍后需要在材料中查找选择器时，或者在尝试使用CSS时，可以将其用作参考。
 
-| 选择器                                                       | 例                  | 学习CSS教程                                                  |
-| :----------------------------------------------------------- | :------------------ | :----------------------------------------------------------- |
-| [类型选择器]( /Type_selectors) | `h1 { }`            | [类型选择器](1/en-US/docs/user:chrisdavidmills/CSS_Learn/CSS_Selectors/Type_Class_and_ID_Selectors#Type_selectors) |
-| [通用选择器]( /Universal_selectors) | `* { }`             | [通用选择器](1/en-US/docs/user:chrisdavidmills/CSS_Learn/CSS_Selectors/Type_Class_and_ID_Selectors#The_universal_selector) |
-| [类选择器]( /Class_selectors) | `.box { }`          | [类选择器](1/en-US/docs/user:chrisdavidmills/CSS_Learn/CSS_Selectors/Type_Class_and_ID_Selectors#Class_selectors) |
-| [ID选择器]( /ID_selectors) | `#unique { }`       | [ID选择器](1/en-US/docs/user:chrisdavidmills/CSS_Learn/CSS_Selectors/Type_Class_and_ID_Selectors#ID_Selectors) |
-| [属性选择器]( /Attribute_selectors) | `a[title] { }`      | [属性选择器](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Attribute_selectors) |
-| [伪类选择器]( /Pseudo-classes) | `p:first-child { }` | [伪类](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Pseuso-classes_and_Pseudo-elements#What_is_a_pseudo-class) |
-| [伪元素选择器]( /Pseudo-elements) | `p::first-line { }` | [伪元素](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Pseuso-classes_and_Pseudo-elements#What_is_a_pseudo-element) |
-| [后代组合器]( /Descendant_combinator) | `article p`         | [后代组合器](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Combinators#Descendant_Selector) |
-| [儿童组合器]( /Child_combinator) | `article > p`       | [儿童组合器](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Combinators#Child_combinator) |
-| [相邻的同级组合器]( /Adjacent_sibling_combinator) | `h1 + p`            | [相邻兄弟姐妹](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Combinators#Adjacent_sibling) |
-| [通用同级组合器]( /General_sibling_combinator) | `h1 ~ p`            | [一般同级](1/en-US/docs/User:chrisdavidmills/CSS_Learn/CSS_Selectors/Combinators#General_sibling) |
+| 选择器           | 例                  | 学习CSS教程  |
+| :--------------- | :------------------ | :----------- |
+| 类型选择器       | `h1 { }`            | 类型选择器   |
+| 通用选择器       | `* { }`             | 通用选择器   |
+| 类选择器         | `.box { }`          | 类选择器     |
+| ID选择器         | `#unique { }`       | ID选择器     |
+| 属性选择器       | `a[title] { }`      | 属性选择器   |
+| 伪类选择器       | `p:first-child { }` | 伪类         |
+| 伪元素选择器     | `p::first-line { }` | 伪元素       |
+| 后代组合器       | `article p`         | 后代组合器   |
+| 儿童组合器       | `article > p`       | 儿童组合器   |
+| 相邻的同级组合器 | `h1 + p`            | 相邻兄弟姐妹 |
+| 通用同级组合器   | `h1 ~ p`            | 一般同级     |

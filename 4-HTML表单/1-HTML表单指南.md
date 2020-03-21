@@ -2,31 +2,31 @@
 
 ## 预备知识
 
-在开始这个模块之前，您至少应该完成我们[对HTML的介绍]( 1/docs/Learn/HTML/Introduction_to_HTML)。此时此刻，您应该会发现[基本指南]( 1/docs/Learn/HTML/Forms#基本指南)很容易理解，并且能够使用我们的[原生表单小部件]( 1/docs/Learn/HTML/Forms/The_native_form_widgets)指南。
+在开始这个模块之前，您至少应该完成我们对HTML的介绍。此时此刻，您应该会发现基本指南很容易理解，并且能够使用我们的原生表单小部件指南。
 
-但是模块的其余部分更高级一些，很容易将表单小部件放在页面上，但是如果不使用高级表单特性、CSS和JavaScript，就不能对它们做太多的工作。因此，在您查看其他部分之前，我们建议您先离开，先学习一些[CSS]( 1/docs/Learn/CSS)和[JavaScript]( 1/docs/Learn/JavaScript)。
+但是模块的其余部分更高级一些，很容易将表单小部件放在页面上，但是如果不使用高级表单特性、CSS和JavaScript，就不能对它们做太多的工作。因此，在您查看其他部分之前，我们建议您先离开，先学习一些CSS。
 
-**注意：**如果您正在使用一个不能让您创建自己的文件的计算机/平板电脑/其它设备，那么您可以尝试(大多数)在线编码程序中的代码示例，例如[JSBin](http://jsbin.com/)或[Thimble](https://thimble.mozilla.org/)。
+
 
 ## 基本指南
 
-- [你的第一个HTML表单]( 1/docs/Learn/HTML/Forms/Your_first_HTML_form)
+- 你的第一个HTML表单
 
   本系列的第一篇文章提供了您第一次创建HTML表单的经验，包括设计一个简单表单，使用正确的HTML元素实现它，通过CSS添加一些非常简单的样式，以及如何将数据发送到服务器。
 
-- [如何构造HTML表单]( 1/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form)
+- 如何构造HTML表单
 
   有了基础知识，我们现在更详细地了解了用于为表单的不同部分提供结构和意义的元素。
 
 ## 什么表单小部件可用?
 
-- [原生表单小部件]( 1/docs/Learn/HTML/Forms/The_native_form_widgets)
+- 原生表单小部件
 
   现在，我们详细研究了不同表单部件的功能，查看了哪些选项可用于收集不同类型的数据。
 
 ## 验证和提交表单数据
 
-- [发送表单数据]( 1/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)
+- 发送表单数据
 
   本文讨论当用户提交一个表单时，会发生什么情况——表单数据的去向以及当表单数据到达指定位置时我们如何处理？我们还研究了与发送表单数据相关的一些安全问题。
 
@@ -36,28 +36,28 @@
 
 ## 高级指南
 
-- [如何构建自定表单小组件]( 1/docs/Learn/HTML/Forms/How_to_build_custom_form_widgets)
+- 如何构建自定表单小组件
 
   在某些情况下，原生表单部件无法提供您需要的东西，例如，由于样式或功能。在这种情况下，您可能需要使用原生HTML构建自己的表单小部件。本文将说明您是如何做到这一点的，以及在实际案例研究中需要注意的事项。
 
-- [通过JavaScript发送表单]( 1/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript)
+- 通过JavaScript发送表单
 
   本文将讨论如何使用表单来组装HTTP请求，并通过定制的JavaScript发送它，而不是标准的表单提交。它还研究了为什么要这么做，以及这样做的意义。（请参阅使用FormData对象。）
 
-- [遗留浏览器中的HTML表单]( 1/docs/Learn/HTML/Forms/HTML_forms_in_legacy_browsers)
+- 遗留浏览器中的HTML表单
 
   文章覆盖特性检测等。这应该被重定向到跨浏览器测试模块，因为相同的东西在那里被更好地覆盖。
 
 ## 表单样式指南
 
-- [HTML表单样式]( 1/docs/Learn/HTML/Forms/Styling_HTML_forms)
+- HTML表单样式
 
   本文介绍了使用CSS的样式表单，包括您可能需要了解的基本样式任务的所有基础知识。
 
-- [高级HTML表单样式]( 1/docs/Learn/HTML/Forms/Advanced_styling_for_HTML_forms)
+- 高级HTML表单样式
 
   在这里，我们将看到一些更高级的表单样式技术，这些技术需要在处理一些更难以风格的元素时使用。
 
-- [表单部件的属性兼容性表]( 1/docs/Learn/HTML/Forms/Property_compatibility_table_for_form_widgets)
+- 表单部件的属性兼容性表
 
   这最后一篇文章提供了一个方便的参考，允许您查看哪些CSS属性与哪些表单元素是兼容的。

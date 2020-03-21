@@ -30,7 +30,7 @@ btn.addEventListener('click', () => {
    3. 给它的文本内容赋值。
    4. 最后，把这个段落放进网页。
 
-每一个操作在执行的时候，其他任何事情都没有发生 — 网页的渲染暂停. 因为前篇文章提到过 [JavaScript is single threaded](1/en-US/docs/Learn/JavaScript/Asynchronous/Concepts#JavaScript_is_single_threaded). 任何时候只能做一件事情, 只有一个主线程，其他的事情都阻塞了，直到前面的操作完成。
+每一个操作在执行的时候，其他任何事情都没有发生 — 网页的渲染暂停. 因为前篇文章提到过 JavaScript is single threaded. 任何时候只能做一件事情, 只有一个主线程，其他的事情都阻塞了，直到前面的操作完成。
 
 所以上面的例子，点击了按钮以后，段落不会创建，直到在alert消息框中点击ok，段落才会出现，你可以自己试试
 
@@ -58,7 +58,7 @@ var blob = response.blob();
 
 异步callbacks 其实就是函数，只不过是作为参数传递给那些在后台执行的其他函数. 当那些后台运行的代码结束，就调用callbacks函数，通知你工作已经完成，或者其他有趣的事情发生了。使用callbacks 有一点老套，在一些老派但经常使用的API里面，你会经常看到这种风格。
 
-举个例子，异步callback 就是[`addEventListener()`]( 1/docs/Web/API/EventTarget/addEventListener)第二个参数（前面的例子）：
+举个例子，异步callback 就是`addEventListener()`第二个参数（前面的例子）：
 
 ```js
 btn.addEventListener('click', () => {
@@ -74,7 +74,7 @@ btn.addEventListener('click', () => {
 
 当我们把回调函数作为一个参数传递给另一个函数时，仅仅是把回调函数定义作为参数传递过去 — 回调函数并没有立刻执行，回调函数会在包含它的函数的某个地方异步执行，包含函数负责在合适的时候执行回调函数。
 
-你可以自己写一个容易的，包含回调函数的函数。来看另外一个例子，用 [`XMLHttpRequest` API ([运行它]( 1/learning-area/javascript/asynchronous/introducing/xhr-async-callback.html), and [源代码](https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/xhr-async-callback.html)) 加载资源：
+你可以自己写一个容易的，包含回调函数的函数。来看另外一个例子，用 `XMLHttpRequest` API 加载资源：
 
 ```js
 function loadAsset(url, type, callback) {
@@ -104,7 +104,7 @@ loadAsset('coffee.jpg', 'blob', displayImage);
 
 回调函数用途广泛 — 他们不仅仅可以用来控制函数的执行顺序和函数之间的数据传递，还可以根据环境的不同，将数据传递给不同的函数，所以对下载好的资源，你可以采用不同的操作来处理，譬如 `processJSON()`, `displayText()`, 等等。
 
-请注意，不是所有的回调函数都是异步的 — 有一些是同步的。一个例子就是使用 [`Array.prototype.forEach()`]( 1/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 来遍历数组 
+请注意，不是所有的回调函数都是异步的 — 有一些是同步的。一个例子就是使用 `Array.prototype.forEach()`来遍历数组 
 
 ```js
 const gods = ['Apollo', 'Artemis', 'Ares', 'Zeus'];
@@ -118,7 +118,7 @@ gods.forEach(function (eachName, index){
 
 ## Promises
 
-Promises 是新派的异步代码，现代的web APIs经常用到。 `fetch()` API就是一个很好的例子, 它基本上就是一个现代版的，更高效的 [`XMLHttpRequest`]( 1/docs/Web/API/XMLHttpRequest)。
+Promises 是新派的异步代码，现代的web APIs经常用到。 `fetch()` API就是一个很好的例子, 它基本上就是一个现代版的，更高效的 `XMLHttpRequest`。
 
 ```js
 fetch('products.json').then(function(response) {
@@ -133,12 +133,12 @@ fetch('products.json').then(function(response) {
 
 
 
-这里`fetch()` 只需要一个参数— 资源的网络 URL — 返回一个 [promise. promise 是表示异步操作完成或失败的对象。可以说，它代表了一种中间状态。 本质上，这是浏览器说“我保证尽快给您答复”的方式，因此得名“promise”。
+这里`fetch()` 只需要一个参数— 资源的网络 URL — 返回一个 promise. promise 是表示异步操作完成或失败的对象。可以说，它代表了一种中间状态。 本质上，这是浏览器说“我保证尽快给您答复”的方式，因此得名“promise”。
 
 这个概念需要练习来适应;它感觉有点像运行中的[薛定谔猫](https://zh.wikipedia.org/wiki/薛定谔猫)。这两种可能的结果都还没有发生，因此fetch操作目前正在等待浏览器试图在将来某个时候完成该操作的结果。然后我们有三个代码块链接到fetch()的末尾：
 
 - 两个 `then()` 块。两者都包含一个回调函数，如果前一个操作成功，该函数将运行，并且每个回调都接收前一个成功操作的结果作为输入，因此您可以继续对它执行其他操作。每个 `.then()`块返回另一个promise，这意味着可以将多个`.then()`块链接到另一个块上，这样就可以依次执行多个异步操作。
-- 如果其中任何一个`then()`块失败，则在末尾运行`catch()`块——与同步`try...catch`类似，`catch()`提供了一个错误对象，可用来报告发生的错误类型。但是请注意，同步`try...catch`不能与promise一起工作，尽管它可以与[async/await一起工作，稍后您将了解到这一点。
+- 如果其中任何一个`then()`块失败，则在末尾运行`catch()`块——与同步`try...catch`类似，`catch()`提供了一个错误对象，可用来报告发生的错误类型。但是请注意，同步`try...catch`不能与promise一起工作，尽管它可以与async/await一起工作，稍后您将了解到这一点。
 
 **Note**: 在本模块稍后的部分中，你将学习更多关于promise的内容，所以如果你还没有完全理解这些promise，请不要担心。
 
@@ -162,7 +162,7 @@ promises与旧式callbacks有一些相似之处。它们本质上是一个返回
 
 ## 异步代码的本质
 
-让我们研究一个示例，它进一步说明了异步代码的本质，展示了当我们不完全了解代码执行顺序以及将异步代码视为同步代码时可能发生的问题。下面的示例与我们之前看到的非常相似。一个不同之处在于，我们包含了许多[`console.log()`]( 1/docs/Web/API/Console/log)语句，以展示代码将在其中执行的顺序。
+让我们研究一个示例，它进一步说明了异步代码的本质，展示了当我们不完全了解代码执行顺序以及将异步代码视为同步代码时可能发生的问题。下面的示例与我们之前看到的非常相似。一个不同之处在于，我们包含了许多s`console.log()`语句，以展示代码将在其中执行的顺序。
 
 ```js
 console.log ('Starting');
@@ -206,4 +206,3 @@ console.log("all done");
 ```
 
 这在行为上非常相似——第一个和第三个`console.log()`消息将立即显示，但是第二个消息将被阻塞，直到有人单击鼠标按钮。前面的示例以相同的方式工作，只是在这种情况下，第二个消息在`promise`链上被阻塞，直到获取资源后再显示在屏幕上，而不是单击。
-

@@ -1,16 +1,16 @@
 JavaScript对象表示法（JSON）是用于将结构化数据表示为JavaScript对象的标准格式，通常用于在网站上表示和传输数据（例如从服务器向客户端发送一些数据，因此可以将其显示在网页上）。您会经常遇到它，所以在本文中，我们向您提供使用JavaScript处理JSON的所有工作，包括访问JSON对象中的数据项并编写自己的JSON。
 
-| 前提: | 计算机基础知识，HTML 和 CSS 基础 (see [First steps and [Building blocks) 和 JS 面向对象基础(see [Introduction to objects)。 |
+| 前提: | 计算机基础知识，HTML 和 CSS 基础 (see First steps and (Building blocks) 和 JS 面向对象基础(see Introduction to objects)。 |
 | :---- | ------------------------------------------------------------ |
 | 目标: | 理解 JSON 的数据储存工作原理，创建您的 JSON 对象。           |
 
 ## 不，说真的，什么是 JSON?
 
-[JSON]( 1/docs/Glossary/JSON) 是一种按照JavaScript对象语法的数据格式，这是 [Douglas Crockford](https://en.wikipedia.org/wiki/Douglas_Crockford) 推广的。虽然它是基于 JavaScript 语法，但它独立于JavaScript，这也是为什么许多程序环境能够读取（解读）和生成 JSON。 
+JSON 是一种按照JavaScript对象语法的数据格式，这是 [Douglas Crockford](https://en.wikipedia.org/wiki/Douglas_Crockford) 推广的。虽然它是基于 JavaScript 语法，但它独立于JavaScript，这也是为什么许多程序环境能够读取（解读）和生成 JSON。 
 
-JSON可以作为一个对象或者字符串存在，前者用于解读 JSON 中的数据，后者用于通过网络传输 JSON 数据。 这不是一个大事件——JavaScript 提供一个全局的 可访问的 [JSON 对象来对这两种数据进行转换。
+JSON可以作为一个对象或者字符串存在，前者用于解读 JSON 中的数据，后者用于通过网络传输 JSON 数据。 这不是一个大事件——JavaScript 提供一个全局的 可访问的 JSON 对象来对这两种数据进行转换。
 
-一个 JSON 对象可以被储存在它自己的文件中，这基本上就是一个文本文件，扩展名为 `.json`， 还有 [MIME type]( 1/docs/Glossary/MIME_type) 用于 `application/json`.
+一个 JSON 对象可以被储存在它自己的文件中，这基本上就是一个文本文件，扩展名为 `.json`， 还有 MIME type用于 `application/json`.
 
 ### JSON 结构
 
@@ -134,7 +134,95 @@ superHeroes["members"][1]["powers"][2]
 
 
 
-首先，拷贝我们的 [heroes.html](https://github.com/mdn/learning-area/blob/master/javascript/oojs/json/heroes.html) 和 [style.css](https://github.com/mdn/learning-area/blob/master/javascript/oojs/json/style.css) 文件。后者包含了用于页面的简单的 CSS ，前者包含了简单的 HTML body。
+首先，拷贝我们的
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+    <script>
+    const header = document.querySelector('header');
+    const section = document.querySelector('section');
+
+    </script>
+  </body>
+</html>
+```
+
+
+
+和 style.css 文件。
+
+```
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Faster One', cursive;
+}
+
+/* header styles */
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+header p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* section styles */
+
+section article {
+  width: 33%;
+  float: left;
+}
+
+section p {
+  margin: 5px 0;
+}
+
+section ul {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+}
+```
+
+
+
+后者包含了用于页面的简单的 CSS ，前者包含了简单的 HTML body。
 
 ```html
 <header>
@@ -290,7 +378,7 @@ request.responseType = 'json';
 - `parse()`: 以文本字符串形式接受JSON对象作为参数，并返回相应的对象。。
 - `stringify()`: 接收一个对象作为参数，返回一个对应的JSON字符串。
 
-您可以看看我们 [heroes-finished-json-parse.html](http://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished-json-parse.html) 示例的第一个操作 (见 [source code](https://github.com/mdn/learning-area/blob/master/javascript/oojs/json/heroes-finished-json-parse.html)) ，除了返回的是 text，这做了一件与我们之前一模一样的事情，然后使用 `parse()` 来将他转换成为 JavaScript 对象。关键片段如下：
+您可以看看我们示例的第一个操作,除了返回的是 text，这做了一件与我们之前一模一样的事情，然后使用 `parse()` 来将他转换成为 JavaScript 对象。关键片段如下：
 
 ```js
 request.open('GET', requestURL);
@@ -315,4 +403,3 @@ myString
 ```
 
 这儿我们创建了一个JavaScript 对象，然后检查了它包含了什么，然后用`stringify()` 将它转换成JSON字符串，最后保存返回值作为变量。然后再一次检查。
-

@@ -1,6 +1,6 @@
 到目前为止，我们已经介绍的API已内置在浏览器中，但并非所有API都是内置的。许多大型网站和服务（例如Google Maps，Twitter，Facebook，PayPal等）都提供了API，允许开发人员利用其数据（例如，在博客上显示Twitter流）或服务（例如，使用Facebook登录名登录用户） ）。本文着眼于浏览器API与第三方API的区别，并展示了后者的一些典型用法。
 
-| 先决条件： | JavaScript基础知识（请参阅[第一步，[构建基块，[JavaScript对象），[客户端API的[基础知识 |
+| 先决条件： | JavaScript基础知识（请参阅第一步，构建基块，JavaScript对象），客户端API的基础知识 |
 | :--------- | ------------------------------------------------------------ |
 | 目的：     | 了解第三方API的工作方式，以及如何使用它们来增强您的网站。    |
 
@@ -8,15 +8,13 @@
 
 第三方API是第三方（通常是Facebook，Twitter或Google等公司）提供的API，可让您通过JavaScript访问其功能并在您的网站上使用。最明显的例子之一是使用映射API在页面上显示自定义地图。
 
-让我们看一个[简单的Mapquest API示例]( 1/learning-area/javascript/apis/third-party-apis/mapquest/)，并用它来说明第三方API与浏览器API的不同之处。
 
-**注意**：您可能只想一次[获得我们所有的代码示例](1/en-US/docs/Learn#Getting_our_code_examples)，在这种情况下，您可以只在存储库中搜索每个部分所需的示例文件。
 
 ### 在第三方服务器上找到它们
 
 
 
-浏览器API内置在浏览器中-您可以立即从JavaScript访问它们。例如，可以使用本机对象访问[在介绍性文章中看到](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#How_do_APIs_work)的Web Audio API [`AudioContext`。例如：
+浏览器API内置在浏览器中-您可以立即从JavaScript访问它们。例如：
 
 ```js
 const audioCtx = new AudioContext();
@@ -46,7 +44,7 @@ let map = L.mapquest.map('map', {
 });
 ```
 
-在这里，我们要创建一个变量来存储地图信息，然后使用`mapquest.map()`方法创建一个新地图，该方法将[``要在其中显示地图的元素的ID （“ map”）作为参数，并包含一个我们要显示的特定地图的详细信息。在这种情况下，我们指定地图中心的坐标，`map`要显示的类型的地图图层（使用`mapquest.tileLayer()`方法创建）以及默认缩放级别。
+在这里，我们要创建一个变量来存储地图信息，然后使用`mapquest.map()`方法创建一个新地图，该方法将要在其中显示地图的元素的ID （“ map”）作为参数，并包含一个我们要显示的特定地图的详细信息。在这种情况下，我们指定地图中心的坐标，`map`要显示的类型的地图图层（使用`mapquest.tileLayer()`方法创建）以及默认缩放级别。
 
 这是Mapquest API绘制简单地图所需的全部信息。您要连接的服务器可以处理所有复杂的内容，例如为显示的区域显示正确的地图图块等。
 
@@ -56,7 +54,7 @@ let map = L.mapquest.map('map', {
 
 
 
-如[我们的第一篇文章中所述](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#They_have_additional_security_mechanisms_where_appropriate)，浏览器API的安全性通常由权限提示处理。这样做的目的是使用户知道他们访问的网站上正在发生的事情，并且不太可能成为恶意使用API的人的受害者。
+如我们的第一篇文章中所述，浏览器API的安全性通常由权限提示处理。这样做的目的是使用户知道他们访问的网站上正在发生的事情，并且不太可能成为恶意使用API的人的受害者。
 
 第三方API的权限系统略有不同-第三方API倾向于使用开发人员密钥来允许开发人员访问API功能，这比用户更能保护API供应商。
 
@@ -78,9 +76,51 @@ L.mapquest.key = 'YOUR-API-KEY-HERE';
 
 让我们向Mapquest示例添加更多功能，以展示如何使用API的其他功能。
 
-1. 要开始本节，请在新目录中创建[mapquest起始文件](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/mapquest/starter-file.html)的副本。如果您已经[克隆了示例存储库](1/en-US/docs/Learn#Getting_our_code_examples)，则已经有了此文件的副本，可以在*javascript / apis / third-party-apis / mapquest*目录中找到该文件的副本。
-2. 接下来，您需要转到[Mapquest开发人员站点](https://developer.mapquest.com/)，创建一个帐户，然后创建一个用于您的示例的开发人员密钥。（在撰写本文时，它在网站上被称为“消费者密钥”，密钥创建过程还要求提供可选的“回调URL”。您无需在此处填写URL：只需将其留空即可）
-3. 打开您的起始文件，然后用您的密钥替换API密钥占位符。
+1. 要开始本节，请在新目录中创建HTML的副本
+
+2. ```
+   <!DOCTYPE html>
+   <html>
+     <head>
+       <meta charset="utf-8">
+       <title>Mapquest example</title>
+       <style>
+         #map {
+           width: 600px;
+           height: 600px;
+         }
+       </style>
+       <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+       <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+       <script>
+         // 1. The basic part of the example
+         var L;
+   
+         window.onload = function() {
+           L.mapquest.key = 'YOUR-API-KEY-HERE';
+   
+           // 'map' refers to a <div> element with the ID map
+           var map = L.mapquest.map('map', {
+             center: [53.480759, -2.242631],
+             layers: L.mapquest.tileLayer('map'),
+             zoom: 12
+           });
+         }
+       </script>
+     </head>
+     <body>
+       <h1>Simple Mapquest example</h1>
+   
+       <div id="map"></div>
+     </body>
+   </html>
+   ```
+
+   
+
+3. 接下来，您需要转到[Mapquest开发人员站点](https://developer.mapquest.com/)，创建一个帐户，然后创建一个用于您的示例的开发人员密钥。
+
+4. 打开您的起始文件，然后用您的密钥替换API密钥占位符。
 
 ### 更改地图类型
 
@@ -146,7 +186,69 @@ L.marker([53.480759, -2.242631], {
 
 ## Google Maps呢？
 
-Google Maps可以说是最受欢迎的Maps API，那么为什么在我们的地图示例中不使用它呢？我们确实[创建了一个示例](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/google-maps/finished-maps-example.html)来展示如何使用它，但是最后我们出于几个原因选择了Mapquest：
+Google Maps可以说是最受欢迎的Maps API，那么为什么在我们的地图示例中不使用它呢？我们确实创建了一个示例来展示如何使用它，但是最后我们出于几个原因选择了Mapquest：
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Google Maps example</title>
+    <style>
+      #map_canvas {
+        width: 600px;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple maps example</h1>
+
+    <div id="map_canvas"></div>
+    <script>
+    function initMap() {
+      var myOptions = {
+        zoom: 8,
+        center: {lat: 53.480759, lng: -2.242631},
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        disableDefaultUI: true,
+        // Step 4. Customize displayed controls
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true
+      }
+      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+      // Step 2. Add custom icon
+
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
+      var marker = new google.maps.Marker({
+        position: {lat: 53.480759, lng: -2.242631},
+        icon: iconBase + 'flag_maps.png',
+        map: map
+      });
+
+      // Step 3. Add info window
+
+      var contentString = '<div id="content"><h2 id="firstHeading" class="firstHeading">Custom info window</h2><p>This is a cool custom info window.</p></div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=ENTER-API-KEY-HERE&callback=initMap"
+    async defer></script>
+  </body>
+</html>
+```
+
+
 
 - 入门非常容易。通常，对于Google API，您需要创建一个Google帐户并登录到[Google Cloud Platform Console](https://console.cloud.google.com/)来创建API密钥等，并且此过程相当复杂。特别是对于[Google Maps API](https://cloud.google.com/maps-platform/)，您需要提供用于计费的信用卡（尽管基本使用是免费的），但是我们认为基本教程不接受这种信用卡。
 - 我们想证明还有其他选择。
@@ -172,8 +274,10 @@ Google Maps可以说是最受欢迎的Maps API，那么为什么在我们的地�
 出于安全性和责任制的原因，大多数API都要求您使用某种开发人员密钥。要注册NYTimes API密钥，请按照[https://developer.nytimes.com/get-started上](https://developer.nytimes.com/get-started)的说明进行操作。
 
 1. 让我们为Article Search API请求一个密钥-创建一个新应用，选择它作为您要使用的API（填写名称和描述，将“ Article Search API”下的开关切换到on位置，然后单击“创建”）。
+
 2. 从结果页面获取API密钥。
-3. 现在，要开始示例，请在计算机上的新目录中复制[nytimes_start.html](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/nytimes/nytimes_start.html)和[nytimes.css](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/nytimes/nytimes.css)。如果您已经[克隆了示例存储库](1/en-US/docs/Learn#Getting_our_code_examples)，那么您将已经拥有这些文件的副本，可以在*javascript / apis / third-party-apis / nytimes*目录中找到它们。
+
+   
 
 该应用程序最终将允许您输入搜索词以及可选的开始和结束日期，然后将其用于查询Article Search API并显示搜索结果。
 
@@ -183,7 +287,7 @@ Google Maps可以说是最受欢迎的Maps API，那么为什么在我们的地�
 
 
 
-首先，您需要在API和您的应用之间建立连接。对于此API，每次从正确的URL向服务请求数据时，都需要将API密钥作为[get参数包括在内。
+首先，您需要在API和您的应用之间建立连接。对于此API，每次从正确的URL向服务请求数据时，都需要将API密钥作为get参数包括在内。
 
 1. 找到以下行：
 
@@ -242,15 +346,13 @@ https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=YOUR-API-KEY-HE
 ＆fq = document_type :(“文章”）＆begin_date = 20170301＆end_date = 20170312
 ```
 
-**注意**：您可以在[NYTimes开发人员文档中](https://developer.nytimes.com/)找到有关可以包含哪些URL参数的更多详细信息。
-
 **注意**：该示例具有基本的表单数据验证功能-必须先填写搜索词字段，然后才能提交表单（使用`required`属性来实现），并且date字段具有`pattern`指定的属性，这意味着除非它们的值，否则它们不会提交由8个数字（`pattern="[0-9]{8}"`）组成。
 
 ### 从API请求数据
 
 
 
-现在，我们已经构造了URL，让我们对其进行请求。我们将使用[Fetch API进行此操作。
+现在，我们已经构造了URL，让我们对其进行请求。我们将使用Fetch API进行此操作。
 
 在`fetchResults()`函数内的右花括号上方添加以下代码块：
 
@@ -341,13 +443,9 @@ fetch(url).then(function(result) {
 
 - 下一个`if()`块检查是否没有文章返回。如果是这样，我们将不尝试显示任何内容，而是创建一个`<p>`包含文本“未返回结果”的。并将其插入`<section>`
 
-- 如果返回了一些文章，我们首先创建我们要用来显示每个新闻故事的所有元素，将正确的内容插入每个新闻中，然后将它们插入到DOM中的适当位置。为了弄清楚article对象中的哪些属性包含要显示的正确数据，我们查阅了Article Search API参考（请参阅
+- 如果返回了一些文章，我们首先创建我们要用来显示每个新闻故事的所有元素，将正确的内容插入每个新闻中，然后将它们插入到DOM中的适当位置。为了弄清楚article对象中的哪些属性包含要显示的正确数据，我们查阅了Article Search API参考（请参阅 NYTimes API）。这些操作大多数都很明显，但有些值得一提：
 
-  NYTimes API
-
-  ）。这些操作大多数都很明显，但有些值得一提：
-
-  - 我们使用了[for循环（`for(var j = 0; j < current.keywords.length; j++) { ... }`）来遍历与每篇文章相关的所有关键字，并将每一个关键字插入其自己的`<span>`，之中`<p>`。这样做是为了简化每个样式的样式。
+  - 我们使用了for循环（`for(var j = 0; j < current.keywords.length; j++) { ... }`）来遍历与每篇文章相关的所有关键字，并将每一个关键字插入其自己的`<span>`，之中`<p>`。这样做是为了简化每个样式的样式。
   - 我们使用`if()`块（`if(current.multimedia.length > 0) { ... }`）检查每篇文章是否有任何与之相关的图像（有些故事没有）。我们仅在第一幅图像存在的情况下显示它（否则会引发错误）。
   - 我们为`<div>`元素提供了一个“ clearfix”类，因此我们可以轻松地对其应用清除。
 
@@ -387,25 +485,3 @@ fetch(url).then(function(result) {
    第一个函数很简单-我们递增`pageNumber`变量，然后`fetchResults()`再次运行该函数以显示下一页的结果。
 
    第二个函数的反向操作几乎完全相同，但是我们还必须采取额外的步骤检查`pageNumber`递减之前尚未为零的值-如果获取请求使用负`page`URL参数运行，则可能会导致错误。如果a `pageNumber`已经为0，我们就简单地`return`退出该函数，以避免浪费处理能力（如果已经在第一页，则无需再次加载相同的结果）。
-
-**注意**：您可以[在GitHub上](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/nytimes/index.html)找到我们[完成的nytimes API示例代码](https://github.com/mdn/learning-area/blob/master/javascript/apis/third-party-apis/nytimes/index.html)（也[可以在此处实时运行]( 1/learning-area/javascript/apis/third-party-apis/nytimes/)）。
-
-## YouTube示例
-
-我们还构建了另一个示例供您学习和学习-请参阅我们的[YouTube视频搜索示例]( 1/learning-area/javascript/apis/third-party-apis/youtube/)。这使用两个相关的API：
-
-- 在[YouTube数据API](https://developers.google.com/youtube/v3/docs/)来搜索YouTube视频，并返回结果。
-- 在[YouTube上的IFrame播放器API](https://developers.google.com/youtube/iframe_api_reference)来显示IFrame的视频播放器内返回视频的例子，所以你可以看他们。
-
-这个示例很有趣，因为它显示了两个相关的第三方API一起用于构建应用程序。第一个是RESTful API，第二个则更像Mapquest（使用特定于API的方法等）。但是，值得注意的是，这两个API均需要将JavaScript库应用于该页面。RESTful API具有可用于处理发出HTTP请求并返回结果的功能。
-
-![img](https://mdn.mozillademos.org/files/14823/youtube-example.png)
-
-在本文中，我们将不对这个示例进行过多说明- [源代码](https://github.com/mdn/learning-area/tree/master/javascript/apis/third-party-apis/youtube)在其中插入了详细的注释，以解释其工作原理。
-
-要使其运行，您需要：
-
-- 从[Google Cloud](https://cloud.google.com/)获取API密钥。
-- `ENTER-API-KEY-HERE`在源代码中找到字符串，并将其替换为您的API密钥。
-- 通过Web服务器运行示例。如果仅在浏览器中直接运行它（即通过`file://`URL），它将无法工作。
-

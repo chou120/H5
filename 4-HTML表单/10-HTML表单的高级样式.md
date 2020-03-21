@@ -1,8 +1,8 @@
 在本文中，我们将看到CSS可以用来设置样式控件的样式，这些样式控件更难以样式化-“坏”和“丑陋”类别。正如我们在上一篇文章中看到的那样，文本字段和按钮的样式非常简单。现在，我们将深入探讨样式问题。
 
-| 先决条件： | 基本的计算机知识，以及对[HTML和[CSS的基本了解。 |
-| :--------- | ------------------------------------------------------------ |
-| 目的：     | 了解表单的哪些部分难以设置样式以及原因；学习如何定制它们。   |
+| 先决条件： | 基本的计算机知识，以及对HTML和CSS的基本了解。              |
+| :--------- | ---------------------------------------------------------- |
+| 目的：     | 了解表单的哪些部分难以设置样式以及原因；学习如何定制它们。 |
 
 回顾上一篇文章中的内容，我们有：
 
@@ -30,7 +30,7 @@
 
 在上一篇文章中，我们曾说过，Web表单控件的样式大部分是从底层操作系统中获取的，这是自定义这些控件外观的问题的一部分。
 
-[`appearance`]( /appearance)创建该属性是为了控制将哪种OS或系统级样式应用于Web窗体控件。不幸的是，此属性的原始实现的行为在不同的浏览器中是非常不同的，从而使它不太实用。较新的实现在行为上更加一致。有趣的是，基于Chromium的浏览器（Chrome，Opera，Edge），Safari和Firefox均支持`-webkit-` 前缀版本（`-webkit-appearance`）。Firefox选择了此解决方案，因为Web开发人员似乎大多使用的是`-webkit-`前缀版本，因此兼容性更好。
+`appearance`创建该属性是为了控制将哪种OS或系统级样式应用于Web窗体控件。不幸的是，此属性的原始实现的行为在不同的浏览器中是非常不同的，从而使它不太实用。较新的实现在行为上更加一致。有趣的是，基于Chromium的浏览器（Chrome，Opera，Edge），Safari和Firefox均支持`-webkit-` 前缀版本（`-webkit-appearance`）。Firefox选择了此解决方案，因为Web开发人员似乎大多使用的是`-webkit-`前缀版本，因此兼容性更好。
 
 如果您查看参考页，则会看到列出了许多不同的可能值`-webkit-appearance`，但是到目前为止，最有用的值（也许是唯一使用的值）是`none`。这将尽可能避免您应用它的任何控件使用系统级样式，并允许您使用CSS自己构建样式。
 
@@ -127,7 +127,7 @@ input[type="checkbox"] {
 
 #### 使用出现：单选框/复选框中没有
 
-如前所述，您可以通过以下示例HTML 完全删除复选框或单选按钮的默认外观：[`appearance`]( /appearance)`:none;`
+如前所述，您可以通过以下示例HTML 完全删除复选框或单选按钮的默认外观：`appearance`:`none;`
 
 ```html
 <form>
@@ -165,7 +165,7 @@ input[type="checkbox"] {
 }
 ```
 
-我们可以使用[`:checked`]( /:checked)和[`:disabled`]( /:disabled)伪类在其状态更改时更改自定义复选框的外观：
+我们可以使用`:checked`和`:disabled`伪类在其状态更改时更改自定义复选框的外观：
 
 ```css
 input[type="checkbox"] {
@@ -210,10 +210,10 @@ input[type="checkbox"]:disabled {
 
 我们还创建了两个其他示例，为您提供更多想法：
 
-- [样式的单选按钮]( 1/learning-area/html/forms/styling-examples/radios-styled.html)：自定义单选按钮样式。
-- [拨动开关示例]( 1/learning-area/html/forms/toggle-switch-example/)：复选框的样式看起来像拨动开关。
+- 样式的单选按钮：自定义单选按钮样式。
+- 拨动开关示例：复选框的样式看起来像拨动开关。
 
-如果您在不支持的浏览器中查看这些复选框[`appearance`]( /appearance)，则您的自定义设计将会丢失，但是它们仍然看起来像复选框并且可以使用。
+如果您在不支持的浏览器中查看这些复选框`appearance`，则您的自定义设计将会丢失，但是它们仍然看起来像复选框并且可以使用。
 
 **注意**：虽然Internet Explorer不支持的任何版本`appearance`，但仅`input[type=checkbox]::-ms-check`启用IE中复选框的定位。尽管名称如此，该技术也适用于单选按钮。`-ms-***check***`
 
@@ -283,8 +283,6 @@ button {
   margin: 0 auto;
 }
 ```
-
-**注意**：如果要同时在多个浏览器中测试这些示例，可以[在此处实时找到它]( 1/learning-area/html/forms/styling-examples/ugly-controls.html)（也[请参见此处以获取源代码](https://github.com/mdn/learning-area/blob/master/html/forms/styling-examples/ugly-controls.html)）。
 
 还要记住，我们已经在页面中添加了一些JavaScript，该页面在控件本身下方列出了文件选择器选择的文件。这是在`<input type="file">`参考页上找到的示例的简化版本。
 
@@ -465,7 +463,7 @@ label[for="file"]:active {
 
 `<meter>`而且`<progress>`可能是最糟糕的。如您在前面的示例中所看到的，我们可以相对准确地将它们设置为所需的宽度。但是除此之外，它们真的很难以任何方式进行样式设置。它们之间和浏览器之间的高度设置不一致，您可以为背景着色，但不能为前景栏着色，并且`appearance: none`对它们进行设置会使情况变得更糟，而不是更好。
 
-如果您希望能够控制样式，或者使用第三方解决方案（例如[progressbar.js），](http://kimmobrunfeldt.github.io/progressbar.js/#examples)则只为这些功能创建自己的自定义解决方案会更容易。
+如果您希望能够控制样式，或者使用第三方解决方案（例如[progressbar.js](http://kimmobrunfeldt.github.io/progressbar.js/#examples))则只为这些功能创建自己的自定义解决方案会更容易。
 
 ## 更好的形式之路：有用的库和polyfill
 

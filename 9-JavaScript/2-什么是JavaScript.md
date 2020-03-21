@@ -6,13 +6,13 @@
 
 ## 高层次的定义
 
-JavaScript是一种脚本语言或编程语言，可让您在网页上实现复杂的功能-每次网页要做的不只是坐在那里并显示静态信息供您查看-显示及时的内容更新，交互式地图，动画2D / 3D图形，滚动视频点唱机等-您可以打赌，可能涉及JavaScript。它是标准Web技术的第三层，在学习领域的其他部分中，我们更详细地介绍了其中的两个（[HTML和[CSS）。
+JavaScript是一种脚本语言或编程语言，可让您在网页上实现复杂的功能-每次网页要做的不只是坐在那里并显示静态信息供您查看-显示及时的内容更新，交互式地图，动画2D / 3D图形，滚动视频点唱机等-您可以打赌，可能涉及JavaScript。它是标准Web技术的第三层，在学习领域的其他部分中，我们更详细地介绍了其中的两个（HTML和CSS）。
 
 ![img](https://mdn.mozillademos.org/files/13502/cake.png)
 
-- [HTML是一种标记语言，我们可以用来构造Web内容并赋予其含义，例如定义段落，标题和数据表，或在页面中嵌入图像和视频。
-- [CSS是一种样式规则语言，我们用于将样式应用于HTML内容，例如设置背景颜色和字体，以及将内容布置在多列中。
-- [JavaScript是一种脚本语言，使您能够创建动态更新的内容，控制多媒体，动画图像以及几乎所有其他内容。（好吧，不是所有的东西，但是用几行JavaScript代码可以实现的效果令人惊奇。）
+- HTML是一种标记语言，我们可以用来构造Web内容并赋予其含义，例如定义段落，标题和数据表，或在页面中嵌入图像和视频。
+- CSS是一种样式规则语言，我们用于将样式应用于HTML内容，例如设置背景颜色和字体，以及将内容布置在多列中。
+- JavaScript是一种脚本语言，使您能够创建动态更新的内容，控制多媒体，动画图像以及几乎所有其他内容。（好吧，不是所有的东西，但是用几行JavaScript代码可以实现的效果令人惊奇。）
 
 这三层很好地叠加在一起。让我们以一个简单的文本标签为例。我们可以使用HTML对其进行标记，以赋予其结构和用途：
 
@@ -58,9 +58,7 @@ function updateName() {
 
 
 
-尝试单击文本标签的最新版本以查看会发生什么（还要注意，您可以在GitHub上找到此演示—请查看[源代码](https://github.com/mdn/learning-area/blob/master/javascript/introduction-to-js-1/what-is-js/javascript-label.html)，或[实时运行它](http://mdn.github.io/learning-area/javascript/introduction-to-js-1/what-is-js/javascript-label.html)）！
-
-JavaScript不仅可以做更多的事情-让我们更详细地研究一下。
+JavaScript可以做更多的事情-让我们更详细地研究一下。
 
 ## 那到底能做什么呢？
 
@@ -81,19 +79,19 @@ API是现成的代码构建块集，它们使开发人员能够实施原本难�
 
 **浏览器API**内置于您的Web浏览器中，并且能够公开来自周围计算机环境的数据，或执行有用的复杂操作。例如：
 
-- 将[`DOM (Document Object Model) API`让您操作HTML和CSS，创建，删除和更改HTML，动态地应用新的样式到你的页面，等你看到一个弹出窗口出现在页面上每一次，或者一些新的内容显示（如我们上面看到我们例如简单的演示），那就是实际的DOM。
-- 在[`Geolocation API`获取地理信息。这就是[Google Maps](https://www.google.com/maps)能够找到您的位置并将其绘制在地图上的方式。
-- 在[`Canvas`和[`WebGL`API允许你创建动画2D和3D图形。人们使用这些网络技术正在做一些令人惊奇的事情-请[参阅](http://webglsamples.org/)[Chrome实验](https://www.chromeexperiments.com/)和[webglsamples](http://webglsamples.org/)。
-- [音频和视频API喜欢[`HTMLMediaElement`并[`WebRTC`允许您使用多媒体做真正有趣的事情，例如直接在网页上播放音频和视频，或从网络摄像头抓取视频并将其显示在其他人的计算机上（尝试通过我们的简单[Snapshot演示](http://chrisdavidmills.github.io/snapshot/)获得这个想法）。
+- 将`DOM (Document Object Model) API`让您操作HTML和CSS，创建，删除和更改HTML，动态地应用新的样式到你的页面，等你看到一个弹出窗口出现在页面上每一次，或者一些新的内容显示（如我们上面看到我们例如简单的演示），那就是实际的DOM。
+- 在`Geolocation API`获取地理信息。这就是[Google Maps](https://www.google.com/maps)能够找到您的位置并将其绘制在地图上的方式。
+- 在`Canvas`和`WebGL`API允许你创建动画2D和3D图形。人们使用这些网络技术正在做一些令人惊奇的事情-请[参阅](http://webglsamples.org/)[Chrome实验](https://www.chromeexperiments.com/)和[webglsamples](http://webglsamples.org/)。
+- 音频和视频API喜欢`HTMLMediaElement`并`WebRTC`允许您使用多媒体做真正有趣的事情，例如直接在网页上播放音频和视频，或从网络摄像头抓取视频并将其显示在其他人的计算机上（尝试通过我们的简单[Snapshot演示](http://chrisdavidmills.github.io/snapshot/)获得这个想法）。
 
-**注意**：上面的许多演示都无法在较旧的浏览器中运行-实验时，最好使用Firefox，Chrome，Edge或Opera等现代浏览器运行代码。您需要考虑[跨浏览器测试当您更接近交付生产代码（即，真正的客户将使用的真实代码）时，可以更详细地了解。
+**注意**：上面的许多演示都无法在较旧的浏览器中运行-实验时，最好使用Firefox，Chrome，Edge或Opera等现代浏览器运行代码。您需要考虑跨浏览器测试当您更接近交付生产代码（即，真正的客户将使用的真实代码）时，可以更详细地了解。
 
 默认情况下，浏览器未内置**第三方API**，通常您必须从Web上的某个地方获取它们的代码和信息。例如：
 
 - 在[Twitter的API](https://dev.twitter.com/overview/documentation)允许你做这样的事情在你的网站上显示你最新的鸣叫。
 - 在[谷歌地图API](https://developers.google.com/maps/)和[OpenStreetMap的API](https://wiki.openstreetmap.org/wiki/API)允许你嵌入自定义地图到您的网站，以及其他类似的功能。
 
-**注意**：这些API是高级的，因此在本模块中将不涉及任何这些API。您可以在我们的[客户端Web API模块中找到更多有关这些的信息。
+**注意**：这些API是高级的，因此在本模块中将不涉及任何这些API。您可以在我们的客户端Web API模块中找到更多有关这些的信息。
 
 还有很多可用的！但是，请不要为此感到兴奋。在学习了24小时的JavaScript之后，您将无法构建下一个Facebook，Google Maps或Instagram-首先有很多基础知识。这就是为什么您在这里-让我们继续前进！
 
@@ -101,7 +99,7 @@ API是现成的代码构建块集，它们使开发人员能够实施原本难�
 
 在这里，我们实际上将开始看一些代码，并在此过程中探索在页面中运行一些JavaScript时实际发生的情况。
 
-让我们简要回顾一下在浏览器中加载网页时发生的情况（在我们的[CSS如何工作中]( 1
+让我们简要回顾一下在浏览器中加载网页时发生的情况（在我们的CSS如何工作中
 
 ![img](https://mdn.mozillademos.org/files/13504/execution.png)
 
@@ -136,7 +134,7 @@ function updateName() {
 
 在这里，我们选择一个文本段落（第1行），然后在其上附加一个事件侦听器（第3行），以便在单击该段落时`updateName()`运行代码块（第5-8行）。的`updateName()`码块（这些类型的可重复使用的代码块中的被称为“功能”）要求用户为新的名称，然后插入该名称入款来更新显示。
 
-如果你换的代码的前两行的顺序，将不再工作-相反，你会得到在返回错误[的浏览器开发者控制台 - `TypeError: para is undefined`。这意味着该`para`对象尚不存在，因此我们无法向其添加事件侦听器。
+如果你换的代码的前两行的顺序，将不再工作-相反，你会得到在返回错误的浏览器开发者控制台 - `TypeError: para is undefined`。这意味着该`para`对象尚不存在，因此我们无法向其添加事件侦听器。
 
 **注意**：这是一个非常常见的错误-在尝试对它们进行处理之前，需要注意代码中引用的对象存在。
 
@@ -176,7 +174,7 @@ JavaScript以类似于CSS的方式应用于HTML页面。CSS使用` <link>`元素
 
 
 
-1. 首先，为示例文件创建一个本地副本[apply-javascript.html](https://github.com/mdn/learning-area/blob/master/javascript/introduction-to-js-1/what-is-js/apply-javascript.html)。将其保存在合理的目录中。
+1. 首先，为示例文件创建一个html本地副本。将其保存在合理的目录中。
 
 2. 在Web浏览器和文本编辑器中打开文件。您会看到HTML创建了一个包含可单击按钮的简单网页。
 
@@ -287,7 +285,7 @@ for(let i = 0; i < buttons.length ; i++) {
 
 
 
-在正确的时间获取脚本涉及很多问题。没有什么比看起来的那么简单！一个常见的问题是页面上的所有HTML均以显示顺序加载。如果您使用JavaScript来操纵页面上的元素（或更准确地说，是[Document Object Model](1/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#The_document_object_model)），那么如果您在尝试执行操作的HTML之前加载并解析了JavaScript，则代码将无法工作。
+在正确的时间获取脚本涉及很多问题。没有什么比看起来的那么简单！一个常见的问题是页面上的所有HTML均以显示顺序加载。如果您使用JavaScript来操纵页面上的元素，那么如果您在尝试执行操作的HTML之前加载并解析了JavaScript，则代码将无法工作。
 
 在上面的代码示例中，在内部和外部示例中，在解析HTML主体之前，已在文档的开头加载并运行JavaScript。这可能会导致错误，因此我们使用了一些构造来解决它。
 
@@ -299,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 ```
 
-这是一个事件侦听器，它侦听浏览器的“ DOMContentLoaded”事件，该事件表示HTML主体已完全加载和解析。直到触发该事件后，该块中的JavaScript才会运行，因此避免了该错误（您将在本课程的后面部分中[了解事件）。
+这是一个事件侦听器，它侦听浏览器的“ DOMContentLoaded”事件，该事件表示HTML主体已完全加载和解析。直到触发该事件后，该块中的JavaScript才会运行，因此避免了该错误（您将在本课程的后面部分中了解事件）。
 
 在外部示例中，我们使用一种更现代的JavaScript功能来解决该问题，即`defer`属性，该属性告诉浏览器`<scrpit>`在到达tag元素后继续下载HTML内容。
 
@@ -347,9 +345,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 总结一下：
 
-- `async`与`defer`这两个指示浏览器下载一个单独的线程的脚本（S），而网页（DOM中，等）的其余部分被下载，所以网页加载时不会被脚本。
+- `async`与`defer`这两个指示浏览器下载一个单独的线程的脚本，而网页（DOM中）的其余部分被下载，所以网页加载时不会被脚本。
 - 如果您的脚本应该立即运行并且没有任何依赖关系，请使用`async`。
-- 如果您的脚本需要等待解析并且依赖于其他脚本和/或DOM，请使用加载它们，`defer` 并<script>按照您希望浏览器执行它们的顺序放置它们的相应元素。
+- 如果您的脚本需要等待解析并且依赖于其他脚本和/或DOM，请使用加载它们，`defer` 并`<script>`按照您希望浏览器执行它们的顺序放置它们的相应元素。
 
 ## 注释
 
@@ -396,5 +394,3 @@ for (let i = 0; i < buttons.length ; i++) {
 ```
 
 **注意**：通常，多注释总比少注释好，但是如果发现自己添加了很多注释来解释什么是变量（您的变量名称可能应该更直观），或者解释非常简单的操作（也许是您自己，代码过于复杂）。
-
-## 

@@ -1,4 +1,4 @@
-async functions和`await` 关键字是最近添加的JavaScript语言，这是所谓的ECMAScript 2017 JavaScript版的一部分（参见[ECMAScript Next support in Mozilla）。这些功能基本上充当promises语法上的甜头，使得异步代码更易于编写和后续阅读。它们使异步代码看起来更像是旧式同步代码，所以它们非常值得学习。本文为您提供了您需要了解的内容。
+async functions和`await` 关键字是最近添加的JavaScript语言，这是所谓的ECMAScript 2017 JavaScript版的一部分（参见ECMAScript Next support in Mozilla）。这些功能基本上充当promises语法上的甜头，使得异步代码更易于编写和后续阅读。它们使异步代码看起来更像是旧式同步代码，所以它们非常值得学习。本文为您提供了您需要了解的内容。
 
 | 预备条件: | 基本的计算机知识，对JavaScript基础知识的合理理解，对一般异步代码和promise的理解。 |
 | :-------- | ------------------------------------------------------------ |
@@ -12,7 +12,7 @@ async functions和`await` 关键字是最近添加的JavaScript语言，这是�
 
 
 
-首先，我们使用`async`关键字，您可以将它放在函数声明之前，将其转换为[async function。异步函数是一个知道怎样预期 await 关键字可用于调用异步代码可能性的函数。
+首先，我们使用`async`关键字，您可以将它放在函数声明之前，将其转换为async function。异步函数是一个知道怎样预期 await 关键字可用于调用异步代码可能性的函数。
 
 尝试在浏览器的JS控制台中键入以下行：
 
@@ -32,7 +32,7 @@ hello();
 
 额。。现在调用该函数会返回一个promise。这是异步函数的特征之一 ––它将任何函数转换为promise。
 
-你也可以创建一个异步函数表达式（参见[async function expression），如下所示:
+你也可以创建一个异步函数表达式（参见async function expression），如下所示:
 
 ```js
 let hello = async function() { return "Hello" };
@@ -67,7 +67,7 @@ hello().then(console.log)
 
 
 
-将它与[await关键字结合使用时，异步函数的真正优势就变得明显了。这可以放在任何基于异步声明的函数之前，暂停代码在该行上，直到promise完成，然后返回结果值。与此同时，可能正在等待执行机会的其他代码也会这样做。
+将它与await关键字结合使用时，异步函数的真正优势就变得明显了。这可以放在任何基于异步声明的函数之前，暂停代码在该行上，直到promise完成，然后返回结果值。与此同时，可能正在等待执行机会的其他代码也会这样做。
 
 您可以在调用任何返回Promise的函数时使用`await`，包括Web API函数。
 
@@ -208,7 +208,7 @@ myFetch().then((blob) => {
 
 ## 等待Promise.all()
 
-`async / await`建立在[promises之上，因此它与promises提供的所有功能兼容。这包括`Promise.all()` –– 您可以非常高兴地等待`Promise.all（）`调用，以一种看起来像简单同步代码的方式将所有结果返回到变量中。
+`async / await`建立在promises之上，因此它与promises提供的所有功能兼容。这包括`Promise.all()` –– 您可以非常高兴地等待`Promise.all（）`调用，以一种看起来像简单同步代码的方式将所有结果返回到变量中。
 
 
 

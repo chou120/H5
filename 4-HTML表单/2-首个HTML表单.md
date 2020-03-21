@@ -1,6 +1,6 @@
 本系列的第一篇文章提供了您第一次创建HTML表单的经验，包括设计一个简单表单，使用正确的HTML元素实现它，通过CSS添加一些非常简单的样式，以及如何将数据发送到服务器。
 
-| 预备知识： | 基本计算机素养和[对HTML的基本理解。 |
+| 预备知识： | 基本计算机素养和对HTML的基本理解。 |
 | :--------- | ------------------------------------------------------------ |
 | 目标：     | 为了熟悉HTML表单是什么，它们被用来做什么，如何设计它们，以及简单情况下需要的基本HTML元素。 |
 
@@ -10,7 +10,7 @@ HTML表单是用户和web站点或应用程序之间交互的主要内容之一�
 
 HTML表单是由一个或多个小部件组成的。这些小部件可以是文本字段(单行或多行)、选择框、按钮、复选框或单选按钮。大多数情况下，这些小部件与描述其目的的标签配对——正确实现的标签能够清楚地指示视力正常的用户和盲人用户输入表单所需的内容。
 
-HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单收集的数据被发送到web服务器。在这种情况下，您需要设置一个web服务器来接收和处理数据。如何设置这样的服务器超出了本文的范围，但是如果您想了解更多，请参阅模块后面的[发送表单数据]( 1/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)。
+HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单收集的数据被发送到web服务器。在这种情况下，您需要设置一个web服务器来接收和处理数据。如何设置这样的服务器超出了本文的范围，但是如果您想了解更多，请参阅模块后面的发送表单数据。
 
 ## 设计表单
 
@@ -19,21 +19,15 @@ HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单
 - 杂志<Smashing Magazine>中有[很好的关于表单用户体验的文章](http://uxdesign.smashingmagazine.com/tag/forms/)，或许其中最重要的应该是他们的[Extensive Guide To Web Form Usability](http://uxdesign.smashingmagazine.com/2011/11/08/extensive-guide-web-form-usability/).
 - UXMatters 也是一个非常有思想的资源，从基本的[最佳实践](http://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)到复杂的问题如[多页表单](https://www.uxmatters.com/mt/archives/2010/03/pagination-in-web-forms-evaluating-the-effectiveness-of-web-forms.php)，都有很好的建议。
 
-在本文中，我们将构建一个简单的联系人表单。让我们做一个粗略的草图。
 
-![The form to build, roughly sketch](1/files/4579/form-sketch-low.jpg)
-
-我们的表单将包含三个文本字段和一个按钮。我们向用户询问他们的姓名、电子邮件和他们想要发送的信息。点击这个按钮将把他们的数据发送到一个web服务器。
 
 ## 主动学习:使用HTML实现我们的表单
 
 好了，现在我们准备进入HTML代码并对表单进行编码。为了构建我们的联系人表单，我们将使用以下HTML元素:<form>, <lable>, <input>, <textarea>, and <button>.
 
-在进一步讨论之前，先创建一个[简单HTML模板](https://github.com/mdn/learning-area/blob/master/html/introduction-to-html/getting-started/index.html)的本地副本—您将在这里输入您的表单HTML。
+在进一步讨论之前，先创建一个简单HTML模板的本地副本—您将在这里输入您的表单HTML。
 
 ### <form>元素
-
-
 
 所有HTML表单都以一个<form>元素开始：
 
@@ -47,8 +41,6 @@ HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单
 
 - `action` 属性定义了在提交表单时,应该把所收集的数据送给谁(/那个模块)(URL)去处理。.
 -  `method` 属性定义了发送数据的HTTP方法(它可以是“get”或“post”).
-
-**注意:**如果您想深入了解这些属性是如何工作的，那么将在[发送表单数据]( 1/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)文章中详细说明。
 
 现在，将上面的<form>元素添加到您的HTML主体中
 
@@ -79,10 +71,10 @@ HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单
 
 使用<div>元素可以使我们更加方便地构造我们自己的代码，并且更容易样式化(参见本文后面的文章)。注意在所有<lable>元素上使用`for`属性；它是将标签链接到表单小部件的一种正规方式。这个属性引用对应的小部件的`id`。这样做有一些好处。最明显的一个好处是允许用户单击标签以激活相应的小部件。如果您想更好地理解这个属性的其他好处，您可以找到[如何构造HTML表单的详细信息。
 
-在 <input>元素中，最重要的属性是`type` 属性。这个属性非常重要，因为它定义了<input>属性的行为方式。它可以从根本上改变元素，所以要注意它。稍后您将在[原生表单控件]( 1/docs/Learn/HTML/Forms/The_native_form_widgets)文章中找到更多关于此的内容。
+在 <input>元素中，最重要的属性是`type` 属性。这个属性非常重要，因为它定义了<input>属性的行为方式。它可以从根本上改变元素，所以要注意它。
 
 - 在我们的简单示例中，我们使用值 `text` 作为第一个输入——这个属性的默认值。它表示一个基本的单行文本字段，接受任何类型的文本输入。
-- 对于第二个输入，我们使用值`email`，它定义了一个只接受格式正确的电子邮件地址的单行文本字段。这会将一个基本的文本字段转换为一种“智能”字段，该字段将对用户输入的数据进行一些检查。在稍后的表单数据验证文章中，您将了解到更多关于[表单验证]( 1/docs/Learn/HTML/Forms/Data_form_validation)的信息。
+- 对于第二个输入，我们使用值`email`，它定义了一个只接受格式正确的电子邮件地址的单行文本字段。这会将一个基本的文本字段转换为一种“智能”字段，该字段将对用户输入的数据进行一些检查。
 
 最后但同样重要的是，要注意<input> 和 <textarea></textarea>的语法。这是HTML的一个奇怪之处。<input> 标签是一个空元素，这意味着它不需要关闭标签。相反，<textarea>不是一个空元素，因此必须使用适当的结束标记来关闭它。这对HTML表单的特定特性有影响:定义默认值的方式。要定义<input>的默认值，你必须使用`value` 属性，如下所示：
 
@@ -117,13 +109,6 @@ HTML表单和常规HTML文档的主要区别在于，大多数情况下，表单
 **注意：**您还可以使用相应类型的<input>元素来生成一个按钮，如 <input type="submit">。<button>元素的主要优点是， <input>元素只允许纯文本作为其标签，而<button>元素允许完整的HTML内容，允许更复杂、更有创意的按钮文本。
 
 ## 基本表单样式
-
-现在您已经完成了表单的HTML代码，尝试保存它并在浏览器中查看它。
-现在，你会看到它看起来很丑。
-
-![img](1/files/4049/form-no-style.png)
-
-**注意：** 如果你怀疑你的HTML代码不对，试着把它和我们完成的例子进行比较 —— [first-form.html](https://github.com/mdn/learning-area/blob/master/html/forms/your-first-HTML-form/first-form.html) (你也可以观看[预览版]( 1/learning-area/html/forms/your-first-HTML-form/first-form.html))。
 
 如何排布好表单是公认的难点。这超出了本文的讨论范围，所以现在我们只需要让您添加一些CSS来让它看起来很好。
 
@@ -198,10 +183,6 @@ button {
 
 现在，它看起来没那么丑了。
 
-![img](1/files/4051/form-style.png)
-
-**注意**: 你可以在GitHub上的这里找到它 [first-form-styled.html](https://github.com/mdn/learning-area/blob/master/html/forms/your-first-HTML-form/first-form-styled.html) ([也可以在这儿看运行结果]( 1/learning-area/html/forms/your-first-HTML-form/first-form-styled.html)).
-
 ## 向您的web服务器发送表单数据
 
 最后一部分，也许是最棘手的部分，是在服务器端处理表单数据。如前所述，大多数时候HTML表单是向用户请求数据并将其发送到web服务器的一种方便的方式。
@@ -232,4 +213,4 @@ button {
 
 在我们的例子中，表单会发送三个已命名的数据块 "`user_name`", "`user_email`", 和 "`user_message`"。这些数据将用使用[HTTP `POST` 方法,把信息发送到URL为 "`/my-handling-form-page`"目录下。
 
-在服务器端，位于URL"`/my-handling-form-page`" 上的脚本将接收的数据作为HTTP请求中包含的3个键/值项的列表。这个脚本处理这些数据的方式取决于您。每个服务器端语言(PHP、Python、Ruby、Java、c等等)都有自己的机制。深入到这个主题已经超出了本指南的范围，但是如果您想了解更多，我们已经在[发送表单数据]( 1/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)文章中提供了一些示例。
+在服务器端，位于URL"`/my-handling-form-page`" 上的脚本将接收的数据作为HTTP请求中包含的3个键/值项的列表。这个脚本处理这些数据的方式取决于您。每个服务器端语言(PHP、Python、Ruby、Java、c等等)都有自己的机制。

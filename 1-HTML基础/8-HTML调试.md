@@ -1,12 +1,12 @@
 HTML 优雅明了，但要是出了错，你会不会一头雾水呢，本节将介绍一些查找和修复 HTML 错误的工具。
 
-| 预备知识: | 阅读并理解 [HTML 入门]( 1/docs/Learn/HTML/Introduction_to_HTML/Getting_started)、[HTML 文字处理初步]( 1/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals) 和 [创建超链接]( 1/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks) 等文章，熟悉 HTML 的基本概念。 |
+| 预备知识: | 阅读并理解 HTML 入门、HTML 文字处理初步 和 创建超链接 等文章，熟悉 HTML 的基本概念。 |
 | :-------- | ------------------------------------------------------------ |
 | 学习目标: | 学习调试工具的基础用法，以查找 HTML 中的错误。               |
 
 ## 调试并不可怕
 
-写代码通常都是按部就班的，但是一旦犯了错，可怕的代码问题就出现了：或彻底罢工，或得不到正确结果。比如，以下窗口显示了：用 [Rust](https://www.rust-lang.org/) 编写的一个小程序在 [编译]( 1/docs/Glossary/编译) 时得到的出错信息：
+写代码通常都是按部就班的，但是一旦犯了错，可怕的代码问题就出现了：或彻底罢工，或得不到正确结果。比如，以下窗口显示了：用 [Rust](https://www.rust-lang.org/) 编写的一个小程序在编译 时得到的出错信息：
 
 ![一个控制台窗口，显示了一个rust工程编译时的出错信息。（println宏少一个引号）](https://mdn.mozillademos.org/files/16527/03.gif)这里错误信息比较容易理解："unterminated double quote string"，即"双引号字符串未闭合"。错误列表中可以看到 `println!(Hello, world!");` 这里少一个双引号，然而当程序规模变大时，错误信息也会变得更复杂和更难解释，同时对于 Rust 新手而言，上述提示也是找不到北。
 
@@ -14,7 +14,7 @@ HTML 优雅明了，但要是出了错，你会不会一头雾水呢，本节将
 
 ## HTML 和调试
 
-HTML 并不像 Rust 那么难以理解，浏览器并不会将 HTML 编译成其它形式，而是直接解析并显示结果（称之为解释，而非编译）。可以说 HTML 的 [元素]( 1/docs/Glossary/元素) 语法比 Rust、[JavaScript]( 1/docs/Glossary/JavaScript) 或 [Python]( 1/docs/Glossary/Python) 这样“真正的编程语言”更容易理解。浏览器解析 HTML 的过程比编程语言的编译运行的过程要**宽松**得多，但这是一把双刃剑。
+HTML 并不像 Rust 那么难以理解，浏览器并不会将 HTML 编译成其它形式，而是直接解析并显示结果（称之为解释，而非编译）。可以说 HTML 的 元素语法比 Rust、JavaScript或 Python 这样“真正的编程语言”更容易理解。浏览器解析 HTML 的过程比编程语言的编译运行的过程要**宽松**得多，但这是一把双刃剑。
 
 ### 宽松的代码
 
@@ -57,12 +57,12 @@ HTML 本身不容易出现语法错误，因为浏览器是以宽松模式运行
 
 4. 以下是问题清单：
 
-   - [段落（Paragraph）]( 1/docs/Web/HTML/Element/p) 和 [列表项（list item）]( 1/docs/Web/HTML/Element/li) 元素没有结束标签。但是由于元素的结束和另一个的开始很容易推断出来，因此上图中并没有太严重的渲染错误。
+   - 段落（Paragraph）和 列表项（list item）元素没有结束标签。但是由于元素的结束和另一个的开始很容易推断出来，因此上图中并没有太严重的渲染错误。
    - 第一个`<strong>`元素没有结束标签。这就严重了，因为该元素结束的位置难以确定。事实上所有剩余文本都加粗了。
    - 一下嵌套有问题：**`<strong>`**重点 **`<em>`** 重点强调  `</em></strong>`这又是什么鬼?。浏览器很难做出正确解释，理由同上。
    - `href` 属性缺少了一个双引号。从而导致了一个最严重的问题：整个链接完全没有渲染出来。
 
-5. 下面暂时忽略源代码中的标记，先看一下浏览器渲染出的标记。打开浏览器的开发者工具。如果不太熟悉，请先阅读 [浏览器开发工具概览]( 1/docs/Learn/Discover_browser_developer_tools)。
+5. 下面暂时忽略源代码中的标记，先看一下浏览器渲染出的标记。打开浏览器的开发者工具。如果不太熟悉，请先阅读 浏览器开发工具概览。
 
 6. 在 DOM 查看器中可以看到渲染的标记：![Firefox控制台中的HTML检查器，可标亮元素，（图中标亮了“什么使得HTML出错？”）可以看到浏览器自动补齐了</p>关闭标签](https://mdn.mozillademos.org/files/16529/html-inspector.png)
 
